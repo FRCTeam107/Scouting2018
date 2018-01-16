@@ -91,6 +91,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @BindView(R.id.fouls_chkbx)
     public CheckBox foulsChbx;
 
+    int teleopCubesInExchange = 0;
+    int teleopCubesInOurSwitch = 0;
     public String auton;
 
     private ArrayList<CharSequence> teleopDataStringList;
@@ -166,6 +168,36 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
+    public void increaseTeleopCubesInExchangeInput(View view) {
+        teleopCubesInExchange = teleopCubesInExchange + 1;
+        displayTeleopCubesInExchangeInput(teleopCubesInExchange);
+
+    }public void decreaseTeleopCubesInExchangeInput(View view) {
+        teleopCubesInExchange = teleopCubesInExchange - 1;
+        displayTeleopCubesInExchangeInput(teleopCubesInExchange);
+    }
+
+    private void displayTeleopCubesInExchangeInput(int number) {
+        teleopCubesInExchangeInput.setText("" + number);
+    }
+
+
+    public void increaseTeleopCubesInOurSwitchInput(View view) {
+        teleopCubesInOurSwitch = teleopCubesInOurSwitch + 1;
+        displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
+
+    }public void decreaseTeleopCubesInOurSwitchInput(View view) {
+        teleopCubesInOurSwitch = teleopCubesInOurSwitch - 1;
+        displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
+    }
+
+    private void displayTeleopCubesInOurSwitchInput(int number) {
+        teleopCubesInOurSwitchInput.setText("" + number);
+    }
+
 
     /*This method will look at all of the text/number input fields and set error
     *for validation of data entry

@@ -12,15 +12,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/decrease_teleopCubesInExchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseTeleopCubesInExchangeInput"
+            android:text="-"
+            app:layout_constraintRight_toLeftOf="@id/teleopCubesInExchange_input_layout" />
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/teleopCubesInExchange_input_layout"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:hint="@string/cubesInExchange"
             app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintLeft_toLeftOf="@+id/decrease_teleopCubesInExchange"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UnknownId">
+
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/teleopCubesInExchange_input"
@@ -32,9 +41,28 @@
                 app:layout_constraintTop_toBottomOf="parent" />
         </android.support.design.widget.TextInputLayout>
 
+        <Button
+            android:id="@+id/increase_teleopCubesInExchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseTeleopCubesInExchangeInput"
+            android:text="+"
+            app:layout_constraintLeft_toRightOf="@id/teleopCubesInExchange_input_layout" />
+
+
+
+        <Button
+            android:id="@+id/decrease_teleopCubesInOurSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseTeleopCubesInOurSwitchInput"
+            android:text="-"
+            app:layout_constraintRight_toLeftOf="@id/teleopCubesInOurSwitch_input_layout"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInExchange" />
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/teleopCubesInOurSwitch_input_layout"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:hint="@string/cubesInOurSwitch"
             app:errorEnabled="true"
@@ -51,6 +79,15 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
         </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/increase_teleopCubesInOurSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseTeleopCubesInOurSwitchInput"
+            android:text="+"
+            app:layout_constraintLeft_toRightOf="@id/teleopCubesInOurSwitch_input_layout"
+            app:layout_constraintTop_toBottomOf="@id/increase_teleopCubesInExchange" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/teleopCubesInTheirSwitch_input_layout"
@@ -192,8 +229,8 @@
                 android:id="@+id/unableToHelpClimb_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/unableToHelpClimb"
-                android:checked="true" />
+                android:checked="true"
+                android:text="@string/unableToHelpClimb" />
         </RadioGroup>
 
         <TextView
@@ -224,8 +261,8 @@
                 android:id="@+id/isNotOnPlatform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/isNotOnPlatform"
-                android:checked="true" />
+                android:checked="true"
+                android:text="@string/isNotOnPlatform" />
 
             <RadioButton
                 android:id="@+id/notAttemptedPlatform"
@@ -303,7 +340,7 @@
             android:text="@string/saveButton"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fouls_chkbx"/>
+            app:layout_constraintTop_toBottomOf="@+id/fouls_chkbx" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
 
