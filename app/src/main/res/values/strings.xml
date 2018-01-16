@@ -6,21 +6,29 @@
     <string name="teamNumberHeading">Team Number</string>
     <string name="matchNumberHeading">Match Number</string>
     <string name="startingLocationHeading">Starting Location</string>
-    <string name="feederStarting">Feeder</string>
-    <string name="middleStarting">Middle</string>
-    <string name="boilerStarting">Boiler</string>
+
+    <string name="leftStarting">Left</string>
+    <string name="centerStarting">Center</string>
+    <string name="rightStarting">Right</string>
+    <string name="farRightStarting">Far Right</string>
+
     <string name="baselineCrossHeading">Baseline</string>
     <string name="successBaseline">Success</string>
     <string name="failBaseline">Fail</string>
-    <string name="autonGearHeading">Auton Gear</string>
-    <string name="feederAutonGear">Feeder</string>
-    <string name="middleAutonGear">Middle</string>
-    <string name="boilerAutonGear">Boiler</string>
-    <string name="noAutonGear">None</string>
-    <string name="highAutonFuelScored">High Auton Fuel Scored</string>
-    <string name="highAutonFuelMissed">High Auton Fuel Missed</string>
-    <string name="lowAutonFuel">Low Auton Fuel</string>
-    <string name="activatedHopper">Activated Hopper</string>
+    <string name="notAttemptedBaseline">Not Attempted</string>
+
+    <string name="cubeInSwitchHeading">Cube in Switch</string>
+    <string name="successSwitch">Yes</string>
+    <string name="failSwitch">No</string>
+    <string name="notAttemptedSwitch">Not Attempted</string>
+    <string name="wrongSideSwitch">Wrong Side</string>
+
+    <string name="cubeInScaleHeading">Cube in Scale</string>
+    <string name="successScale">Yes</string>
+    <string name="failScale">No</string>
+    <string name="notAttemptedScale">Not Attempted</string>
+    <string name="wrongSideScale">Wrong Side</string>
+
     <string name="saveButton">Save</string>
 
 
@@ -33,34 +41,40 @@
     <string name="autonLowFuelError">Enter Fuel count</string>
 
     <!--Teleop Strings-->
-    <string name="teleopGearPlacedHeading">Gears Placed</string>
-    <string name="teleopGearDropHeading">Gears Dropped</string>
-    <string name="gearPlacementHeading">Gear Placement</string>
-    <string name="activeGearPlacement">Active</string>
-    <string name="autonGearSuccessHeading">Auton Gear Success</string>
-    <string name="passiveGearGearPlacement">Passive</string>
-    <string name="teleopHighFuelScoredHeading">High Fuel Scored</string>
-    <string name="teleopHighFuelMissedHeading">High Fuel Missed</string>
-    <string name="teleopLowFuelHeading">Low Fuel</string>
-    <string name="fuelRetrievalHeading">Fuel Retrieval Location</string>
-    <string name="floorFuelRetrieval">Floor</string>
-    <string name="hopperFuelRetrieval">Hopper</string>
-    <string name="chuteFuelRetrieval">Chute</string>
-    <string name="noFuelRetrieval">None</string>
-    <string name="gearRetrievalHeading">Gear Retrieval Location</string>
-    <string name="floorGearRetrieval">Floor</string>
-    <string name="chuteGearRetrieval">Chute</string>
-    <string name="noGearRetrieval">None</string>
+    <string name="cubesInExchange"># of cubes in exchange</string>
+    <string name="cubesInOurSwitch"># of cubes in our switch</string>
+    <string name="cubesInTheirSwitch"># of cubes in opponent switch</string>
+    <string name="cubesInScale"># of cubes in scale</string>
+
+    <string name="timeToDeliverToSwitch">Time to deliver cube to switch</string>
+    <string name="timeToDeliverToScale">Time to deliver cube to scale</string>
+
+    <string name="cubePickupHeading">Cube pickup</string>
+    <string name="cubePickupFloor">Floor</string>
+    <string name="cubePickupPortal">Portal</string>
+
     <string name="climbingHeading">Climb</string>
     <string name="successClimb">Success</string>
     <string name="failClimb">Fail</string>
     <string name="noClimb">None</string>
+
     <string name="climbTimeHeading">Climb Time</string>
+
+    <string name="abilityToHelpClimbHeading">Can help others climb</string>
+    <string name="ableToHelpClimb">Yes</string>
+    <string name="unableToHelpClimb">No</string>
+
+    <string name="onPlatformHeading">On platform</string>
+    <string name="isOnPlatform">Yes</string>
+    <string name="isNotOnPlatform">No</string>
+    <string name="notAttemptedPlatform">Not attempted</string>
+
     <string name="defenseHeading">Defense</string>
     <string name="effectiveDefense">Good</string>
     <string name="ineffectiveDefense">Bad</string>
     <string name="receivedFoulsDefense">Too Much</string>
     <string name="noDefense">NA</string>
+
     <string name="fouls">Fouls</string>
     <string name="nextButton">Move To Teleop</string>
 

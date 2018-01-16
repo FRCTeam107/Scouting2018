@@ -36,29 +36,11 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     @BindView(R.id.matchNumber_input_layout)
     public TextInputLayout matchNumberInputLayout;
 
-    @BindView(R.id.autonHighFuelScored_input_layout)
-    public TextInputLayout autonHighFuelScoredInputLayout;
-
-    @BindView(R.id.autonHighFuelMissed_input_layout)
-    public TextInputLayout autonHighFuelMissedInputLayout;
-
-    @BindView(R.id.autonLowFuel_input_layout)
-    public TextInputLayout autonLowFuelInputLayout;
-
     @BindView(R.id.teamNumber_input)
     public EditText teamNumberInput;
 
     @BindView(R.id.matchNumber_input)
     public EditText matchNumberInput;
-
-    @BindView(R.id.autonHighFuelScored_input)
-    public EditText autonHighFuelScoredInput;
-
-    @BindView(R.id.autonHighFuelMissed_input)
-    public EditText autonHighFuelMissedInput;
-
-    @BindView(R.id.autonLowFuel_input)
-    public EditText autonLowFuelInput;
 
     @BindView(R.id.startingLocation_RadiobtnGrp)
     public RadioGroup startingLocationRadiobtnGrp;
@@ -66,14 +48,11 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     @BindView(R.id.baseLine_RadiobtnGrp)
     public RadioGroup baseLineRadiobtnGrp;
 
-    @BindView(R.id.autonGear_RadiobtnGrp)
-    public RadioGroup autonGearRadiobtnGrp;
+    @BindView(R.id.cubeInSwitch_RadiobtnGrp)
+    public RadioGroup cubeInSwitchRadiobtnGrp;
 
-    @BindView(R.id.autonGearSuccess_chkbx)
-    public CheckBox autonGearSuccessChkbx;
-
-    @BindView(R.id.activatedHopper_chkbx)
-    public CheckBox activatedHopperChkbx;
+    @BindView(R.id.cubeInScale_RadiobtnGrp)
+    public RadioGroup cubeInScaleRadiobtnGrp;
 
     @BindView(R.id.next_button)
     public Button nextButton;
@@ -106,9 +85,8 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
 
         teamNumberInput.setOnKeyListener(this);
         matchNumberInput.setOnKeyListener(this);
-        autonHighFuelScoredInput.setOnKeyListener(this);
-        autonHighFuelMissedInput.setOnKeyListener(this);
-        autonLowFuelInput.setOnKeyListener(this);
+        cubeInSwitchRadiobtnGrp.setOnKeyListener(this);
+        cubeInScaleRadiobtnGrp.setOnKeyListener(this);
     }
 
     /*If this activity enters a paused state the data will be set to null*/
@@ -118,9 +96,8 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
 
         teamNumberInput.setOnKeyListener(null);
         matchNumberInput.setOnKeyListener(null);
-        autonHighFuelScoredInput.setOnKeyListener(null);
-        autonHighFuelMissedInput.setOnKeyListener(null);
-        autonLowFuelInput.setOnKeyListener(null);
+        cubeInSwitchRadiobtnGrp.setOnKeyListener(null);
+        cubeInScaleRadiobtnGrp.setOnKeyListener(null);
     }
 
     /* This method will display the options menu when the icon is pressed
@@ -169,18 +146,6 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
                     case R.id.matchNumber_input:
                         matchNumberInputLayout.setError(null);
                         break;
-
-                    case R.id.autonHighFuelScored_input:
-                        autonHighFuelScoredInputLayout.setError(null);
-                        break;
-
-                    case R.id.autonHighFuelMissed_input:
-                        autonHighFuelMissedInputLayout.setError(null);
-                        break;
-
-                    case R.id.autonLowFuel_input:
-                        autonHighFuelScoredInputLayout.setError(null);
-                        break;
                 }
             }
         }
@@ -207,15 +172,6 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(matchNumberInputLayout))) {
             matchNumberInputLayout.setError(getText(R.string.matchNumberError));
             ViewUtils.requestFocus(matchNumberInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(autonHighFuelScoredInputLayout))) {
-            autonHighFuelScoredInputLayout.setError(getText(R.string.autonHighFuelScoredError));
-            ViewUtils.requestFocus(autonHighFuelScoredInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(autonHighFuelMissedInputLayout))) {
-            autonHighFuelMissedInputLayout.setError(getText(R.string.autonHighFuelMissedError));
-            ViewUtils.requestFocus(autonHighFuelMissedInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(autonLowFuelInputLayout))) {
-            autonLowFuelInputLayout.setError(getText(R.string.autonLowFuelError));
-            ViewUtils.requestFocus(autonLowFuelInputLayout, this);
         } else {
             allInputsPassed = true;
         }
@@ -224,23 +180,17 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
             return;
         }
 
-        String autonGearSuccessString = String.valueOf(autonGearSuccessChkbx.isChecked());
-        String activatedHopperString = String.valueOf(activatedHopperChkbx.isChecked());
-
         final RadioButton startingLocation_Radiobtn = (RadioButton) findViewById(startingLocationRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton baseline_Radiobtn = (RadioButton) findViewById(baseLineRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton autonGear_Radiobtn = (RadioButton) findViewById(autonGearRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton cubeInSwitch_Radiobtn = (RadioButton) findViewById(cubeInSwitchRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton cubeInScale_Radiobtn = (RadioButton) findViewById(cubeInScaleRadiobtnGrp.getCheckedRadioButtonId());
 
         autonDataStringList.add(getTextInputLayoutString(teamNumberInputLayout));
         autonDataStringList.add(getTextInputLayoutString(matchNumberInputLayout));
         autonDataStringList.add(startingLocation_Radiobtn.getText());
         autonDataStringList.add(baseline_Radiobtn.getText());
-        autonDataStringList.add(autonGear_Radiobtn.getText());
-        autonDataStringList.add(getTextInputLayoutString(autonHighFuelScoredInputLayout));
-        autonDataStringList.add(getTextInputLayoutString(autonHighFuelMissedInputLayout));
-        autonDataStringList.add(getTextInputLayoutString(autonLowFuelInputLayout));
-        autonDataStringList.add(autonGearSuccessString);
-        autonDataStringList.add(activatedHopperString);
+        autonDataStringList.add(cubeInSwitch_Radiobtn.getText());
+        autonDataStringList.add(cubeInScale_Radiobtn.getText());
 
         final Intent intent = new Intent(this, TeleopActivity.class);
         intent.putExtra(AUTON_STRING_EXTRA, FormatStringUtils.addDelimiter(autonDataStringList, ","));
@@ -272,12 +222,8 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         teamNumberInput.setText("");
         matchNumberInput.setText("");
         startingLocationRadiobtnGrp.check(R.id.failBaseline_Radiobtn);
-        autonGearRadiobtnGrp.check(R.id.noAutonGear_Radiobtn);
-        autonGearSuccessChkbx.setChecked(false);
-        autonHighFuelScoredInput.setText("");
-        autonHighFuelMissedInput.setText("");
-        autonLowFuelInput.setText("");
-        activatedHopperChkbx.setChecked(false);
+        cubeInSwitchRadiobtnGrp.check(R.id.failSwitch_Radiobtn);
+        cubeInScaleRadiobtnGrp.check(R.id.failScale_Radiobtn);
         teamNumberInput.requestFocus();
     }
 

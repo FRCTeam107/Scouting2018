@@ -86,23 +86,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/startingLocation_TextView">
 
                 <RadioButton
-                    android:id="@+id/feederStartingLocation_Radiobtn"
+                    android:id="@+id/leftStartingLocation_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/feederStarting" />
+                    android:text="@string/leftStarting" />
 
                 <RadioButton
-                    android:id="@+id/middleStartingLocation_Radiobtn"
+                    android:id="@+id/centerStartingLocation_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/middleStarting" />
+                    android:text="@string/centerStarting" />
 
                 <RadioButton
-                    android:id="@+id/boilerStartingLocation_Radiobtn"
+                    android:id="@+id/rightStartingLocation_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/boilerStarting" />
+                    android:text="@string/rightStarting" />
+
+                <RadioButton
+                    android:id="@+id/farRightStartingLocation_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/farRightStarting" />
             </RadioGroup>
 
             <TextView
@@ -138,162 +144,112 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/failBaseline" />
+
+                <RadioButton
+                    android:id="@+id/notAttemptedBaseline_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/notAttemptedBaseline" />
             </RadioGroup>
 
             <TextView
-                android:id="@+id/autonGear_TextView"
+                android:id="@+id/cubeInSwitch_TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:gravity="center"
-                android:text="@string/autonGearHeading"
-                app:layout_constraintHorizontal_bias="0.05"
+                android:text="@string/cubeInSwitchHeading"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/baseLine_RadiobtnGrp" />
 
             <RadioGroup
-                android:id="@+id/autonGear_RadiobtnGrp"
+                android:id="@+id/cubeInSwitch_RadiobtnGrp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autonGear_TextView">
+                app:layout_constraintTop_toBottomOf="@+id/cubeInSwitch_TextView">
 
                 <RadioButton
-                    android:id="@+id/feederAutonGear_Radiobtn"
+                    android:id="@+id/successSwitch_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/feederAutonGear" />
+                    android:text="@string/successSwitch" />
 
                 <RadioButton
-                    android:id="@+id/middleAutonGear_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/middleAutonGear" />
-
-                <RadioButton
-                    android:id="@+id/boilerAutonGear_Radiobtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/boilerAutonGear" />
-
-                <RadioButton
-                    android:id="@+id/noAutonGear_Radiobtn"
+                    android:id="@+id/failSwitch_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/noAutonGear" />
+                    android:text="@string/failSwitch" />
+
+                <RadioButton
+                    android:id="@+id/notAttemptedSwitch_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/notAttemptedSwitch" />
+
+                <RadioButton
+                    android:id="@+id/wrongSideSwitch_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/wrongSideSwitch" />
             </RadioGroup>
 
             <TextView
-                android:id="@+id/autonGearSuccess_TextView"
+                android:id="@+id/cubeInScale_TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:gravity="center"
-                android:text="@string/autonGearSuccessHeading"
-                app:layout_constraintHorizontal_bias="0.05"
+                android:text="@string/cubeInScaleHeading"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autonGear_RadiobtnGrp" />
+                app:layout_constraintTop_toBottomOf="@+id/cubeInSwitch_RadiobtnGrp" />
 
-            <CheckBox
-                android:id="@+id/autonGearSuccess_chkbx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autonGearSuccess_TextView" />
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/autonHighFuelScored_input_layout"
+            <RadioGroup
+                android:id="@+id/cubeInScale_RadiobtnGrp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:hint="@string/highAutonFuelScored"
-                app:errorEnabled="true"
+                android:gravity="center"
+                android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autonGearSuccess_chkbx">
+                app:layout_constraintTop_toBottomOf="@+id/cubeInScale_TextView">
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/autonHighFuelScored_input"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/successScale_Radiobtn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="16sp" />
+                    android:text="@string/successScale" />
 
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/autonHighFuelMissed_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:hint="@string/highAutonFuelMissed"
-                app:errorEnabled="true"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autonHighFuelScored_input_layout">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/autonHighFuelMissed_input"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/failScale_Radiobtn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="16sp" />
+                    android:checked="true"
+                    android:text="@string/failScale" />
 
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/autonLowFuel_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                app:errorEnabled="true"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autonHighFuelMissed_input_layout">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/autonLowFuel_input"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/notAttemptedScale_Radiobtn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/lowAutonFuel"
-                    android:inputType="number"
-                    android:textSize="16sp" />
+                    android:checked="true"
+                    android:text="@string/notAttemptedScale" />
 
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:id="@+id/ActivatedHopper_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activatedHopper"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autonLowFuel_input_layout" />
-
-            <CheckBox
-                android:id="@+id/activatedHopper_chkbx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="48dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ActivatedHopper_TextView" />
+                <RadioButton
+                    android:id="@+id/wrongSideScale_Radiobtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/wrongSideScale" />
+            </RadioGroup>
 
             <Button
                 android:id="@+id/next_button"
@@ -304,7 +260,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/activatedHopper_chkbx"
+                app:layout_constraintTop_toBottomOf="@id/cubeInScale_RadiobtnGrp"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="81dp" />
 

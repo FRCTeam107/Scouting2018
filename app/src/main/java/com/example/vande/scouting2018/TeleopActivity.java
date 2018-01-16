@@ -37,53 +37,50 @@ import static com.example.vande.scouting2018.AutonActivity.AUTON_STRING_EXTRA;
 
 public class TeleopActivity extends AppCompatActivity implements View.OnKeyListener {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
-    @BindView(R.id.teleopGearPlaced_input_layout)
-    public TextInputLayout teleopGearPlacedInputLayout;
+    @BindView(R.id.teleopCubesInExchange_input_layout)
+    public TextInputLayout teleopCubesInExchangeInputLayout;
 
-    @BindView(R.id.teleopGearDropped_input_layout)
-    public TextInputLayout teleopGearDroppedInputLayout;
+    @BindView(R.id.teleopCubesInOurSwitch_input_layout)
+    public TextInputLayout teleopCubesInOurSwitchInputLayout;
 
-    @BindView(R.id.teleopHighFuelScored_input_layout)
-    public TextInputLayout teleopHighFuelScoredInputLayout;
+    @BindView(R.id.teleopCubesInTheirSwitch_input_layout)
+    public TextInputLayout teleopCubesInTheirSwitchInputLayout;
 
-    @BindView(R.id.teleopHighFuelMissed_input_layout)
-    public TextInputLayout teleopHighFuelMissedInputLayout;
+    @BindView(R.id.teleopCubesInScale_input_layout)
+    public TextInputLayout teleopCubesInScaleInputLayout;
 
-    @BindView(R.id.teleopLowFuel_input_layout)
-    public TextInputLayout teleopLowFuelInputLayout;
+    @BindView(R.id.teleopTimeToDeliverToSwitch_input_layout)
+    public TextInputLayout teleopTimeToDeliverToSwitchInputLayout;
 
-    @BindView(R.id.climbTime_input_layout)
-    public TextInputLayout climbTimeInputLayout;
+    @BindView(R.id.teleopTimeToDeliverToScale_input_layout)
+    public TextInputLayout teleopTimeToDeliverToScaleInputLayout;
 
-    @BindView(R.id.teleopGearPlaced_input)
-    public TextInputEditText teleopGearPlacedInput;
+    @BindView(R.id.teleopCubesInExchange_input)
+    public TextInputEditText teleopCubesInExchangeInput;
 
-    @BindView(R.id.teleopGearDropped_input)
-    public TextInputEditText teleopGearDroppedInput;
+    @BindView(R.id.teleopCubesInOurSwitch_input)
+    public TextInputEditText teleopCubesInOurSwitchInput;
 
-    @BindView(R.id.teleopHighFuelScored_input)
-    public TextInputEditText teleopHighFuelScoredInput;
+    @BindView(R.id.teleopCubesInTheirSwitch_input)
+    public TextInputEditText teleopCubesInTheirSwitchInput;
 
-    @BindView(R.id.teleopHighFuelMissed_input)
-    public TextInputEditText teleopHighFuelMissedInput;
+    @BindView(R.id.teleopCubesInScale_input)
+    public TextInputEditText teleopCubesInScaleInput;
 
-    @BindView(R.id.teleopLowFuel_input)
-    public TextInputEditText teleopLowFuelInput;
+    @BindView(R.id.teleopTimeToDeliverToSwitch_input)
+    public TextInputEditText teleopTimeToDeliverCubeToSwitchInput;
 
-    @BindView(R.id.climbTime_input)
-    public TextInputEditText climbTimeInput;
+    @BindView(R.id.teleopTimeToDeliverToScale_input)
+    public TextInputEditText teleopTimeToDeliverCubeToScaleInput;
 
-    @BindView(R.id.gearPlacement_RadiobtnGrp)
-    public RadioGroup gearPlacementRadiobtnGrp;
+    @BindView(R.id.cubePickup_RadiobtnGrp)
+    public RadioGroup cubePickupRadiobtnGrp;
 
-    @BindView(R.id.fuelRetrieval_RadiobtnGrp)
-    public RadioGroup fuelRetrievalRadiobtnGrp;
+    @BindView(R.id.abilityToHelpClimb_RadiobtnGrp)
+    public RadioGroup abilityToHelpClimbRadiobtnGrp;
 
-    @BindView(R.id.gearRetrieval_RadiobtnGrp)
-    public RadioGroup gearRetrievalRadiobtnGrp;
-
-    @BindView(R.id.climbing_RadiobtnGrp)
-    public RadioGroup climbingRadiobtnGrp;
+    @BindView(R.id.onPlatform_RadiobtnGrp)
+    public RadioGroup onPlatformRadiobtnGrp;
 
     @BindView(R.id.defense_RadiobtnGrp)
     public RadioGroup defenseRadiobtnGrp;
@@ -122,11 +119,12 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     protected void onResume() {
         super.onResume();
 
-        teleopGearPlacedInput.setOnKeyListener(this);
-        teleopGearDroppedInput.setOnKeyListener(this);
-        teleopHighFuelScoredInput.setOnKeyListener(this);
-        teleopHighFuelMissedInput.setOnKeyListener(this);
-        climbTimeInput.setOnKeyListener(this);
+        teleopCubesInExchangeInput.setOnKeyListener(this);
+        teleopCubesInOurSwitchInput.setOnKeyListener(this);
+        teleopCubesInTheirSwitchInput.setOnKeyListener(this);
+        teleopCubesInScaleInput.setOnKeyListener(this);
+        teleopTimeToDeliverCubeToSwitchInput.setOnKeyListener(this);
+        teleopTimeToDeliverCubeToScaleInput.setOnKeyListener(this);
 
     }
 
@@ -135,11 +133,12 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     protected void onPause() {
         super.onPause();
 
-        teleopGearPlacedInput.setOnKeyListener(null);
-        teleopGearDroppedInput.setOnKeyListener(null);
-        teleopHighFuelScoredInput.setOnKeyListener(null);
-        teleopHighFuelMissedInput.setOnKeyListener(null);
-        climbTimeInput.setOnKeyListener(null);
+        teleopCubesInExchangeInput.setOnKeyListener(null);
+        teleopCubesInOurSwitchInput.setOnKeyListener(null);
+        teleopCubesInTheirSwitchInput.setOnKeyListener(null);
+        teleopCubesInScaleInput.setOnKeyListener(null);
+        teleopTimeToDeliverCubeToSwitchInput.setOnKeyListener(null);
+        teleopTimeToDeliverCubeToScaleInput.setOnKeyListener(null);
     }
 
     /* This method will display the options menu when the icon is pressed
@@ -180,24 +179,28 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
                 switch (inputEditText.getId()) {
 
-                    case R.id.teleopGearPlaced_input:
-                        teleopGearPlacedInputLayout.setError(null);
+                    case R.id.teleopCubesInExchange_input:
+                        teleopCubesInExchangeInputLayout.setError(null);
                         break;
 
-                    case R.id.teleopGearDropped_input:
-                        teleopGearDroppedInputLayout.setError(null);
+                    case R.id.teleopCubesInOurSwitch_input:
+                        teleopCubesInOurSwitchInputLayout.setError(null);
                         break;
 
-                    case R.id.teleopHighFuelScored_input:
-                        teleopHighFuelScoredInputLayout.setError(null);
+                    case R.id.teleopCubesInTheirSwitch_input:
+                        teleopCubesInTheirSwitchInputLayout.setError(null);
                         break;
 
-                    case R.id.teleopHighFuelMissed_input:
-                        teleopHighFuelMissedInputLayout.setError(null);
+                    case R.id.teleopCubesInScale_input:
+                        teleopCubesInScaleInputLayout.setError(null);
                         break;
 
-                    case R.id.climbTime_input:
-                        climbTimeInputLayout.setError(null);
+                    case R.id.teleopTimeToDeliverToSwitch_input:
+                        teleopTimeToDeliverToSwitchInputLayout.setError(null);
+                        break;
+
+                    case R.id.teleopTimeToDeliverToScale_input:
+                        teleopTimeToDeliverToScaleInputLayout.setError(null);
                         break;
                 }
             }
@@ -218,24 +221,24 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         String state = Environment.getExternalStorageState();
         boolean allInputsPassed = false;
 
-        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopGearPlacedInputLayout))) {
-            teleopGearPlacedInputLayout.setError(getText(R.string.teleopGearPlacedError));
-            ViewUtils.requestFocus(teleopGearPlacedInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopGearDroppedInputLayout))) {
-            teleopGearDroppedInputLayout.setError(getText(R.string.teleopGearDroppedError));
-            ViewUtils.requestFocus(teleopGearDroppedInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopHighFuelScoredInputLayout))) {
-            teleopHighFuelScoredInputLayout.setError(getText(R.string.teleopHighFuelScoredError));
-            ViewUtils.requestFocus(teleopHighFuelScoredInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopHighFuelMissedInputLayout))) {
-            teleopHighFuelMissedInputLayout.setError(getText(R.string.teleopHighFuelMissedError));
-            ViewUtils.requestFocus(teleopHighFuelMissedInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopLowFuelInputLayout))) {
-            teleopLowFuelInputLayout.setError(getText(R.string.teleopLowFuelError));
-            ViewUtils.requestFocus(teleopLowFuelInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(climbTimeInputLayout))) {
-            climbTimeInputLayout.setError(getText(R.string.climbTimeError));
-            ViewUtils.requestFocus(climbTimeInputLayout, this);
+        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInExchangeInputLayout))) {
+            teleopCubesInExchangeInputLayout.setError(getText(R.string.teleopGearPlacedError));
+            ViewUtils.requestFocus(teleopCubesInExchangeInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout))) {
+            teleopCubesInOurSwitchInputLayout.setError(getText(R.string.teleopGearDroppedError));
+            ViewUtils.requestFocus(teleopCubesInOurSwitchInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInTheirSwitchInputLayout))) {
+            teleopCubesInTheirSwitchInputLayout.setError(getText(R.string.teleopHighFuelScoredError));
+            ViewUtils.requestFocus(teleopCubesInTheirSwitchInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInScaleInputLayout))) {
+            teleopCubesInScaleInputLayout.setError(getText(R.string.teleopHighFuelMissedError));
+            ViewUtils.requestFocus(teleopCubesInScaleInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopTimeToDeliverToSwitchInputLayout))) {
+            teleopTimeToDeliverToSwitchInputLayout.setError(getText(R.string.teleopLowFuelError));
+            ViewUtils.requestFocus(teleopTimeToDeliverToSwitchInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopTimeToDeliverToScaleInputLayout))) {
+            teleopTimeToDeliverToScaleInputLayout.setError(getText(R.string.climbTimeError));
+            ViewUtils.requestFocus(teleopTimeToDeliverToScaleInputLayout, this);
         } else {
             allInputsPassed = true;
         }
@@ -243,10 +246,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             return;
         }
 
-        final RadioButton gearPlacement_Radiobtn = (RadioButton) findViewById(gearPlacementRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton fuelRetreival_Radiobtn = (RadioButton) findViewById(fuelRetrievalRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton gearRetreival_Radiobtn = (RadioButton) findViewById(gearRetrievalRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton climbing_Radiobtn = (RadioButton) findViewById(climbingRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton cubePickup_Radiobtn = (RadioButton) findViewById(cubePickupRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton abilityToHelpClimb_Radiobtn = (RadioButton) findViewById(abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton onPlatform_Radiobtn = (RadioButton) findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton defense_Radiobtn = (RadioButton) findViewById(defenseRadiobtnGrp.getCheckedRadioButtonId());
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -254,16 +256,16 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             File Dir = new File(Root.getAbsoluteFile() + "/Documents");
             File file = new File(Dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
 
-            teleopDataStringList.add(getTextInputLayoutString(teleopGearPlacedInputLayout));
-            teleopDataStringList.add(gearPlacement_Radiobtn.getText());
-            teleopDataStringList.add(getTextInputLayoutString(teleopGearDroppedInputLayout));
-            teleopDataStringList.add(getTextInputLayoutString(teleopHighFuelScoredInputLayout));
-            teleopDataStringList.add(getTextInputLayoutString(teleopHighFuelMissedInputLayout));
-            teleopDataStringList.add(getTextInputLayoutString(teleopLowFuelInputLayout));
-            teleopDataStringList.add(fuelRetreival_Radiobtn.getText());
-            teleopDataStringList.add(gearRetreival_Radiobtn.getText());
-            teleopDataStringList.add(climbing_Radiobtn.getText());
-            teleopDataStringList.add(getTextInputLayoutString(climbTimeInputLayout));
+            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInExchangeInputLayout));
+            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout));
+            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInTheirSwitchInputLayout));
+            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInScaleInputLayout));
+            teleopDataStringList.add(getTextInputLayoutString(teleopTimeToDeliverToSwitchInputLayout));
+            teleopDataStringList.add(getTextInputLayoutString(teleopTimeToDeliverToScaleInputLayout));
+
+            teleopDataStringList.add(cubePickup_Radiobtn.getText());
+            teleopDataStringList.add(abilityToHelpClimb_Radiobtn.getText());
+            teleopDataStringList.add(onPlatform_Radiobtn.getText());
             teleopDataStringList.add(defense_Radiobtn.getText());
 
             String message = auton + "," + FormatStringUtils.addDelimiter(teleopDataStringList, ",");
@@ -291,16 +293,16 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     /*The method will clear all the data in the text fields, checkboxes, and
     * set radio buttons to default*/
     public void clearData(View view) {
-        teleopGearPlacedInput.setText("");
-        gearPlacementRadiobtnGrp.check(R.id.passiveGearPlacement_btn);
-        teleopGearDroppedInput.setText("");
-        teleopHighFuelScoredInput.setText("");
-        teleopHighFuelMissedInput.setText("");
-        teleopLowFuelInput.setText("");
-        fuelRetrievalRadiobtnGrp.check(R.id.noFuelRetrieval_btn);
-        gearRetrievalRadiobtnGrp.check(R.id.noGearRetrieval_btn);
-        climbingRadiobtnGrp.check(R.id.failClimb_btn);
-        climbTimeInput.setText("");
+        teleopCubesInExchangeInput.setText("");
+        teleopCubesInOurSwitchInput.setText("");
+        teleopCubesInTheirSwitchInput.setText("");
+        teleopCubesInScaleInput.setText("");
+        teleopTimeToDeliverCubeToSwitchInput.setText("");
+        teleopTimeToDeliverCubeToScaleInput.setText("");
+
+        cubePickupRadiobtnGrp.check(R.id.cubePickupFloor_btn);
+        abilityToHelpClimbRadiobtnGrp.check(R.id.unableToHelpClimb_btn);
+        onPlatformRadiobtnGrp.check(R.id.isNotOnPlatform);
         defenseRadiobtnGrp.check(R.id.noDefense_btn);
     }
 

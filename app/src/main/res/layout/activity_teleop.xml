@@ -13,17 +13,117 @@
         android:layout_height="match_parent">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/teleopGearPlaced_input_layout"
+            android:id="@+id/teleopCubesInExchange_input_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/teleopGearPlacedHeading"
+            android:hint="@string/cubesInExchange"
             app:errorEnabled="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/teleopGearPlaced_input"
+                android:id="@+id/teleopCubesInExchange_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/teleopCubesInOurSwitch_input_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/cubesInOurSwitch"
+            app:errorEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teleopCubesInExchange_input_layout">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/teleopCubesInOurSwitch_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/teleopCubesInTheirSwitch_input_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/cubesInTheirSwitch"
+            app:errorEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teleopCubesInOurSwitch_input_layout">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/teleopCubesInTheirSwitch_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/teleopCubesInScale_input_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/cubesInScale"
+            app:errorEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teleopCubesInTheirSwitch_input_layout">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/teleopCubesInScale_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/teleopTimeToDeliverToSwitch_input_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/timeToDeliverToSwitch"
+            app:errorEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teleopCubesInScale_input_layout">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/teleopTimeToDeliverToSwitch_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/teleopTimeToDeliverToScale_input_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/timeToDeliverToScale"
+            app:errorEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teleopTimeToDeliverToSwitch_input_layout">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/teleopTimeToDeliverToScale_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -33,243 +133,106 @@
         </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:id="@+id/gearPlacement_textView"
+            android:id="@+id/cubePickup_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gearPlacementHeading"
+            android:text="@string/cubePickupHeading"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teleopGearPlaced_input_layout" />
-
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/gearPlacement_RadiobtnGrp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gearPlacement_textView">
-
-            <RadioButton
-                android:id="@+id/activeGearPlacement_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activeGearPlacement" />
-
-            <RadioButton
-                android:id="@+id/passiveGearPlacement_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/passiveGearGearPlacement" />
-        </RadioGroup>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/teleopGearDropped_input_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/teleopGearDropHeading"
-            app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gearPlacement_RadiobtnGrp">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/teleopGearDropped_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/teleopHighFuelScored_input_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/teleopHighFuelScoredHeading"
-            app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teleopGearDropped_input_layout">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/teleopHighFuelScored_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/teleopHighFuelMissed_input_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/teleopHighFuelMissedHeading"
-            app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teleopHighFuelScored_input_layout">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/teleopHighFuelMissed_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/teleopLowFuel_input_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/teleopLowFuelHeading"
-            app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teleopHighFuelMissed_input_layout">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/teleopLowFuel_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
-
-        <TextView
-            android:id="@+id/fuelRetrieval_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fuelRetrievalHeading"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teleopLowFuel_input_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/teleopTimeToDeliverToScale_input_layout" />
 
         <RadioGroup
-            android:id="@+id/fuelRetrieval_RadiobtnGrp"
+            android:id="@+id/cubePickup_RadiobtnGrp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fuelRetrieval_textView">
+            app:layout_constraintTop_toBottomOf="@+id/cubePickup_textView">
 
             <RadioButton
-                android:id="@+id/floorFuelRetrieval_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/floorFuelRetrieval" />
-
-            <RadioButton
-                android:id="@+id/hopperFuelRetrieval_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hopperFuelRetrieval" />
-
-            <RadioButton
-                android:id="@+id/chuteFuelRetrieval_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chuteFuelRetrieval" />
-
-            <RadioButton
-                android:id="@+id/noFuelRetrieval_btn"
+                android:id="@+id/cubePickupFloor_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/noFuelRetrieval" />
+                android:text="@string/cubePickupFloor" />
+
+            <RadioButton
+                android:id="@+id/cubePickupPortal_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cubePickupPortal" />
         </RadioGroup>
 
         <TextView
-            android:id="@+id/gearRetrieval_textView"
+            android:id="@+id/abilityToHelpClimb_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/gearRetrievalHeading"
+            android:text="@string/abilityToHelpClimbHeading"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fuelRetrieval_RadiobtnGrp" />
+            app:layout_constraintTop_toBottomOf="@+id/cubePickup_RadiobtnGrp" />
 
         <RadioGroup
-            android:id="@+id/gearRetrieval_RadiobtnGrp"
+            android:id="@+id/abilityToHelpClimb_RadiobtnGrp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            tools:layout_editor_absoluteY="81dp"
-            tools:layout_editor_absoluteX="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gearRetrieval_textView">
+            app:layout_constraintTop_toBottomOf="@+id/abilityToHelpClimb_textView">
 
             <RadioButton
-                android:id="@+id/floorGearRetrieval_btn"
+                android:id="@+id/ableToHelpClimb_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/floorGearRetrieval" />
+                android:text="@string/ableToHelpClimb" />
 
             <RadioButton
-                android:id="@+id/chuteGearRetrieval_btn"
+                android:id="@+id/unableToHelpClimb_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chuteGearRetrieval" />
-
-            <RadioButton
-                android:id="@+id/noGearRetrieval_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/noGearRetrieval" />
+                android:text="@string/unableToHelpClimb"
+                android:checked="true" />
         </RadioGroup>
 
         <TextView
-            android:id="@+id/climbing_textView"
+            android:id="@+id/onPlatform_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/climbingHeading"
+            android:text="@string/onPlatformHeading"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gearRetrieval_RadiobtnGrp" />
+            app:layout_constraintTop_toBottomOf="@+id/abilityToHelpClimb_RadiobtnGrp" />
 
         <RadioGroup
-            android:id="@+id/climbing_RadiobtnGrp"
+            android:id="@+id/onPlatform_RadiobtnGrp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/climbing_textView">
+            app:layout_constraintTop_toBottomOf="@+id/onPlatform_textView">
 
             <RadioButton
-                android:id="@+id/successClimb_btn"
+                android:id="@+id/isOnPlatform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/successClimb" />
+                android:text="@string/isOnPlatform" />
 
             <RadioButton
-                android:id="@+id/failClimb_btn"
+                android:id="@+id/isNotOnPlatform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/failClimb" />
+                android:text="@string/isNotOnPlatform"
+                android:checked="true" />
 
             <RadioButton
-                android:id="@+id/noClimb_btn"
+                android:id="@+id/notAttemptedPlatform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/noClimb" />
+                android:text="@string/notAttemptedPlatform" />
         </RadioGroup>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/climbTime_input_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/climbTimeHeading"
-            app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/climbing_RadiobtnGrp">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/climbTime_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:id="@+id/defense_textView"
@@ -278,7 +241,7 @@
             android:text="@string/defenseHeading"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/climbTime_input_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/onPlatform_RadiobtnGrp" />
 
         <RadioGroup
             android:id="@+id/defense_RadiobtnGrp"
