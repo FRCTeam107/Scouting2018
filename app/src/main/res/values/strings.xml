@@ -94,12 +94,6 @@
 
     <!--Pit Scouting Strings-->
     <string name="pitTeamNumberHeading">Team Number</string>
-    <string name="pitAutonModeHeading">Auton Mode</string>
-    <string name="pitNumberOfGearsHeading">Number of gears per match</string>
-    <string name="pitFloorGearHeading">Floor Gear</string>
-    <string name="pitFloorGearYes">Yes</string>
-    <string name="pitFloorGearNo">No</string>
-    <string name="pitTeleFuelHeading">Tele Fuel</string>
     <string name="pitClimbTimeHeading">Climb time</string>
     <string name="savePitButton">Save</string>
 
@@ -112,5 +106,35 @@
     <string name="pitTeleFuelError">Enter Tele Fuel</string>
     <string name="pitClimbTimeError">Enter Climb Time</string>
 
+    <!--Pit Strings-->
+    <string name="pitStartingPositionRight">Right</string>
+    <string name="pitStartingPositionLeft">Left</string>
+    <string name="pitStartingPostionMiddle">Middle</string>
+    <string name="pitClimbTime">Climb Time</string>
 
+    <string name="pitDefenseType">Defense Type</string>
+    <string name="pitDefenseBlock">Block</string>
+    <string name="pitDefenseSwitch">Switch</string>
+    <string name="pitDefenseNo">No</string>
+
+    <string name="pitCubeNumber">Cube Number</string>
+
+    <string name="pitPickupBoolean">Pick up off the Floor?</string>
+    <string name="pitPickupYes">Yes</string>
+    <string name="pitPickupNo">No</string>
+
+    <string name="pitVaultPriority">Vault Priority</string>
+    <string name="pitClimbBoolean">Climb?</string>
+    <string name="pitClimbYes">Yes</string>
+    <string name="pitClimbNo">No</string>
+    <string name="pitClimbHelp">Can You Help Alliance Climb?</string>
+    <string name="pitClimbHelpYes">Yes</string>
+    <string name="pitClimbHelpNo">No</string>
+
+    <string name="pitRobotHistory">What Old Arcade Game were You in?</string>
+
+    <string name="pitTeleopPreference">Teleop Preference</string>
+    <string name="pitTeleopScale">Scale</string>
+    <string name="pitTeleopTheirSwitch">Their Switch</string>
+    <string name="pitTeleopYourSwitch">Your Switch</string>
 </resources>
