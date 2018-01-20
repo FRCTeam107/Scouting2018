@@ -239,6 +239,14 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopTimeToDeliverToScaleInputLayout))) {
             teleopTimeToDeliverToScaleInputLayout.setError(getText(R.string.climbTimeError));
             ViewUtils.requestFocus(teleopTimeToDeliverToScaleInputLayout, this);
+        } else if (cubePickupRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(cubePickupRadiobtnGrp, this);
+        } else if (defenseRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(defenseRadiobtnGrp, this);
+        } else if (abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(abilityToHelpClimbRadiobtnGrp, this);
+        } else if (onPlatformRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(onPlatformRadiobtnGrp, this);
         } else {
             allInputsPassed = true;
         }

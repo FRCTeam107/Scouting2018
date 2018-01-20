@@ -160,7 +160,14 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitClimbTimeInputLayout))) {
             pitClimbTimeInputLayout.setError(getText(R.string.pitClimbTimeError));
             ViewUtils.requestFocus(pitClimbTimeInputLayout, this);
-
+        } else if (pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(pitStartingPositionRadiobtnGrp, this);
+        } else if (pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(pitTeleopPreferenceRadiobtnGrp, this);
+        } else if (pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(pitDefenseTypeRadiobtnGrp, this);
+        } else if (pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(pitClimbBooleanRadiobtnGrp, this);
         } else {
             allInputsPassed = true;
         }
