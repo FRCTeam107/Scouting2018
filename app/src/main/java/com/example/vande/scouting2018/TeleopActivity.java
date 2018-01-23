@@ -207,19 +207,19 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         boolean allInputsPassed = false;
 
         if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInExchangeInputLayout))) {
-            teleopCubesInExchangeInputLayout.setError(getText(R.string.teleopGearPlacedError));
+            teleopCubesInExchangeInputLayout.setError(getText(R.string.teleopCubesInExchangeError));
             ViewUtils.requestFocus(teleopCubesInExchangeInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout))) {
-            teleopCubesInOurSwitchInputLayout.setError(getText(R.string.teleopGearDroppedError));
+            teleopCubesInOurSwitchInputLayout.setError(getText(R.string.cubesInOurSwitchError));
             ViewUtils.requestFocus(teleopCubesInOurSwitchInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInTheirSwitchInputLayout))) {
-            teleopCubesInTheirSwitchInputLayout.setError(getText(R.string.teleopHighFuelScoredError));
+            teleopCubesInTheirSwitchInputLayout.setError(getText(R.string.cubesInTheirSwitchError));
             ViewUtils.requestFocus(teleopCubesInTheirSwitchInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInScaleInputLayout))) {
-            teleopCubesInScaleInputLayout.setError(getText(R.string.teleopHighFuelMissedError));
+            teleopCubesInScaleInputLayout.setError(getText(R.string.cubesInScaleError));
             ViewUtils.requestFocus(teleopCubesInScaleInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(scouterInitialsInputLayout))) {
-            scouterInitialsInputLayout.setError(getText(R.string.creatorInitialError));
+            scouterInitialsInputLayout.setError(getText(R.string.scouterInitialsError));
             ViewUtils.requestFocus(scouterInitialsInputLayout, this);
         } else {
             allInputsPassed = true;

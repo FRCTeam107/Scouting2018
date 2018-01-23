@@ -34,11 +34,9 @@
 
     <!--Auton Error Strings-->
 
-    <string name="teamNumberError">Enter in Team Number</string>
-    <string name="matchNumberError">Enter in Match Number</string>
-    <string name="autonHighFuelScoredError">Enter Fuel count</string>
-    <string name="autonHighFuelMissedError">Enter Fuel count</string>
-    <string name="autonLowFuelError">Enter Fuel count</string>
+    <string name="teamNumberError">Enter in team number</string>
+    <string name="matchNumberError">Enter in match number</string>
+    <string name="startingLocationError">Enter starting location</string>
 
     <!--Teleop Strings-->
     <string name="cubesInExchange"># of cubes in exchange</string>
@@ -79,13 +77,11 @@
 
 
     <!--Teleop Error Strings-->
-    <string name="teleopGearPlacedError">Enter Gears Placed</string>
-    <string name="teleopGearDroppedError">Enter Gear Dropped</string>
-    <string name="teleopHighFuelScoredError">Enter High Fuel Scored</string>
-    <string name="teleopHighFuelMissedError">Enter High Fuel Missed</string>
-    <string name="teleopLowFuelError">Enter Low Fuel Scored</string>
-    <string name="climbTimeError">Enter Climb Time</string>
-    <string name="creatorInitialError">Enter Scouter Initials</string>
+    <string name="teleopCubesInExchangeError">Enter # of cubes in exchange</string>
+    <string name="cubesInOurSwitchError">Enter # of cubes in their switch</string>
+    <string name="cubesInTheirSwitchError">Enter # of cubes in opponent switch</string>
+    <string name="cubesInScaleError">Enter # of cubes in scale</string>
+    <string name="scouterInitialsError">Enter scouter initials</string>
 
 
     <!--Menu Strings-->
@@ -96,14 +92,12 @@
     <string name="pitTeamNumberHeading">Team Number</string>
     <string name="savePitButton">Save</string>
 
-
     <!--Pit Error Strings-->
-    <string name="pitTeamNumberError">Enter Team Number</string>
-    <string name="pitAutonModeError">Enter Auton Mode</string>
-    <string name="pitNumberOfGearsError">Enter number of gears</string>
-    <string name="pitFloorGearError">Enter Floor Gear</string>
-    <string name="pitTeleFuelError">Enter Tele Fuel</string>
-    <string name="pitClimbTimeError">Enter Climb Time</string>
+    <string name="pitTeamNumberError">Enter team number</string>
+    <string name="pitCubeNumberError">Enter average cube number</string>
+    <string name="pitVaultPriorityError">Enter vault priority</string>
+    <string name="pitClimbTimeError">Enter climb time</string>
+    <string name="pitArcadeGameError">Enter arcade game</string>
 
     <!--Pit Strings-->\
     <string name="pitStartingPositionHeading">Starting Position</string>

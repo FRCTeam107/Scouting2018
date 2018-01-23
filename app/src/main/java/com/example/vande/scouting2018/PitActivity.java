@@ -37,6 +37,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_teamNumber_input_layout)
     public TextInputLayout pitTeamNumberInputLayout;
 
+    @BindView(R.id.pit_vaultPriority_input_layout)
+    public TextInputLayout pitVaultPriorityInputLayout;
+
     @BindView(R.id.pit_startingPosition_RadiobtnGrp)
     public RadioGroup pitStartingPositionRadiobtnGrp;
 
@@ -140,6 +143,14 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                     case R.id.pit_climbTime_input:
                         pitClimbTimeInputLayout.setError(null);
                         break;
+
+                    case R.id.pit_vaultPriority_input:
+                        pitVaultPriorityInputLayout.setError(null);
+                        break;
+
+                    case R.id.pit_arcadeGame_input:
+                        pitArcadeGameInputLayout.setError(null);
+                        break;
                 }
             }
         }
@@ -155,12 +166,17 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
             ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInputLayout))) {
-            pitCubeNumberInputLayout.setError(getText(R.string.pitNumberOfGearsError));
+            pitCubeNumberInputLayout.setError(getText(R.string.pitCubeNumberError));
             ViewUtils.requestFocus(pitCubeNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitClimbTimeInputLayout))) {
             pitClimbTimeInputLayout.setError(getText(R.string.pitClimbTimeError));
             ViewUtils.requestFocus(pitClimbTimeInputLayout, this);
-
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitVaultPriorityInputLayout))) {
+            pitVaultPriorityInputLayout.setError(getText(R.string.pitVaultPriorityError));
+            ViewUtils.requestFocus(pitVaultPriorityInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitArcadeGameInputLayout))) {
+            pitArcadeGameInputLayout.setError(getText(R.string.pitArcadeGameError));
+            ViewUtils.requestFocus(pitArcadeGameInputLayout, this);
         } else {
             allInputsPassed = true;
         }
