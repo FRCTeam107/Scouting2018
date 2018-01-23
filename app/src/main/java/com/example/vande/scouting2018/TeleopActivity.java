@@ -248,6 +248,10 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             teleopDataStringList.add(onPlatform_Radiobtn.getText());
             teleopDataStringList.add(defense_Radiobtn.getText());
 
+            teleopDataStringList.add(String.valueOf(foulsChbx.isChecked()));
+
+            teleopDataStringList.add(getTextInputLayoutString(scouterInitialsInputLayout));
+
             String message = auton + "," + FormatStringUtils.addDelimiter(teleopDataStringList, ",");
 
             try {

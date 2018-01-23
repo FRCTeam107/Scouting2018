@@ -49,6 +49,12 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_defenseType_RadiobtnGrp)
     public RadioGroup pitDefenseTypeRadiobtnGrp;
 
+    @BindView(R.id.pit_pickupBoolean_RadiobtnGrp)
+    public RadioGroup pitPickUpOffFloorRadioGrp;
+
+    @BindView(R.id.abilityToHelpClimb_RadiobtnGrp)
+    public RadioGroup pitCanHelpClimbRadioGrp;
+
     @BindView(R.id.pit_cubeNumber_input_layout)
     public TextInputLayout pitCubeNumberInputLayout;
     //TODO:Change this to checkbox???
@@ -188,7 +194,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         final RadioButton pitTeleopPreference_Radiobtn = (RadioButton) findViewById(pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton pitDefenseType_Radiobtn = (RadioButton) findViewById(pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton pitClimbBoolean_Radiobtn = (RadioButton) findViewById(pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId());
-
+        final RadioButton pitPickUpOffFloor_Radiobtn = (RadioButton) findViewById(pitPickUpOffFloorRadioGrp.getCheckedRadioButtonId());
+        final RadioButton pitCanHelpClimb_Radiobtn = (RadioButton) findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             File Root = Environment.getExternalStorageDirectory();
@@ -202,8 +209,11 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
             pitDataStringList.add(pitDefenseType_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInputLayout));
+            pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
+            pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
             pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitClimbTimeInputLayout));
+            pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
 
 
