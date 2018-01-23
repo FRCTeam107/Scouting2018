@@ -37,6 +37,7 @@ import static com.example.vande.scouting2018.AutonActivity.AUTON_STRING_EXTRA;
 
 public class TeleopActivity extends AppCompatActivity implements View.OnKeyListener {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
+
     @BindView(R.id.teleopCubesInExchange_input_layout)
     public TextInputLayout teleopCubesInExchangeInputLayout;
 
@@ -93,6 +94,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
     int teleopCubesInExchange = 0;
     int teleopCubesInOurSwitch = 0;
+    int teleopCubesInTheirSwitch = 0;
+    int teleopCubesInScale = 0;
     public String auton;
 
     private ArrayList<CharSequence> teleopDataStringList;
@@ -170,7 +173,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     }
 
 
-
+//Teleop Cube Exchange
     public void increaseTeleopCubesInExchangeInput(View view) {
         teleopCubesInExchange = teleopCubesInExchange + 1;
         displayTeleopCubesInExchangeInput(teleopCubesInExchange);
@@ -184,7 +187,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInExchangeInput.setText("" + number);
     }
 
-
+//Teleop cubes in our switch
     public void increaseTeleopCubesInOurSwitchInput(View view) {
         teleopCubesInOurSwitch = teleopCubesInOurSwitch + 1;
         displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
@@ -196,6 +199,34 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
     private void displayTeleopCubesInOurSwitchInput(int number) {
         teleopCubesInOurSwitchInput.setText("" + number);
+    }
+
+    //Teleop cubes in our switch
+    public void increaseTeleopCubesInTheirSwitchInput(View view) {
+        teleopCubesInTheirSwitch = teleopCubesInTheirSwitch + 1;
+        displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
+
+    }public void decreaseTeleopCubesInTheirSwitchInput(View view) {
+        teleopCubesInTheirSwitch = teleopCubesInTheirSwitch - 1;
+        displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
+    }
+
+    private void displayTeleopCubesInTheirSwitchInput(int number) {
+        teleopCubesInTheirSwitchInput.setText("" + number);
+    }
+
+    //Teleop cubes in our scale
+    public void increaseTeleopCubesInScaleInput(View view) {
+        teleopCubesInScale = teleopCubesInScale + 1;
+        displayTeleopCubesInScaleInput(teleopCubesInScale);
+
+    }public void decreaseTeleopCubesInScaleInput(View view) {
+        teleopCubesInScale = teleopCubesInScale - 1;
+        displayTeleopCubesInScaleInput(teleopCubesInScale);
+    }
+
+    private void displayTeleopCubesInScaleInput(int number) {
+        teleopCubesInScaleInput.setText("" + number);
     }
 
 
