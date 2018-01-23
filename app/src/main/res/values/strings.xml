@@ -42,12 +42,9 @@
 
     <!--Teleop Strings-->
     <string name="cubesInExchange"># of cubes in exchange</string>
-    <string name="cubesInOurSwitch"># of cubes in our switch</string>
+    <string name="cubesInOurSwitch"># of cubes in their switch</string>
     <string name="cubesInTheirSwitch"># of cubes in opponent switch</string>
     <string name="cubesInScale"># of cubes in scale</string>
-
-    <string name="timeToDeliverToSwitch">Time to deliver cube to switch</string>
-    <string name="timeToDeliverToScale">Time to deliver cube to scale</string>
 
     <string name="cubePickupHeading">Cube pickup</string>
     <string name="cubePickupFloor">Floor</string>
