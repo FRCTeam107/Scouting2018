@@ -78,6 +78,8 @@
     <string name="fouls">Fouls</string>
     <string name="nextButton">Move To Teleop</string>
 
+    <string name="scouterInitials">Scouter Initials</string>
+
 
     <!--Teleop Error Strings-->
     <string name="teleopGearPlacedError">Enter Gears Placed</string>
@@ -86,6 +88,7 @@
     <string name="teleopHighFuelMissedError">Enter High Fuel Missed</string>
     <string name="teleopLowFuelError">Enter Low Fuel Scored</string>
     <string name="climbTimeError">Enter Climb Time</string>
+    <string name="creatorInitialError">Enter Scouter Initials</string>
 
 
     <!--Menu Strings-->

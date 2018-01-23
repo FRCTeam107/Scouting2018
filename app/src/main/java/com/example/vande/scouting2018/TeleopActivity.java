@@ -55,6 +55,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @BindView(R.id.teleopTimeToDeliverToScale_input_layout)
     public TextInputLayout teleopTimeToDeliverToScaleInputLayout;
 
+    @BindView(R.id.scouterInitials_input_layout)
+    public TextInputLayout scouterInitialsInputLayout;
+
     @BindView(R.id.teleopCubesInExchange_input)
     public TextInputEditText teleopCubesInExchangeInput;
 
@@ -72,6 +75,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
     @BindView(R.id.teleopTimeToDeliverToScale_input)
     public TextInputEditText teleopTimeToDeliverCubeToScaleInput;
+
+    @BindView(R.id.scouterInitials_input)
+    public TextInputEditText scouterInitialsInput;
 
     @BindView(R.id.cubePickup_RadiobtnGrp)
     public RadioGroup cubePickupRadiobtnGrp;
@@ -202,6 +208,10 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
                     case R.id.teleopTimeToDeliverToScale_input:
                         teleopTimeToDeliverToScaleInputLayout.setError(null);
                         break;
+
+                    case R.id.scouterInitials_input:
+                        scouterInitialsInputLayout.setError(null);
+                        break;
                 }
             }
         }
@@ -239,6 +249,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopTimeToDeliverToScaleInputLayout))) {
             teleopTimeToDeliverToScaleInputLayout.setError(getText(R.string.climbTimeError));
             ViewUtils.requestFocus(teleopTimeToDeliverToScaleInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(scouterInitialsInputLayout))) {
+            scouterInitialsInputLayout.setError(getText(R.string.creatorInitialError));
+            ViewUtils.requestFocus(scouterInitialsInputLayout, this);
         } else {
             allInputsPassed = true;
         }
