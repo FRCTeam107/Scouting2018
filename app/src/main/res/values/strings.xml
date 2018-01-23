@@ -94,7 +94,6 @@
 
     <!--Pit Scouting Strings-->
     <string name="pitTeamNumberHeading">Team Number</string>
-    <string name="pitClimbTimeHeading">Climb time</string>
     <string name="savePitButton">Save</string>
 
 
@@ -106,10 +105,11 @@
     <string name="pitTeleFuelError">Enter Tele Fuel</string>
     <string name="pitClimbTimeError">Enter Climb Time</string>
 
-    <!--Pit Strings-->
+    <!--Pit Strings-->\
+    <string name="pitStartingPositionHeading">Starting Position</string>
     <string name="pitStartingPositionRight">Right</string>
     <string name="pitStartingPositionLeft">Left</string>
-    <string name="pitStartingPostionMiddle">Middle</string>
+    <string name="pitStartingPositionMiddle">Middle</string>
     <string name="pitClimbTime">Climb Time</string>
 
     <string name="pitDefenseType">Defense Type</string>
@@ -117,9 +117,9 @@
     <string name="pitDefenseSwitch">Switch</string>
     <string name="pitDefenseNo">No</string>
 
-    <string name="pitCubeNumber">Cube Number</string>
+    <string name="pitCubeNumber">Average Cube Number</string>
 
-    <string name="pitPickupBoolean">Pick up off the Floor?</string>
+    <string name="pitPickupBoolean">Pick up off the floor?</string>
     <string name="pitPickupYes">Yes</string>
     <string name="pitPickupNo">No</string>
 
@@ -127,14 +127,14 @@
     <string name="pitClimbBoolean">Climb?</string>
     <string name="pitClimbYes">Yes</string>
     <string name="pitClimbNo">No</string>
-    <string name="pitClimbHelp">Can You Help Alliance Climb?</string>
+    <string name="pitClimbHelp">Can you help alliance robots climb?</string>
     <string name="pitClimbHelpYes">Yes</string>
     <string name="pitClimbHelpNo">No</string>
 
-    <string name="pitRobotHistory">What Old Arcade Game were You in?</string>
+    <string name="pitRobotHistory">What old arcade game would your robot be in?</string>
 
     <string name="pitTeleopPreference">Teleop Preference</string>
     <string name="pitTeleopScale">Scale</string>
-    <string name="pitTeleopTheirSwitch">Their Switch</string>
-    <string name="pitTeleopYourSwitch">Your Switch</string>
+    <string name="pitTeleopTheirSwitch">Their switch</string>
+    <string name="pitTeleopYourSwitch">Your switch</string>
 </resources>
