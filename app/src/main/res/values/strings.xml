@@ -15,18 +15,18 @@
     <string name="baselineCrossHeading">Baseline</string>
     <string name="successBaseline">Success</string>
     <string name="failBaseline">Fail</string>
-    <string name="notAttemptedBaseline">Not Attempted</string>
+    <string name="notAttemptedBaseline">N/A</string>
 
     <string name="cubeInSwitchHeading">Cube in Switch</string>
     <string name="successSwitch">Yes</string>
     <string name="failSwitch">No</string>
-    <string name="notAttemptedSwitch">Not Attempted</string>
+    <string name="notAttemptedSwitch">N/A</string>
     <string name="wrongSideSwitch">Wrong Side</string>
 
     <string name="cubeInScaleHeading">Cube in Scale</string>
     <string name="successScale">Yes</string>
     <string name="failScale">No</string>
-    <string name="notAttemptedScale">Not Attempted</string>
+    <string name="notAttemptedScale">N/A</string>
     <string name="wrongSideScale">Wrong Side</string>
 
     <string name="saveButton">Save</string>
@@ -56,7 +56,7 @@
     <string name="climbingHeading">Climb</string>
     <string name="successClimb">Success</string>
     <string name="failClimb">Fail</string>
-    <string name="noClimb">None</string>
+    <string name="noClimb">N/A</string>
 
     <string name="climbTimeHeading">Climb Time</string>
 
@@ -67,13 +67,13 @@
     <string name="onPlatformHeading">On platform</string>
     <string name="isOnPlatform">Yes</string>
     <string name="isNotOnPlatform">No</string>
-    <string name="notAttemptedPlatform">Not attempted</string>
+    <string name="notAttemptedPlatform">N/A</string>
 
     <string name="defenseHeading">Defense</string>
-    <string name="effectiveDefense">Good</string>
-    <string name="ineffectiveDefense">Bad</string>
-    <string name="receivedFoulsDefense">Too Much</string>
-    <string name="noDefense">NA</string>
+    <string name="effectiveDefense">Effective</string>
+    <string name="ineffectiveDefense">Ineffective</string>
+    <string name="receivedFoulsDefense">Fouled</string>
+    <string name="noDefense">N/A</string>
 
     <string name="fouls">Fouls</string>
     <string name="nextButton">Move To Teleop</string>
