@@ -229,9 +229,9 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     public void clearData() {
         teamNumberInput.setText("");
         matchNumberInput.setText("");
-        startingLocationRadiobtnGrp.check(R.id.failBaseline_Radiobtn);
-        cubeInSwitchRadiobtnGrp.check(R.id.failSwitch_Radiobtn);
-        cubeInScaleRadiobtnGrp.check(R.id.failScale_Radiobtn);
+        startingLocationRadiobtnGrp.clearCheck();
+        cubeInSwitchRadiobtnGrp.clearCheck();
+        cubeInScaleRadiobtnGrp.clearCheck();
         teamNumberInput.requestFocus();
     }
 

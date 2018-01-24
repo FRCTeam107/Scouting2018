@@ -194,6 +194,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
     }
 
+
     private void displayTeleopCubesInOurSwitchInput(int number) {
         teleopCubesInOurSwitchInput.setText("" + number);
     }
@@ -370,10 +371,10 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInTheirSwitchInput.setText("");
         teleopCubesInScaleInput.setText("");
 
-        cubePickupRadiobtnGrp.check(R.id.cubePickupFloor_btn);
-        abilityToHelpClimbRadiobtnGrp.check(R.id.unableToHelpClimb_btn);
-        onPlatformRadiobtnGrp.check(R.id.isNotOnPlatform);
-        defenseRadiobtnGrp.check(R.id.noDefense_btn);
+        cubePickupRadiobtnGrp.clearCheck();
+        abilityToHelpClimbRadiobtnGrp.clearCheck();
+        onPlatformRadiobtnGrp.clearCheck();
+        defenseRadiobtnGrp.clearCheck();
     }
 
     /* This method will change the text entered into the app into a string if it is not already*/
