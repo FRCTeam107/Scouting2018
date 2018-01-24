@@ -161,14 +161,17 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         }
     }
 
+    //Teleop Cube Exchange
+    public void decreaseTeleopCubesInExchangeInput(View view) {
+        if (teleopCubesInExchange != 0) {
+            teleopCubesInExchange = teleopCubesInExchange - 1;
+            displayTeleopCubesInExchangeInput(teleopCubesInExchange);
+        } else {
+        }
+    }
 
-//Teleop Cube Exchange
     public void increaseTeleopCubesInExchangeInput(View view) {
         teleopCubesInExchange = teleopCubesInExchange + 1;
-        displayTeleopCubesInExchangeInput(teleopCubesInExchange);
-
-    }public void decreaseTeleopCubesInExchangeInput(View view) {
-        teleopCubesInExchange = teleopCubesInExchange - 1;
         displayTeleopCubesInExchangeInput(teleopCubesInExchange);
     }
 
@@ -176,28 +179,38 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInExchangeInput.setText("" + number);
     }
 
-//Teleop cubes in our switch
+    //Teleop cubes in our switch
+    public void decreaseTeleopCubesInOurSwitchInput(View view) {
+        if (teleopCubesInOurSwitch != 0) {
+            teleopCubesInOurSwitch = teleopCubesInOurSwitch - 1;
+            displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
+        } else {
+        }
+    }
+
     public void increaseTeleopCubesInOurSwitchInput(View view) {
         teleopCubesInOurSwitch = teleopCubesInOurSwitch + 1;
         displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
 
-    }public void decreaseTeleopCubesInOurSwitchInput(View view) {
-        teleopCubesInOurSwitch = teleopCubesInOurSwitch - 1;
-        displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
     }
 
     private void displayTeleopCubesInOurSwitchInput(int number) {
         teleopCubesInOurSwitchInput.setText("" + number);
     }
 
-    //Teleop cubes in our switch
+    //Teleop cubes in their switch
+    public void decreaseTeleopCubesInTheirSwitchInput(View view) {
+        if (teleopCubesInTheirSwitch != 0) {
+            teleopCubesInTheirSwitch = teleopCubesInTheirSwitch - 1;
+            displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
+        } else {
+        }
+    }
+
     public void increaseTeleopCubesInTheirSwitchInput(View view) {
         teleopCubesInTheirSwitch = teleopCubesInTheirSwitch + 1;
         displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
 
-    }public void decreaseTeleopCubesInTheirSwitchInput(View view) {
-        teleopCubesInTheirSwitch = teleopCubesInTheirSwitch - 1;
-        displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
     }
 
     private void displayTeleopCubesInTheirSwitchInput(int number) {
@@ -205,12 +218,16 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     }
 
     //Teleop cubes in our scale
+    public void decreaseTeleopCubesInScaleInput(View view) {
+        if (teleopCubesInScale != 0) {
+            teleopCubesInScale = teleopCubesInScale - 1;
+            displayTeleopCubesInScaleInput(teleopCubesInScale);
+        } else {
+        }
+    }
+
     public void increaseTeleopCubesInScaleInput(View view) {
         teleopCubesInScale = teleopCubesInScale + 1;
-        displayTeleopCubesInScaleInput(teleopCubesInScale);
-
-    }public void decreaseTeleopCubesInScaleInput(View view) {
-        teleopCubesInScale = teleopCubesInScale - 1;
         displayTeleopCubesInScaleInput(teleopCubesInScale);
     }
 
@@ -299,10 +316,10 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             return;
         }
 
-        final RadioButton cubePickup_Radiobtn = (RadioButton) findViewById(cubePickupRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton abilityToHelpClimb_Radiobtn = (RadioButton) findViewById(abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton onPlatform_Radiobtn = (RadioButton) findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton defense_Radiobtn = (RadioButton) findViewById(defenseRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton cubePickup_Radiobtn = findViewById(cubePickupRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton abilityToHelpClimb_Radiobtn = findViewById(abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton onPlatform_Radiobtn = findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton defense_Radiobtn = findViewById(defenseRadiobtnGrp.getCheckedRadioButtonId());
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             File Root = Environment.getExternalStorageDirectory();
