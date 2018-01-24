@@ -114,7 +114,6 @@
                 android:id="@+id/cubePickupFloor_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/cubePickupFloor" />
 
             <RadioButton
@@ -152,8 +151,7 @@
                 android:id="@+id/unableToHelpClimb_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/unableToHelpClimb"
-                android:checked="true" />
+                android:text="@string/unableToHelpClimb" />
         </RadioGroup>
 
         <TextView
@@ -184,8 +182,7 @@
                 android:id="@+id/isNotOnPlatform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/isNotOnPlatform"
-                android:checked="true" />
+                android:text="@string/isNotOnPlatform" />
 
             <RadioButton
                 android:id="@+id/notAttemptedPlatform"
@@ -234,7 +231,6 @@
                 android:id="@+id/noDefense_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/noDefense" />
         </RadioGroup>
 
