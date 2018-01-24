@@ -15,18 +15,18 @@
     <string name="baselineCrossHeading">Baseline</string>
     <string name="successBaseline">Success</string>
     <string name="failBaseline">Fail</string>
-    <string name="notAttemptedBaseline">Not Attempted</string>
+    <string name="notAttemptedBaseline">N/A</string>
 
     <string name="cubeInSwitchHeading">Cube in Switch</string>
     <string name="successSwitch">Yes</string>
     <string name="failSwitch">No</string>
-    <string name="notAttemptedSwitch">Not Attempted</string>
+    <string name="notAttemptedSwitch">N/A</string>
     <string name="wrongSideSwitch">Wrong Side</string>
 
     <string name="cubeInScaleHeading">Cube in Scale</string>
     <string name="successScale">Yes</string>
     <string name="failScale">No</string>
-    <string name="notAttemptedScale">Not Attempted</string>
+    <string name="notAttemptedScale">N/A</string>
     <string name="wrongSideScale">Wrong Side</string>
 
     <string name="saveButton">Save</string>
@@ -34,20 +34,15 @@
 
     <!--Auton Error Strings-->
 
-    <string name="teamNumberError">Enter in Team Number</string>
-    <string name="matchNumberError">Enter in Match Number</string>
-    <string name="autonHighFuelScoredError">Enter Fuel count</string>
-    <string name="autonHighFuelMissedError">Enter Fuel count</string>
-    <string name="autonLowFuelError">Enter Fuel count</string>
+    <string name="teamNumberError">Enter in team number</string>
+    <string name="matchNumberError">Enter in match number</string>
+    <string name="startingLocationError">Enter starting location</string>
 
     <!--Teleop Strings-->
     <string name="cubesInExchange"># of cubes in exchange</string>
-    <string name="cubesInOurSwitch"># of cubes in our switch</string>
+    <string name="cubesInOurSwitch"># of cubes in their switch</string>
     <string name="cubesInTheirSwitch"># of cubes in opponent switch</string>
     <string name="cubesInScale"># of cubes in scale</string>
-
-    <string name="timeToDeliverToSwitch">Time to deliver cube to switch</string>
-    <string name="timeToDeliverToScale">Time to deliver cube to scale</string>
 
     <string name="cubePickupHeading">Cube pickup</string>
     <string name="cubePickupFloor">Floor</string>
@@ -56,7 +51,7 @@
     <string name="climbingHeading">Climb</string>
     <string name="successClimb">Success</string>
     <string name="failClimb">Fail</string>
-    <string name="noClimb">None</string>
+    <string name="noClimb">N/A</string>
 
     <string name="climbTimeHeading">Climb Time</string>
 
@@ -67,25 +62,26 @@
     <string name="onPlatformHeading">On platform</string>
     <string name="isOnPlatform">Yes</string>
     <string name="isNotOnPlatform">No</string>
-    <string name="notAttemptedPlatform">Not attempted</string>
+    <string name="notAttemptedPlatform">N/A</string>
 
     <string name="defenseHeading">Defense</string>
-    <string name="effectiveDefense">Good</string>
-    <string name="ineffectiveDefense">Bad</string>
-    <string name="receivedFoulsDefense">Too Much</string>
-    <string name="noDefense">NA</string>
+    <string name="effectiveDefense">Effective</string>
+    <string name="ineffectiveDefense">Ineffective</string>
+    <string name="receivedFoulsDefense">Fouled</string>
+    <string name="noDefense">N/A</string>
 
     <string name="fouls">Fouls</string>
     <string name="nextButton">Move To Teleop</string>
 
+    <string name="scouterInitials">Scouter Initials</string>
+
 
     <!--Teleop Error Strings-->
-    <string name="teleopGearPlacedError">Enter Gears Placed</string>
-    <string name="teleopGearDroppedError">Enter Gear Dropped</string>
-    <string name="teleopHighFuelScoredError">Enter High Fuel Scored</string>
-    <string name="teleopHighFuelMissedError">Enter High Fuel Missed</string>
-    <string name="teleopLowFuelError">Enter Low Fuel Scored</string>
-    <string name="climbTimeError">Enter Climb Time</string>
+    <string name="teleopCubesInExchangeError">Enter # of cubes in exchange</string>
+    <string name="cubesInOurSwitchError">Enter # of cubes in their switch</string>
+    <string name="cubesInTheirSwitchError">Enter # of cubes in opponent switch</string>
+    <string name="cubesInScaleError">Enter # of cubes in scale</string>
+    <string name="scouterInitialsError">Enter scouter initials</string>
 
 
     <!--Menu Strings-->
@@ -94,23 +90,45 @@
 
     <!--Pit Scouting Strings-->
     <string name="pitTeamNumberHeading">Team Number</string>
-    <string name="pitAutonModeHeading">Auton Mode</string>
-    <string name="pitNumberOfGearsHeading">Number of gears per match</string>
-    <string name="pitFloorGearHeading">Floor Gear</string>
-    <string name="pitFloorGearYes">Yes</string>
-    <string name="pitFloorGearNo">No</string>
-    <string name="pitTeleFuelHeading">Tele Fuel</string>
-    <string name="pitClimbTimeHeading">Climb time</string>
     <string name="savePitButton">Save</string>
 
-
     <!--Pit Error Strings-->
-    <string name="pitTeamNumberError">Enter Team Number</string>
-    <string name="pitAutonModeError">Enter Auton Mode</string>
-    <string name="pitNumberOfGearsError">Enter number of gears</string>
-    <string name="pitFloorGearError">Enter Floor Gear</string>
-    <string name="pitTeleFuelError">Enter Tele Fuel</string>
-    <string name="pitClimbTimeError">Enter Climb Time</string>
+    <string name="pitTeamNumberError">Enter team number</string>
+    <string name="pitCubeNumberError">Enter average cube number</string>
+    <string name="pitVaultPriorityError">Enter vault priority</string>
+    <string name="pitClimbTimeError">Enter climb time</string>
+    <string name="pitArcadeGameError">Enter arcade game</string>
 
+    <!--Pit Strings-->\
+    <string name="pitStartingPositionHeading">Starting Position</string>
+    <string name="pitStartingPositionRight">Right</string>
+    <string name="pitStartingPositionLeft">Left</string>
+    <string name="pitStartingPositionMiddle">Middle</string>
+    <string name="pitClimbTime">Climb Time</string>
 
+    <string name="pitDefenseType">Defense Type</string>
+    <string name="pitDefenseBlock">Block</string>
+    <string name="pitDefenseSwitch">Switch</string>
+    <string name="pitDefenseNo">No</string>
+
+    <string name="pitCubeNumber">Average Cube Number</string>
+
+    <string name="pitPickupBoolean">Pick up off the floor?</string>
+    <string name="pitPickupYes">Yes</string>
+    <string name="pitPickupNo">No</string>
+
+    <string name="pitVaultPriority">Vault Priority</string>
+    <string name="pitClimbBoolean">Climb?</string>
+    <string name="pitClimbYes">Yes</string>
+    <string name="pitClimbNo">No</string>
+    <string name="pitClimbHelp">Can you help alliance robots climb?</string>
+    <string name="pitClimbHelpYes">Yes</string>
+    <string name="pitClimbHelpNo">No</string>
+
+    <string name="pitRobotHistory">What old arcade game would your robot be in?</string>
+
+    <string name="pitTeleopPreference">Teleop Preference</string>
+    <string name="pitTeleopScale">Scale</string>
+    <string name="pitTeleopTheirSwitch">Their switch</string>
+    <string name="pitTeleopYourSwitch">Your switch</string>
 </resources>

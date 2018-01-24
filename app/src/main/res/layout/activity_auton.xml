@@ -89,7 +89,6 @@
                     android:id="@+id/leftStartingLocation_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/leftStarting" />
 
                 <RadioButton
@@ -142,14 +141,12 @@
                     android:id="@+id/failBaseline_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/failBaseline" />
 
                 <RadioButton
                     android:id="@+id/notAttemptedBaseline_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/notAttemptedBaseline" />
             </RadioGroup>
 
@@ -184,21 +181,18 @@
                     android:id="@+id/failSwitch_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/failSwitch" />
 
                 <RadioButton
                     android:id="@+id/notAttemptedSwitch_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/notAttemptedSwitch" />
 
                 <RadioButton
                     android:id="@+id/wrongSideSwitch_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/wrongSideSwitch" />
             </RadioGroup>
 
@@ -233,21 +227,18 @@
                     android:id="@+id/failScale_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/failScale" />
 
                 <RadioButton
                     android:id="@+id/notAttemptedScale_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/notAttemptedScale" />
 
                 <RadioButton
                     android:id="@+id/wrongSideScale_Radiobtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/wrongSideScale" />
             </RadioGroup>
 

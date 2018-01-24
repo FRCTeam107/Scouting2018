@@ -219,7 +219,6 @@
                 android:id="@+id/cubePickupFloor_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/cubePickupFloor" />
 
             <RadioButton
@@ -257,7 +256,6 @@
                 android:id="@+id/unableToHelpClimb_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/unableToHelpClimb" />
         </RadioGroup>
 
@@ -289,7 +287,6 @@
                 android:id="@+id/isNotOnPlatform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/isNotOnPlatform" />
 
             <RadioButton
@@ -339,7 +336,6 @@
                 android:id="@+id/noDefense_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/noDefense" />
         </RadioGroup>
 
@@ -359,6 +355,26 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fouls_TextView" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/scouterInitials_input_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/scouterInitials"
+            app:errorEnabled="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fouls_chkbx">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/scouterInitials_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/save_btn"

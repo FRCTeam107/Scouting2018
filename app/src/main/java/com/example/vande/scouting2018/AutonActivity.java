@@ -172,6 +172,14 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(matchNumberInputLayout))) {
             matchNumberInputLayout.setError(getText(R.string.matchNumberError));
             ViewUtils.requestFocus(matchNumberInputLayout, this);
+        } else if (baseLineRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(baseLineRadiobtnGrp, this);
+        } else if (cubeInScaleRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(cubeInScaleRadiobtnGrp, this);
+        } else if (cubeInSwitchRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(cubeInSwitchRadiobtnGrp, this);
+        } else if (startingLocationRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(startingLocationRadiobtnGrp, this);
         } else {
             allInputsPassed = true;
         }
