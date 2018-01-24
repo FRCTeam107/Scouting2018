@@ -37,6 +37,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_teamNumber_input_layout)
     public TextInputLayout pitTeamNumberInputLayout;
 
+    @BindView(R.id.pit_vaultPriority_input_layout)
+    public TextInputLayout pitVaultPriorityInputLayout;
+
     @BindView(R.id.pit_startingPosition_RadiobtnGrp)
     public RadioGroup pitStartingPositionRadiobtnGrp;
 
@@ -45,6 +48,12 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
     @BindView(R.id.pit_defenseType_RadiobtnGrp)
     public RadioGroup pitDefenseTypeRadiobtnGrp;
+
+    @BindView(R.id.pit_pickupBoolean_RadiobtnGrp)
+    public RadioGroup pitPickUpOffFloorRadioGrp;
+
+    @BindView(R.id.abilityToHelpClimb_RadiobtnGrp)
+    public RadioGroup pitCanHelpClimbRadioGrp;
 
     @BindView(R.id.pit_cubeNumber_input_layout)
     public TextInputLayout pitCubeNumberInputLayout;
@@ -140,6 +149,14 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                     case R.id.pit_climbTime_input:
                         pitClimbTimeInputLayout.setError(null);
                         break;
+
+                    case R.id.pit_vaultPriority_input:
+                        pitVaultPriorityInputLayout.setError(null);
+                        break;
+
+                    case R.id.pit_arcadeGame_input:
+                        pitArcadeGameInputLayout.setError(null);
+                        break;
                 }
             }
         }
@@ -155,11 +172,12 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
             ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInputLayout))) {
-            pitCubeNumberInputLayout.setError(getText(R.string.pitNumberOfGearsError));
+            pitCubeNumberInputLayout.setError(getText(R.string.pitCubeNumberError));
             ViewUtils.requestFocus(pitCubeNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitClimbTimeInputLayout))) {
             pitClimbTimeInputLayout.setError(getText(R.string.pitClimbTimeError));
             ViewUtils.requestFocus(pitClimbTimeInputLayout, this);
+
         } else if (pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(pitStartingPositionRadiobtnGrp, this);
         } else if (pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId() == -1) {
@@ -168,6 +186,12 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             ViewUtils.requestFocus(pitDefenseTypeRadiobtnGrp, this);
         } else if (pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(pitClimbBooleanRadiobtnGrp, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitVaultPriorityInputLayout))) {
+            pitVaultPriorityInputLayout.setError(getText(R.string.pitVaultPriorityError));
+            ViewUtils.requestFocus(pitVaultPriorityInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitArcadeGameInputLayout))) {
+            pitArcadeGameInputLayout.setError(getText(R.string.pitArcadeGameError));
+            ViewUtils.requestFocus(pitArcadeGameInputLayout, this);
         } else {
             allInputsPassed = true;
         }
@@ -179,7 +203,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         final RadioButton pitTeleopPreference_Radiobtn = (RadioButton) findViewById(pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton pitDefenseType_Radiobtn = (RadioButton) findViewById(pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton pitClimbBoolean_Radiobtn = (RadioButton) findViewById(pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId());
-
+        final RadioButton pitPickUpOffFloor_Radiobtn = (RadioButton) findViewById(pitPickUpOffFloorRadioGrp.getCheckedRadioButtonId());
+        final RadioButton pitCanHelpClimb_Radiobtn = (RadioButton) findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             File Root = Environment.getExternalStorageDirectory();
@@ -193,8 +218,11 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
             pitDataStringList.add(pitDefenseType_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInputLayout));
+            pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
+            pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
             pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitClimbTimeInputLayout));
+            pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
 
 
