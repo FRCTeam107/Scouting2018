@@ -56,7 +56,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/teleopCubesInExchange_input_layout" />
 
-
         <Button
             android:id="@+id/decrease_teleopCubesInOurSwitch"
             android:layout_width="wrap_content"
@@ -227,13 +226,50 @@
         </RadioGroup>
 
         <TextView
+            android:id="@+id/climb_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/climbingHeading"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cubePickup_RadiobtnGrp" />
+
+        <RadioGroup
+            android:id="@+id/climb_RadiobtnGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/climb_textView">
+
+            <RadioButton
+                android:id="@+id/ableToClimb_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/successClimb" />
+
+            <RadioButton
+                android:id="@+id/unableToClimb_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/failClimb" />
+
+            <RadioButton
+                android:id="@+id/notAttemptedClimb_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/noClimb" />
+        </RadioGroup>
+
+        <TextView
             android:id="@+id/abilityToHelpClimb_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/abilityToHelpClimbHeading"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cubePickup_RadiobtnGrp" />
+            app:layout_constraintTop_toBottomOf="@+id/climb_RadiobtnGrp" />
 
         <RadioGroup
             android:id="@+id/abilityToHelpClimb_RadiobtnGrp"

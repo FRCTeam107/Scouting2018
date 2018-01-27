@@ -207,10 +207,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         final RadioButton pitCanHelpClimb_Radiobtn = findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            File Root = Environment.getExternalStorageDirectory();
-            File Dir = new File(Root.getAbsoluteFile() + "/Documents");
+            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
             //create csv file
-            File file = new File(Dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+            File file = new File(dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
 
 
             pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
@@ -226,7 +225,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
 
 
-            String message = FormatStringUtils.addDelimiter(pitDataStringList, ",");
+            String message = FormatStringUtils.addDelimiter(pitDataStringList, ",") + "\n";
 
 
             //Output data to file
