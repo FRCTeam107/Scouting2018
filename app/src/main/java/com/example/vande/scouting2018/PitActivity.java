@@ -52,9 +52,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_pickupBoolean_RadiobtnGrp)
     public RadioGroup pitPickUpOffFloorRadioGrp;
 
-    @BindView(R.id.abilityToHelpClimb_RadiobtnGrp)
-    public RadioGroup pitCanHelpClimbRadioGrp;
-
     @BindView(R.id.pit_cubeNumber_input_layout)
     public TextInputLayout pitCubeNumberInputLayout;
     //TODO:Change this to checkbox???
@@ -63,6 +60,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
     @BindView(R.id.pit_climbTime_input_layout)
     public TextInputLayout pitClimbTimeInputLayout;
+
+    @BindView(R.id.pit_climbHelpBoolean_RadiobtnGrp)
+    public RadioGroup pitCanHelpClimbRadioGrp;
 
     @BindView(R.id.pit_arcadeGame_input_layout)
     public TextInputLayout pitArcadeGameInputLayout;
@@ -199,18 +199,17 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             return;
         }
 
-        final RadioButton pitStaring_Radiobtn = (RadioButton) findViewById(pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton pitTeleopPreference_Radiobtn = (RadioButton) findViewById(pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton pitDefenseType_Radiobtn = (RadioButton) findViewById(pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton pitClimbBoolean_Radiobtn = (RadioButton) findViewById(pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton pitPickUpOffFloor_Radiobtn = (RadioButton) findViewById(pitPickUpOffFloorRadioGrp.getCheckedRadioButtonId());
-        final RadioButton pitCanHelpClimb_Radiobtn = (RadioButton) findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
+        final RadioButton pitStaring_Radiobtn = findViewById(pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton pitTeleopPreference_Radiobtn = findViewById(pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton pitDefenseType_Radiobtn = findViewById(pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton pitClimbBoolean_Radiobtn = findViewById(pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton pitPickUpOffFloor_Radiobtn = findViewById(pitPickUpOffFloorRadioGrp.getCheckedRadioButtonId());
+        final RadioButton pitCanHelpClimb_Radiobtn = findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            File Root = Environment.getExternalStorageDirectory();
-            File Dir = new File(Root.getAbsoluteFile() + "/Documents");
+            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
             //create csv file
-            File file = new File(Dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+            File file = new File(dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
 
 
             pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
@@ -226,7 +225,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
 
 
-            String message = FormatStringUtils.addDelimiter(pitDataStringList, ",");
+            String message = FormatStringUtils.addDelimiter(pitDataStringList, ",") + "\n";
 
 
             //Output data to file

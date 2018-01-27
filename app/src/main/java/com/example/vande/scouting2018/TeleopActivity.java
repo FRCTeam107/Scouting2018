@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ import static com.example.vande.scouting2018.AutonActivity.AUTON_STRING_EXTRA;
 
 public class TeleopActivity extends AppCompatActivity implements View.OnKeyListener {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
+
     @BindView(R.id.teleopCubesInExchange_input_layout)
     public TextInputLayout teleopCubesInExchangeInputLayout;
 
@@ -70,6 +72,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @BindView(R.id.cubePickup_RadiobtnGrp)
     public RadioGroup cubePickupRadiobtnGrp;
 
+    @BindView(R.id.climb_RadiobtnGrp)
+    public RadioGroup climbRadiobtnGrp;
+
     @BindView(R.id.abilityToHelpClimb_RadiobtnGrp)
     public RadioGroup abilityToHelpClimbRadiobtnGrp;
 
@@ -85,6 +90,10 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @BindView(R.id.fouls_chkbx)
     public CheckBox foulsChbx;
 
+    int teleopCubesInExchange = 0;
+    int teleopCubesInOurSwitch = 0;
+    int teleopCubesInTheirSwitch = 0;
+    int teleopCubesInScale = 0;
     public String auton;
 
     private ArrayList<CharSequence> teleopDataStringList;
@@ -104,6 +113,11 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         auton = bundle.getString(AUTON_STRING_EXTRA);
 
         teleopDataStringList = new ArrayList<>();
+
+        displayTeleopCubesInExchangeInput(teleopCubesInExchange);
+        displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
+        displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
+        displayTeleopCubesInScaleInput(teleopCubesInScale);
     }
 
     /*If this activity is resumed from a paused state the data
@@ -117,6 +131,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInOurSwitchInput.setOnKeyListener(this);
         teleopCubesInTheirSwitchInput.setOnKeyListener(this);
         teleopCubesInScaleInput.setOnKeyListener(this);
+        scouterInitialsInput.setOnKeyListener(this);
     }
 
     /*If this activity enters a paused state the data will be set to null*/
@@ -128,6 +143,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInOurSwitchInput.setOnKeyListener(null);
         teleopCubesInTheirSwitchInput.setOnKeyListener(null);
         teleopCubesInScaleInput.setOnKeyListener(null);
+        scouterInitialsInput.setOnKeyListener(null);
     }
 
     /* This method will display the options menu when the icon is pressed
@@ -155,6 +171,82 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    //Teleop Cube Exchange
+    public void decreaseTeleopCubesInExchangeInput(View view) {
+        if (teleopCubesInExchange != 0) {
+            teleopCubesInExchange = teleopCubesInExchange - 1;
+            displayTeleopCubesInExchangeInput(teleopCubesInExchange);
+        } else {
+        }
+    }
+
+    public void increaseTeleopCubesInExchangeInput(View view) {
+        teleopCubesInExchange = teleopCubesInExchange + 1;
+        displayTeleopCubesInExchangeInput(teleopCubesInExchange);
+    }
+
+    private void displayTeleopCubesInExchangeInput(int number) {
+        teleopCubesInExchangeInput.setText("" + number);
+    }
+
+    //Teleop cubes in our switch
+    public void decreaseTeleopCubesInOurSwitchInput(View view) {
+        if (teleopCubesInOurSwitch != 0) {
+            teleopCubesInOurSwitch = teleopCubesInOurSwitch - 1;
+            displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
+        } else {
+        }
+    }
+
+    public void increaseTeleopCubesInOurSwitchInput(View view) {
+        teleopCubesInOurSwitch = teleopCubesInOurSwitch + 1;
+        displayTeleopCubesInOurSwitchInput(teleopCubesInOurSwitch);
+
+    }
+
+
+    private void displayTeleopCubesInOurSwitchInput(int number) {
+        teleopCubesInOurSwitchInput.setText("" + number);
+    }
+
+    //Teleop cubes in their switch
+    public void decreaseTeleopCubesInTheirSwitchInput(View view) {
+        if (teleopCubesInTheirSwitch != 0) {
+            teleopCubesInTheirSwitch = teleopCubesInTheirSwitch - 1;
+            displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
+        } else {
+        }
+    }
+
+    public void increaseTeleopCubesInTheirSwitchInput(View view) {
+        teleopCubesInTheirSwitch = teleopCubesInTheirSwitch + 1;
+        displayTeleopCubesInTheirSwitchInput(teleopCubesInTheirSwitch);
+
+    }
+
+    private void displayTeleopCubesInTheirSwitchInput(int number) {
+        teleopCubesInTheirSwitchInput.setText("" + number);
+    }
+
+    //Teleop cubes in our scale
+    public void decreaseTeleopCubesInScaleInput(View view) {
+        if (teleopCubesInScale != 0) {
+            teleopCubesInScale = teleopCubesInScale - 1;
+            displayTeleopCubesInScaleInput(teleopCubesInScale);
+        } else {
+        }
+    }
+
+    public void increaseTeleopCubesInScaleInput(View view) {
+        teleopCubesInScale = teleopCubesInScale + 1;
+        displayTeleopCubesInScaleInput(teleopCubesInScale);
+    }
+
+    private void displayTeleopCubesInScaleInput(int number) {
+        teleopCubesInScaleInput.setText("" + number);
+    }
+
 
     /*This method will look at all of the text/number input fields and set error
     *for validation of data entry
@@ -218,14 +310,10 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInScaleInputLayout))) {
             teleopCubesInScaleInputLayout.setError(getText(R.string.cubesInScaleError));
             ViewUtils.requestFocus(teleopCubesInScaleInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopTimeToDeliverToSwitchInputLayout))) {
-            teleopTimeToDeliverToSwitchInputLayout.setError(getText(R.string.teleopLowFuelError));
-            ViewUtils.requestFocus(teleopTimeToDeliverToSwitchInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopTimeToDeliverToScaleInputLayout))) {
-            teleopTimeToDeliverToScaleInputLayout.setError(getText(R.string.climbTimeError));
-            ViewUtils.requestFocus(teleopTimeToDeliverToScaleInputLayout, this);
         } else if (cubePickupRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(cubePickupRadiobtnGrp, this);
+        } else if (climbRadiobtnGrp.getCheckedRadioButtonId() == -1) {
+            ViewUtils.requestFocus(climbRadiobtnGrp, this);
         } else if (defenseRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(defenseRadiobtnGrp, this);
         } else if (abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId() == -1) {
@@ -242,15 +330,17 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             return;
         }
 
-        final RadioButton cubePickup_Radiobtn = (RadioButton) findViewById(cubePickupRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton abilityToHelpClimb_Radiobtn = (RadioButton) findViewById(abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton onPlatform_Radiobtn = (RadioButton) findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton defense_Radiobtn = (RadioButton) findViewById(defenseRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton cubePickup_Radiobtn = findViewById(cubePickupRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton climb_Radiobtn = findViewById(climbRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton abilityToHelpClimb_Radiobtn = findViewById(abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton onPlatform_Radiobtn = findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
+        final RadioButton defense_Radiobtn = findViewById(defenseRadiobtnGrp.getCheckedRadioButtonId());
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            File Root = Environment.getExternalStorageDirectory();
-            File Dir = new File(Root.getAbsoluteFile() + "/Documents");
-            File file = new File(Dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
+            dir.mkdirs();
+
+            File file = new File(dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
 
             teleopDataStringList.add(getTextInputLayoutString(teleopCubesInExchangeInputLayout));
             teleopDataStringList.add(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout));
@@ -258,6 +348,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             teleopDataStringList.add(getTextInputLayoutString(teleopCubesInScaleInputLayout));
 
             teleopDataStringList.add(cubePickup_Radiobtn.getText());
+            teleopDataStringList.add(climb_Radiobtn.getText());
             teleopDataStringList.add(abilityToHelpClimb_Radiobtn.getText());
             teleopDataStringList.add(onPlatform_Radiobtn.getText());
             teleopDataStringList.add(defense_Radiobtn.getText());
@@ -266,19 +357,19 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
             teleopDataStringList.add(getTextInputLayoutString(scouterInitialsInputLayout));
 
-            String message = auton + "," + FormatStringUtils.addDelimiter(teleopDataStringList, ",");
+            String message = auton + "," + FormatStringUtils.addDelimiter(teleopDataStringList, ",") + "\n";
 
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(file, true);
                 fileOutputStream.write(message.getBytes());
                 fileOutputStream.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.d("Scouting", e.getMessage());
             }
         } else {
             Toast.makeText(getApplicationContext(), "SD card not found", Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(getApplicationContext(), "message Saved", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_LONG).show();
 
         Intent intent = getIntent();
         intent.putExtra("Key", value);
@@ -291,15 +382,16 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     /*The method will clear all the data in the text fields, checkboxes, and
     * set radio buttons to default*/
     public void clearData(View view) {
-        teleopCubesInExchangeInput.setText("");
-        teleopCubesInOurSwitchInput.setText("");
-        teleopCubesInTheirSwitchInput.setText("");
-        teleopCubesInScaleInput.setText("");
+        teleopCubesInExchangeInput.setText("" + teleopCubesInExchange);
+        teleopCubesInOurSwitchInput.setText("" + teleopCubesInOurSwitch);
+        teleopCubesInTheirSwitchInput.setText("" + teleopCubesInTheirSwitch);
+        teleopCubesInScaleInput.setText("" + teleopCubesInScale);
 
-        cubePickupRadiobtnGrp.check(R.id.cubePickupFloor_btn);
-        abilityToHelpClimbRadiobtnGrp.check(R.id.unableToHelpClimb_btn);
-        onPlatformRadiobtnGrp.check(R.id.isNotOnPlatform);
-        defenseRadiobtnGrp.check(R.id.noDefense_btn);
+        cubePickupRadiobtnGrp.clearCheck();
+        climbRadiobtnGrp.clearCheck();
+        abilityToHelpClimbRadiobtnGrp.clearCheck();
+        onPlatformRadiobtnGrp.clearCheck();
+        defenseRadiobtnGrp.clearCheck();
     }
 
     /* This method will change the text entered into the app into a string if it is not already*/

@@ -12,25 +12,60 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/decrease_teleopCubesInExchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseTeleopCubesInExchangeInput"
+            android:text="-"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/teleopCubesInExchange_input_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/cubesInExchange"
             app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toStartOf="@+id/increase_teleopCubesInExchange"
+            app:layout_constraintStart_toEndOf="@id/decrease_teleopCubesInExchange"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UnknownId">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/teleopCubesInExchange_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:enabled="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
         </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/increase_teleopCubesInExchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseTeleopCubesInExchangeInput"
+            android:text="+"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/teleopCubesInExchange_input_layout" />
+
+        <Button
+            android:id="@+id/decrease_teleopCubesInOurSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseTeleopCubesInOurSwitchInput"
+            android:text="-"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInExchange"
+            app:layout_constraintEnd_toStartOf="@id/teleopCubesInOurSwitch_input_layout"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/teleopCubesInOurSwitch_input_layout"
@@ -38,19 +73,45 @@
             android:layout_height="wrap_content"
             android:hint="@string/cubesInOurSwitch"
             app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/teleopCubesInExchange_input_layout">
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInExchange"
+            app:layout_constraintEnd_toStartOf="@id/increase_teleopCubesInOurSwitch"
+            app:layout_constraintStart_toEndOf="@id/decrease_teleopCubesInOurSwitch">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/teleopCubesInOurSwitch_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
         </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/increase_teleopCubesInOurSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseTeleopCubesInOurSwitchInput"
+            android:text="+"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInExchange"
+            app:layout_constraintStart_toEndOf="@id/teleopCubesInOurSwitch_input_layout" />
+
+
+        <Button
+            android:id="@+id/decrease_teleopCubesInTheirSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseTeleopCubesInTheirSwitchInput"
+            android:text="-"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInOurSwitch"
+            app:layout_constraintEnd_toStartOf="@id/teleopCubesInTheirSwitch_input_layout"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/teleopCubesInTheirSwitch_input_layout"
@@ -58,19 +119,44 @@
             android:layout_height="wrap_content"
             android:hint="@string/cubesInTheirSwitch"
             app:errorEnabled="true"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/teleopCubesInOurSwitch_input_layout">
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInOurSwitch"
+            app:layout_constraintEnd_toStartOf="@id/increase_teleopCubesInTheirSwitch"
+            app:layout_constraintStart_toEndOf="@id/decrease_teleopCubesInTheirSwitch">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/teleopCubesInTheirSwitch_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
         </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/increase_teleopCubesInTheirSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseTeleopCubesInTheirSwitchInput"
+            android:text="+"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInOurSwitch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/teleopCubesInTheirSwitch_input_layout" />
+
+        <Button
+            android:id="@+id/decrease_teleopCubesInScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseTeleopCubesInScaleInput"
+            android:text="-"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInTheirSwitch"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@id/teleopCubesInScale_input_layout"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/teleopCubesInScale_input_layout"
@@ -78,19 +164,35 @@
             android:layout_height="wrap_content"
             android:hint="@string/cubesInScale"
             app:errorEnabled="true"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInTheirSwitch"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/teleopCubesInTheirSwitch_input_layout">
+            app:layout_constraintEnd_toStartOf="@id/increase_teleopCubesInScale"
+            app:layout_constraintStart_toEndOf="@id/decrease_teleopCubesInScale">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/teleopCubesInScale_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
         </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/increase_teleopCubesInScale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseTeleopCubesInScaleInput"
+            android:text="+"
+            app:layout_constraintTop_toBottomOf="@id/decrease_teleopCubesInTheirSwitch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/teleopCubesInScale_input_layout" />
+
 
         <TextView
             android:id="@+id/cubePickup_textView"
@@ -124,13 +226,50 @@
         </RadioGroup>
 
         <TextView
+            android:id="@+id/climb_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/climbingHeading"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cubePickup_RadiobtnGrp" />
+
+        <RadioGroup
+            android:id="@+id/climb_RadiobtnGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/climb_textView">
+
+            <RadioButton
+                android:id="@+id/ableToClimb_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/successClimb" />
+
+            <RadioButton
+                android:id="@+id/unableToClimb_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/failClimb" />
+
+            <RadioButton
+                android:id="@+id/notAttemptedClimb_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/noClimb" />
+        </RadioGroup>
+
+        <TextView
             android:id="@+id/abilityToHelpClimb_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/abilityToHelpClimbHeading"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cubePickup_RadiobtnGrp" />
+            app:layout_constraintTop_toBottomOf="@+id/climb_RadiobtnGrp" />
 
         <RadioGroup
             android:id="@+id/abilityToHelpClimb_RadiobtnGrp"
@@ -279,7 +418,7 @@
             android:text="@string/saveButton"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scouterInitials_input_layout"/>
+            app:layout_constraintTop_toBottomOf="@+id/scouterInitials_input_layout" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
 

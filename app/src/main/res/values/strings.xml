@@ -49,8 +49,8 @@
     <string name="cubePickupPortal">Portal</string>
 
     <string name="climbingHeading">Climb</string>
-    <string name="successClimb">Success</string>
-    <string name="failClimb">Fail</string>
+    <string name="successClimb">Yes</string>
+    <string name="failClimb">No</string>
     <string name="noClimb">N/A</string>
 
     <string name="climbTimeHeading">Climb Time</string>
