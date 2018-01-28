@@ -3,4 +3,6 @@
         android:title="@string/matchScouting" />
     <item android:id="@+id/pit_scouting"
         android:title="@string/pitScouting" />
+    <item android:id="@+id/send_data"
+        android:title="Send Data"/>
 </menu>

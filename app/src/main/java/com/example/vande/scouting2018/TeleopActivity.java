@@ -167,6 +167,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             case R.id.pit_scouting:
                 startActivity(new Intent(this, PitActivity.class));
                 return true;
+            case R.id.send_data:
+                startActivity(new Intent(this, SendDataActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -340,7 +343,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
             dir.mkdirs();
 
-            File file = new File(dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+//            File file = new File(dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+            File file = new File(dir, "Match.csv");
 
             teleopDataStringList.add(getTextInputLayoutString(teleopCubesInExchangeInputLayout));
             teleopDataStringList.add(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout));
