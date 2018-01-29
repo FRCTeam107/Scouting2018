@@ -209,7 +209,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
             //create csv file
-            File file = new File(dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+            File file = new File(dir, "Pit.csv");
 
 
             pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));

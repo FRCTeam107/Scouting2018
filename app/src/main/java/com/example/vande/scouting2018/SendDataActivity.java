@@ -40,20 +40,24 @@ public class SendDataActivity extends AppCompatActivity {
     }
 
 
-    public void sendViaBluetooth(View view) {
+    public void sendMatchData(View view) {
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         String file = "storage/emulated/0/Scouting/Match.csv";
-
-
         intent.setType("text/plain");
-//        File file = new File(getFilesDir(), "Match.csv");
-
-// Only use Bluetooth to send .apk
         intent.setPackage("com.android.bluetooth");
-
-// Append file and send Intent
         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(file)));
         startActivity(Intent.createChooser(intent, "Share app"));
     }
+
+    public void sendPitData(View view) {
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        String file = "storage/emulated/0/Scouting/Pit.csv";
+        intent.setType("text/plain");
+        intent.setPackage("com.android.bluetooth");
+        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(file)));
+        startActivity(Intent.createChooser(intent, "Share app"));
+    }
+
 }

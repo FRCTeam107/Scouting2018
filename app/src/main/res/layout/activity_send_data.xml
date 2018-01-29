@@ -6,7 +6,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send via Bluetooth"
-        android:onClick="sendViaBluetooth"/>
+        android:text="Send Match Data"
+        android:onClick="sendMatchData"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Pit Data"
+        android:onClick="sendPitData"/>
 
 </LinearLayout>
