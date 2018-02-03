@@ -1,11 +1,15 @@
 package com.example.vande.scouting2018;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -73,6 +77,8 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         setContentView(R.layout.activity_auton);
         ButterKnife.bind(this);
         autonDataStringList = new ArrayList<>();
+
+        checkForPermissions();
     }
 
     /*If this activity is resumed from a paused state the data
@@ -244,6 +250,14 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
         final EditText editText = textInputLayout.getEditText();
         return editText != null && editText.getText() != null ? editText.getText().toString() : "";
+    }
+
+    private void checkForPermissions() {
+        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (writePermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
     }
 
 }
