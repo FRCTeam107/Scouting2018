@@ -90,21 +90,10 @@
 
     <!--Pit Scouting Strings-->
     <string name="pitTeamNumberHeading">Team Number</string>
-    <string name="savePitButton">Save</string>
-
-    <!--Pit Error Strings-->
-    <string name="pitTeamNumberError">Enter team number</string>
-    <string name="pitCubeNumberError">Enter average cube number</string>
-    <string name="pitVaultPriorityError">Enter vault priority</string>
-    <string name="pitClimbTimeError">Enter climb time</string>
-    <string name="pitArcadeGameError">Enter arcade game</string>
-
-    <!--Pit Strings-->\
     <string name="pitStartingPositionHeading">Starting Position</string>
     <string name="pitStartingPositionRight">Right</string>
     <string name="pitStartingPositionLeft">Left</string>
     <string name="pitStartingPositionMiddle">Middle</string>
-    <string name="pitClimbTime">Climb Time</string>
 
     <string name="pitDefenseType">Defense Type</string>
     <string name="pitDefenseBlock">Block</string>
@@ -125,10 +114,19 @@
     <string name="pitClimbHelpYes">Yes</string>
     <string name="pitClimbHelpNo">No</string>
 
-    <string name="pitRobotHistory">What old arcade game would your robot be in?</string>
-
     <string name="pitTeleopPreference">Teleop Preference</string>
     <string name="pitTeleopScale">Scale</string>
     <string name="pitTeleopTheirSwitch">Their switch</string>
     <string name="pitTeleopYourSwitch">Your switch</string>
+    <string name="pitProgrammingLanguage">Programming Language</string>
+    <string name="pitRobotArcadeGame">What old arcade game would your robot be in?</string>
+    <string name="savePitButton">Save</string>
+
+    <!--Pit Error Strings-->
+    <string name="pitTeamNumberError">Enter team number</string>
+    <string name="pitCubeNumberError">Enter average cube number</string>
+    <string name="pitVaultPriorityError">Enter vault priority</string>
+    <string name="pitProgrammingLanguageError">Enter Programming Language</string>
+    <string name="pitArcadeGameError">Enter arcade game</string>
+
 </resources>

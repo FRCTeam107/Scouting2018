@@ -58,11 +58,11 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_climbBoolean_RadiobtnGrp)
     public RadioGroup pitClimbBooleanRadiobtnGrp;
 
-    @BindView(R.id.pit_climbTime_input_layout)
-    public TextInputLayout pitClimbTimeInputLayout;
-
     @BindView(R.id.pit_climbHelpBoolean_RadiobtnGrp)
     public RadioGroup pitCanHelpClimbRadioGrp;
+
+    @BindView(R.id.pit_programmingLanguage_input_Layout)
+    public TextInputLayout pitProgrammingLanguageInputLayout;
 
     @BindView(R.id.pit_arcadeGame_input_layout)
     public TextInputLayout pitArcadeGameInputLayout;
@@ -112,7 +112,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         pitTeamNumberInputLayout.setOnKeyListener(this);
         pitCubeNumberInputLayout.setOnKeyListener(this);
-        pitClimbTimeInputLayout.setOnKeyListener(this);
+        pitProgrammingLanguageInputLayout.setOnKeyListener(this);
         pitArcadeGameInputLayout.setOnKeyListener(this);
 
     }
@@ -124,7 +124,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         pitTeamNumberInputLayout.setOnKeyListener(null);
         pitCubeNumberInputLayout.setOnKeyListener(null);
-        pitClimbTimeInputLayout.setOnKeyListener(null);
+        pitProgrammingLanguageInputLayout.setOnKeyListener(null);
         pitArcadeGameInputLayout.setOnKeyListener(null);
     }
 
@@ -145,14 +145,12 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                     case R.id.pit_cubeNumber_input:
                         pitCubeNumberInputLayout.setError(null);
                         break;
-
-                    case R.id.pit_climbTime_input:
-                        pitClimbTimeInputLayout.setError(null);
-                        break;
-
                     case R.id.pit_vaultPriority_input:
                         pitVaultPriorityInputLayout.setError(null);
                         break;
+
+                    case R.id.pit_programmingLanguage_input:
+                        pitProgrammingLanguageInputLayout.setError(null);
 
                     case R.id.pit_arcadeGame_input:
                         pitArcadeGameInputLayout.setError(null);
@@ -174,10 +172,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInputLayout))) {
             pitCubeNumberInputLayout.setError(getText(R.string.pitCubeNumberError));
             ViewUtils.requestFocus(pitCubeNumberInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitClimbTimeInputLayout))) {
-            pitClimbTimeInputLayout.setError(getText(R.string.pitClimbTimeError));
-            ViewUtils.requestFocus(pitClimbTimeInputLayout, this);
-
         } else if (pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(pitStartingPositionRadiobtnGrp, this);
         } else if (pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId() == -1) {
@@ -189,6 +183,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitVaultPriorityInputLayout))) {
             pitVaultPriorityInputLayout.setError(getText(R.string.pitVaultPriorityError));
             ViewUtils.requestFocus(pitVaultPriorityInputLayout, this);
+        }else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitProgrammingLanguageInputLayout))){
+            pitProgrammingLanguageInputLayout.setError(getText(R.string.pitProgrammingLanguageError));
+            ViewUtils.requestFocus(pitProgrammingLanguageInputLayout,this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitArcadeGameInputLayout))) {
             pitArcadeGameInputLayout.setError(getText(R.string.pitArcadeGameError));
             ViewUtils.requestFocus(pitArcadeGameInputLayout, this);
@@ -220,7 +217,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
             pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
-            pitDataStringList.add(getTextInputLayoutString(pitClimbTimeInputLayout));
             pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
             pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
 
