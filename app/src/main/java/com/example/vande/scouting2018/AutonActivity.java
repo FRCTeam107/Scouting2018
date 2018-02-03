@@ -173,7 +173,7 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teamNumberInputLayout))) {
             teamNumberInputLayout.setError(getText(R.string.teamNumberError));
             ViewUtils.requestFocus(teamNumberInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(matchNumberInputLayout))) {
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(matchNumberInputLayout)) || getTextInputLayoutString(matchNumberInputLayout).equals("0")) {
             matchNumberInputLayout.setError(getText(R.string.matchNumberError));
             ViewUtils.requestFocus(matchNumberInputLayout, this);
         } else if (baseLineRadiobtnGrp.getCheckedRadioButtonId() == -1) {
