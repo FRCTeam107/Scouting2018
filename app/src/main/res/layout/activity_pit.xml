@@ -258,29 +258,6 @@
                     android:text="@string/pitClimbNo" />
             </RadioGroup>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/pit_climbTime_input_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitClimbTime"
-                app:errorEnabled="true"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbBoolean_RadiobtnGrp">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/pit_climbTime_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-
 
             <TextView
                 android:id="@+id/pit_climbHelpBoolean_TextView"
@@ -289,7 +266,7 @@
                 android:text="@string/pitClimbHelp"
                 app:layout_constraintLeft_toRightOf="parent"
                 app:layout_constraintRight_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbTime_input_layout"/>
+                app:layout_constraintTop_toBottomOf="@id/pit_climbBoolean_RadiobtnGrp"/>
 
             <RadioGroup
                 android:id="@+id/pit_climbHelpBoolean_RadiobtnGrp"
@@ -312,7 +289,28 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pitClimbHelpNo" />
             </RadioGroup>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/pit_programmingLanguage_input_Layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/pitProgrammingLanguage"
+                app:errorEnabled="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pit_climbHelpBoolean_RadiobtnGrp">
 
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/pit_programmingLanguage_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_arcadeGame_input_layout"
                 android:layout_width="0dp"
@@ -322,11 +320,11 @@
                 android:layout_marginRight="18dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="8dp"
-                android:hint="@string/pitRobotHistory"
+                android:hint="@string/pitRobotArcadeGame"
                 app:errorEnabled="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbHelpBoolean_RadiobtnGrp">
+                app:layout_constraintTop_toBottomOf="@id/pit_programmingLanguage_input_Layout">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/pit_arcadeGame_input"

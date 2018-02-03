@@ -1,5 +1,6 @@
 package com.example.vande.scouting2018;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -120,6 +121,9 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
                 return true;
             case R.id.pit_scouting:
                 startActivity(new Intent(this, PitActivity.class));
+                return true;
+            case R.id.send_data:
+                startActivity(new Intent(this, SendDataActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

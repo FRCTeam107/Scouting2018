@@ -1,10 +1,12 @@
 package com.example.vande.scouting2018;
 
+import android.Manifest;
 import android.os.Environment;
 
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -166,6 +168,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
                 return true;
             case R.id.pit_scouting:
                 startActivity(new Intent(this, PitActivity.class));
+                return true;
+            case R.id.send_data:
+                startActivity(new Intent(this, SendDataActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -340,7 +345,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
             dir.mkdirs();
 
-            File file = new File(dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+//            File file = new File(dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
+            File file = new File(dir, "Match.csv");
 
             teleopDataStringList.add(getTextInputLayoutString(teleopCubesInExchangeInputLayout));
             teleopDataStringList.add(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout));
