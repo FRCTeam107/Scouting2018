@@ -94,11 +94,12 @@
     <string name="pitStartingPositionRight">Right</string>
     <string name="pitStartingPositionLeft">Left</string>
     <string name="pitStartingPositionMiddle">Middle</string>
+    <string name="pitStartingPositionAll">All</string>
 
     <string name="pitDefenseType">Defense Type</string>
     <string name="pitDefenseBlock">Block</string>
     <string name="pitDefenseSwitch">Switch</string>
-    <string name="pitDefenseNo">No</string>
+    <string name="pitDefenseNo">None</string>
 
     <string name="pitCubeNumber">Average Cube Number</string>
 
