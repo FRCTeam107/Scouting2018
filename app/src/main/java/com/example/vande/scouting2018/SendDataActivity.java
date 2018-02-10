@@ -10,7 +10,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import utils.FormatStringUtils;
@@ -92,4 +95,22 @@ public class SendDataActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(intent, "Share app"));
     }
 
+    public void sendRobotPhotos(View view) {
+        Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        intent.setType("image/jpeg");
+        intent.setPackage("com.android.bluetooth");
+        String dir = "storage/emulated/0/Scouting/Photos/";
+
+        File folder = new File(dir);
+        File[] photos = folder.listFiles();
+
+        ArrayList<Uri> toSend = new ArrayList<>();
+
+        for(File file : photos) {
+            toSend.add(Uri.fromFile(file));
+        }
+
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
+        startActivity(Intent.createChooser(intent, "Share app"));
+    }
 }

@@ -3,11 +3,12 @@ package com.example.vande.scouting2018;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -25,7 +26,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -92,7 +95,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         ButterKnife.bind(this);
 
         checkForPermissions();
-
     }
 
     @Override
@@ -273,6 +275,24 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
                 startActivityForResult(takePictureIntent, 1);
+            }
+
+            try {
+                FileInputStream inputStream = new FileInputStream(file);
+                Bitmap bitmap;
+
+                while((bitmap = BitmapFactory.decodeStream(inputStream)) == null) { }
+
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
+
+                FileOutputStream outputStream = new FileOutputStream(new File(dir, name + ".jpg"));
+                outputStream.write(out.toByteArray());
+                inputStream.close();
+                out.close();
+                outputStream.close();
+            } catch (IOException e) {
+                Log.d("Scouting", e.getMessage());
             }
         } else {
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
