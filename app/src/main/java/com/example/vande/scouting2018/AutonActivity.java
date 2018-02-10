@@ -176,7 +176,7 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     public void onShowTeleop(View view) {
         boolean allInputsPassed = false;
 
-        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teamNumberInputLayout))) {
+        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teamNumberInputLayout)) || getTextInputLayoutString(teamNumberInputLayout).equals("0")) {
             teamNumberInputLayout.setError(getText(R.string.teamNumberError));
             ViewUtils.requestFocus(teamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(matchNumberInputLayout)) || getTextInputLayoutString(matchNumberInputLayout).equals("0")) {

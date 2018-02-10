@@ -180,7 +180,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         boolean allInputsPassed = false;
 
 
-        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout))) {
+        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout)) || getTextInputLayoutString(pitTeamNumberInputLayout).equals("0")) {
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
             ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInputLayout))) {
