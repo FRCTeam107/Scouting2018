@@ -1,13 +1,20 @@
 package com.example.vande.scouting2018;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -83,6 +90,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         pitDataStringList = new ArrayList<>();
 
         ButterKnife.bind(this);
+
+        checkForPermissions();
 
     }
 
@@ -243,6 +252,40 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         finish();
     }
 
+    public void takePhoto(View view) {
+        String name = getTextInputLayoutString(pitTeamNumberInputLayout);
+
+        if (!StringUtils.isEmptyOrNull(name)) {
+            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
+            dir.mkdirs();
+
+            File file = new File(dir, name + ".jpg");
+
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                Log.d("Scouting", e.getMessage());
+            }
+
+            Uri outputUri = Uri.fromFile(file);
+
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+                startActivityForResult(takePictureIntent, 1);
+            }
+        } else {
+            pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
+            ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
+        }
+    }
+
+    private void checkForPermissions() {
+        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+        }
+    }
 
     private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
         final EditText editText = textInputLayout.getEditText();

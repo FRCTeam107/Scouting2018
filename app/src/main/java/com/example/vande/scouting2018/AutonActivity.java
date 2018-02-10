@@ -226,7 +226,6 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
             super.onActivityResult(requestCode, resultCode, data);
 
             if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-                String requiredValue = data.getStringExtra("Key");
                 clearData();
             }
         } catch (Exception ex) {
