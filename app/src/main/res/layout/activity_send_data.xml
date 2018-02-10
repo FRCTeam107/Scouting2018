@@ -14,4 +14,10 @@
         android:text="Send Pit Data"
         android:onClick="sendPitData"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Robot Photos"
+        android:onClick="sendRobotPhotos"/>
+
 </LinearLayout>

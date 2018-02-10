@@ -339,6 +339,17 @@
                     android:inputType="text"
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/take_photo_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="takePhoto"
+                android:text="@string/takePhotoButton"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pit_arcadeGame_input_layout"/>
+
             <Button
                 android:id="@+id/save_pit_btn"
                 android:layout_width="0dp"
@@ -347,7 +358,7 @@
                 android:text="@string/savePitButton"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_arcadeGame_input_layout"/>
+                app:layout_constraintTop_toBottomOf="@id/take_photo_btn"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

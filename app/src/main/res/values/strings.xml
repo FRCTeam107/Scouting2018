@@ -123,6 +123,8 @@
     <string name="pitRobotArcadeGame">What old arcade game would your robot be in?</string>
     <string name="savePitButton">Save</string>
 
+    <string name="takePhotoButton">Take Photo</string>
+
     <!--Pit Error Strings-->
     <string name="pitTeamNumberError">Enter team number</string>
     <string name="pitCubeNumberError">Enter average cube number</string>

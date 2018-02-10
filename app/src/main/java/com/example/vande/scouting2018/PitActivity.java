@@ -1,13 +1,21 @@
 package com.example.vande.scouting2018;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +26,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -84,6 +94,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         ButterKnife.bind(this);
 
+        checkForPermissions();
     }
 
     @Override
@@ -169,7 +180,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         boolean allInputsPassed = false;
 
 
-        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout))) {
+        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout)) || getTextInputLayoutString(pitTeamNumberInputLayout).equals("0")) {
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
             ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInputLayout))) {
@@ -243,6 +254,58 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         finish();
     }
 
+    public void takePhoto(View view) {
+        String name = getTextInputLayoutString(pitTeamNumberInputLayout);
+
+        if (!StringUtils.isEmptyOrNull(name)) {
+            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
+            dir.mkdirs();
+
+            File file = new File(dir, name + ".jpg");
+
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                Log.d("Scouting", e.getMessage());
+            }
+
+            Uri outputUri = Uri.fromFile(file);
+
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+                startActivityForResult(takePictureIntent, 1);
+            }
+
+            try {
+                FileInputStream inputStream = new FileInputStream(file);
+                Bitmap bitmap;
+
+                while((bitmap = BitmapFactory.decodeStream(inputStream)) == null) { }
+
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
+
+                FileOutputStream outputStream = new FileOutputStream(new File(dir, name + ".jpg"));
+                outputStream.write(out.toByteArray());
+                inputStream.close();
+                out.close();
+                outputStream.close();
+            } catch (IOException e) {
+                Log.d("Scouting", e.getMessage());
+            }
+        } else {
+            pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
+            ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
+        }
+    }
+
+    private void checkForPermissions() {
+        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+        }
+    }
 
     private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
         final EditText editText = textInputLayout.getEditText();
