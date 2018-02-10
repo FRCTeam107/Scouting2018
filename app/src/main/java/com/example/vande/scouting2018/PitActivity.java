@@ -101,6 +101,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             case R.id.pit_scouting:
                 startActivity(new Intent(this, PitActivity.class));
                 return true;
+            case R.id.send_data:
+                startActivity(new Intent(this, SendDataActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
