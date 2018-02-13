@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
 import android.os.Parcelable;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -81,7 +82,7 @@ public class SendDataActivity extends AppCompatActivity {
         String file = "storage/emulated/0/Scouting/Match.csv";
         intent.setType("text/plain");
         intent.setPackage("com.android.bluetooth");
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(file)));
+        intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
         startActivity(Intent.createChooser(intent, "Share app"));
     }
 
@@ -91,7 +92,7 @@ public class SendDataActivity extends AppCompatActivity {
         String file = "storage/emulated/0/Scouting/Pit.csv";
         intent.setType("text/plain");
         intent.setPackage("com.android.bluetooth");
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(file)));
+        intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
         startActivity(Intent.createChooser(intent, "Share app"));
     }
 
@@ -106,8 +107,8 @@ public class SendDataActivity extends AppCompatActivity {
 
         ArrayList<Uri> toSend = new ArrayList<>();
 
-        for(File file : photos) {
-            toSend.add(Uri.fromFile(file));
+        for(int i = 0; i < photos.length; i++) {
+            toSend.add(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photos[i]));
         }
 
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
