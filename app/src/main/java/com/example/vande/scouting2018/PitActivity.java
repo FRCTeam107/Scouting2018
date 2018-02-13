@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import utils.FormatStringUtils;
+import utils.PermissionUtils;
 import utils.StringUtils;
 import utils.ViewUtils;
 
@@ -218,50 +219,53 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         final RadioButton pitPickUpOffFloor_Radiobtn = findViewById(pitPickUpOffFloorRadioGrp.getCheckedRadioButtonId());
         final RadioButton pitCanHelpClimb_Radiobtn = findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
 
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
-            //create csv file
-            File file = new File(dir, "Pit.csv");
+        if(PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            if (Environment.MEDIA_MOUNTED.equals(state)) {
+                File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
+                //create csv file
+                File file = new File(dir, "Pit.csv");
 
 
-            pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
-            pitDataStringList.add(pitStaring_Radiobtn.getText());
-            pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
-            pitDataStringList.add(pitDefenseType_Radiobtn.getText());
-            pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInputLayout));
-            pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
-            pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
-            pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
-            pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
-            pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
+                pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
+                pitDataStringList.add(pitStaring_Radiobtn.getText());
+                pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
+                pitDataStringList.add(pitDefenseType_Radiobtn.getText());
+                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInputLayout));
+                pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
+                pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
+                pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
+                pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
+                pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
 
 
-            String message = FormatStringUtils.addDelimiter(pitDataStringList, ",") + "\n";
+                String message = FormatStringUtils.addDelimiter(pitDataStringList, ",") + "\n";
 
 
-            //Output data to file
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream(file, true);
-                fileOutputStream.write(message.getBytes());
-                fileOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                //Output data to file
+                try {
+                    FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+                    fileOutputStream.write(message.getBytes());
+                    fileOutputStream.close();
+
+                    Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(), "IOException! Go talk to the programmers!", Toast.LENGTH_LONG).show();
+                    Log.d("Scouting", e.getMessage());
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "SD card not found", Toast.LENGTH_LONG).show();
             }
-        } else {
-            Toast.makeText(getApplicationContext(), "SD card not found", Toast.LENGTH_LONG).show();
-        }
-        Toast.makeText(getApplicationContext(), "message Saved", Toast.LENGTH_LONG).show();
 
-        finish();
+            finish();
+        }
     }
 
     public void takePhoto(View view) {
         String name = getTextInputLayoutString(pitTeamNumberInputLayout);
 
-        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, 1);
-        } else {
+        if(PermissionUtils.getPermissions(this, Manifest.permission.CAMERA) &&
+                PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) &&
+                PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             if (!StringUtils.isEmptyOrNull(name)) {
                 File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
                 dir.mkdirs();

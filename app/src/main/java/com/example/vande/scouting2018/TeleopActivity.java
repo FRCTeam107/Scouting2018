@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import utils.FormatStringUtils;
+import utils.PermissionUtils;
 import utils.StringUtils;
 import utils.ViewUtils;
 
@@ -341,48 +342,52 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         final RadioButton onPlatform_Radiobtn = findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton defense_Radiobtn = findViewById(defenseRadiobtnGrp.getCheckedRadioButtonId());
 
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
-            dir.mkdirs();
+        if(PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            if (Environment.MEDIA_MOUNTED.equals(state)) {
+                File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
+                dir.mkdirs();
 
 //            File file = new File(dir, "Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
-            File file = new File(dir, "Match.csv");
+                File file = new File(dir, "Match.csv");
 
-            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInExchangeInputLayout));
-            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout));
-            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInTheirSwitchInputLayout));
-            teleopDataStringList.add(getTextInputLayoutString(teleopCubesInScaleInputLayout));
+                teleopDataStringList.add(getTextInputLayoutString(teleopCubesInExchangeInputLayout));
+                teleopDataStringList.add(getTextInputLayoutString(teleopCubesInOurSwitchInputLayout));
+                teleopDataStringList.add(getTextInputLayoutString(teleopCubesInTheirSwitchInputLayout));
+                teleopDataStringList.add(getTextInputLayoutString(teleopCubesInScaleInputLayout));
 
-            teleopDataStringList.add(cubePickup_Radiobtn.getText());
-            teleopDataStringList.add(climb_Radiobtn.getText());
-            teleopDataStringList.add(abilityToHelpClimb_Radiobtn.getText());
-            teleopDataStringList.add(onPlatform_Radiobtn.getText());
-            teleopDataStringList.add(defense_Radiobtn.getText());
+                teleopDataStringList.add(cubePickup_Radiobtn.getText());
+                teleopDataStringList.add(climb_Radiobtn.getText());
+                teleopDataStringList.add(abilityToHelpClimb_Radiobtn.getText());
+                teleopDataStringList.add(onPlatform_Radiobtn.getText());
+                teleopDataStringList.add(defense_Radiobtn.getText());
 
-            teleopDataStringList.add(String.valueOf(foulsChbx.isChecked()));
+                teleopDataStringList.add(String.valueOf(foulsChbx.isChecked()));
 
-            teleopDataStringList.add(getTextInputLayoutString(scouterInitialsInputLayout));
+                teleopDataStringList.add(getTextInputLayoutString(scouterInitialsInputLayout));
 
-            String message = auton + "," + FormatStringUtils.addDelimiter(teleopDataStringList, ",") + "\n";
+                String message = auton + "," + FormatStringUtils.addDelimiter(teleopDataStringList, ",") + "\n";
 
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream(file, true);
-                fileOutputStream.write(message.getBytes());
-                fileOutputStream.close();
-            } catch (IOException e) {
-                Log.d("Scouting", e.getMessage());
+                try {
+                    FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+                    fileOutputStream.write(message.getBytes());
+                    fileOutputStream.close();
+
+                    Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(), "IOException! Go talk to the programmers!", Toast.LENGTH_LONG).show();
+                    Log.d("Scouting", e.getMessage());
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "SD card not found", Toast.LENGTH_LONG).show();
             }
-        } else {
-            Toast.makeText(getApplicationContext(), "SD card not found", Toast.LENGTH_LONG).show();
+
+            Intent intent = getIntent();
+            intent.putExtra("Key", value);
+            setResult(RESULT_OK, intent);
+
+            clearData(view);
+            finish();
         }
-        Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_LONG).show();
-
-        Intent intent = getIntent();
-        intent.putExtra("Key", value);
-        setResult(RESULT_OK, intent);
-
-        clearData(view);
-        finish();
     }
 
     /*The method will clear all the data in the text fields, checkboxes, and

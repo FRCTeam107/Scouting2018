@@ -1,5 +1,6 @@
 package com.example.vande.scouting2018;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utils.FormatStringUtils;
+import utils.PermissionUtils;
 
 import static android.os.Environment.getExternalStorageDirectory;
 
@@ -77,41 +79,45 @@ public class SendDataActivity extends AppCompatActivity {
 
 
     public void sendMatchData(View view) {
-
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        String file = "storage/emulated/0/Scouting/Match.csv";
-        intent.setType("text/plain");
-        intent.setPackage("com.android.bluetooth");
-        intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
-        startActivity(Intent.createChooser(intent, "Share app"));
+        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            String file = "storage/emulated/0/Scouting/Match.csv";
+            intent.setType("text/plain");
+            intent.setPackage("com.android.bluetooth");
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
+            startActivity(Intent.createChooser(intent, "Share app"));
+        }
     }
 
     public void sendPitData(View view) {
-
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        String file = "storage/emulated/0/Scouting/Pit.csv";
-        intent.setType("text/plain");
-        intent.setPackage("com.android.bluetooth");
-        intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
-        startActivity(Intent.createChooser(intent, "Share app"));
+        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            String file = "storage/emulated/0/Scouting/Pit.csv";
+            intent.setType("text/plain");
+            intent.setPackage("com.android.bluetooth");
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
+            startActivity(Intent.createChooser(intent, "Share app"));
+        }
     }
 
     public void sendRobotPhotos(View view) {
-        Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-        intent.setType("image/jpeg");
-        intent.setPackage("com.android.bluetooth");
-        String dir = "storage/emulated/0/Scouting/Photos/";
+        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+            intent.setType("image/jpeg");
+            intent.setPackage("com.android.bluetooth");
+            String dir = "storage/emulated/0/Scouting/Photos/";
 
-        File folder = new File(dir);
-        File[] photos = folder.listFiles();
+            File folder = new File(dir);
+            File[] photos = folder.listFiles();
 
-        ArrayList<Uri> toSend = new ArrayList<>();
+            ArrayList<Uri> toSend = new ArrayList<>();
 
-        for(int i = 0; i < photos.length; i++) {
-            toSend.add(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photos[i]));
+            for (int i = 0; i < photos.length; i++) {
+                toSend.add(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photos[i]));
+            }
+
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
+            startActivity(Intent.createChooser(intent, "Share app"));
         }
-
-        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
-        startActivity(Intent.createChooser(intent, "Share app"));
     }
 }
