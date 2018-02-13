@@ -257,46 +257,52 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     public void takePhoto(View view) {
         String name = getTextInputLayoutString(pitTeamNumberInputLayout);
 
-        if (!StringUtils.isEmptyOrNull(name)) {
-            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
-            dir.mkdirs();
-
-            File file = new File(dir, name + ".jpg");
-
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                Log.d("Scouting", e.getMessage());
-            }
-
-            Uri outputUri = Uri.fromFile(file);
-
-            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
-                startActivityForResult(takePictureIntent, 1);
-            }
-
-            try {
-                FileInputStream inputStream = new FileInputStream(file);
-                Bitmap bitmap;
-
-                while((bitmap = BitmapFactory.decodeStream(inputStream)) == null) { }
-
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
-
-                FileOutputStream outputStream = new FileOutputStream(new File(dir, name + ".jpg"));
-                outputStream.write(out.toByteArray());
-                inputStream.close();
-                out.close();
-                outputStream.close();
-            } catch (IOException e) {
-                Log.d("Scouting", e.getMessage());
-            }
+        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, 1);
         } else {
-            pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
-            ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
+            if (!StringUtils.isEmptyOrNull(name)) {
+                File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
+                dir.mkdirs();
+
+                File file = new File(dir, name + ".jpg");
+
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    Log.d("Scouting", e.getMessage());
+                }
+
+                Uri outputUri = Uri.fromFile(file);
+
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+                    startActivityForResult(takePictureIntent, 1);
+                }
+
+                try {
+                    FileInputStream inputStream = new FileInputStream(file);
+                    Bitmap bitmap;
+
+                    while ((bitmap = BitmapFactory.decodeStream(inputStream)) == null) {
+                    }
+
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
+
+                    FileOutputStream outputStream = new FileOutputStream(new File(dir, name + ".jpg"));
+                    outputStream.write(out.toByteArray());
+                    inputStream.close();
+                    out.close();
+                    outputStream.close();
+                } catch (IOException e) {
+                    Log.d("Scouting", e.getMessage());
+                }
+            } else {
+                pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
+                ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
+            }
         }
     }
 
