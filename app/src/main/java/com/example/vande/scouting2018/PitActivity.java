@@ -274,8 +274,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                     Log.d("Scouting", e.getMessage());
                 }
 
-
-            Uri outputUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", file);
+                Uri outputUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", file);
 
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
