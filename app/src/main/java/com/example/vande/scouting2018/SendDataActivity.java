@@ -38,7 +38,7 @@ import static android.os.Environment.getExternalStorageDirectory;
  * Created by Matt on 10/9/2017.
  */
 
-public class SendDataActivity extends AppCompatActivity {
+public class SendDataActivity extends ScoutingActivity {
 
 
     @Override
@@ -47,36 +47,8 @@ public class SendDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_data);
     }
 
-    /* This method will display the options menu when the icon is pressed
-     * and this will inflate the menu options for the user to choose
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    /*This method will launch the correct activity
-     *based on the menu option user presses
-      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-
     public void sendMatchData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        if(checkPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             String file = "storage/emulated/0/Scouting/Match.csv";
             intent.setType("text/plain");
@@ -87,7 +59,7 @@ public class SendDataActivity extends AppCompatActivity {
     }
 
     public void sendPitData(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        if(checkPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             String file = "storage/emulated/0/Scouting/Pit.csv";
             intent.setType("text/plain");
@@ -98,7 +70,7 @@ public class SendDataActivity extends AppCompatActivity {
     }
 
     public void sendRobotPhotos(View view) {
-        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        if(checkPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
             intent.setType("image/jpeg");
             intent.setPackage("com.android.bluetooth");

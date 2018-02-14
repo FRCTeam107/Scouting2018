@@ -30,7 +30,7 @@ import utils.FormatStringUtils;
 import utils.StringUtils;
 import utils.ViewUtils;
 
-public class AutonActivity extends AppCompatActivity implements View.OnKeyListener {
+public class AutonActivity extends ScoutingActivity implements View.OnKeyListener {
 
     /*This area sets and binds all of the variables that we will use in the auton activity*/
     public static String AUTON_STRING_EXTRA = "auton_extra";
@@ -74,11 +74,12 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_auton);
+        setContentView(R.layout.activity_teleop);
         ButterKnife.bind(this);
+
         autonDataStringList = new ArrayList<>();
 
-        checkForPermissions();
+        checkPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     /*If this activity is resumed from a paused state the data
@@ -106,33 +107,6 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         cubeInSwitchRadiobtnGrp.setOnKeyListener(null);
         cubeInScaleRadiobtnGrp.setOnKeyListener(null);
     }
-
-    /* This method will display the options menu when the icon is pressed
-     * and this will inflate the menu options for the user to choose
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    /*This method will launch the correct activity
-     *based on the menu option user presses
-      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
 
     /*This method will look at all of the text/number input fields and set error
     *for validation of data entry
@@ -240,20 +214,4 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         cubeInScaleRadiobtnGrp.clearCheck();
         teamNumberInput.requestFocus();
     }
-
-
-    /* This method will change the text entered into the app into a string if it is not already*/
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
-    }
-
-    private void checkForPermissions() {
-        int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-        if (writePermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        }
-    }
-
 }

@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnKeyListener {
+public class MainActivity extends ScoutingActivity implements View.OnKeyListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,26 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     @Override

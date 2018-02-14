@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import utils.StringUtils;
 import utils.ViewUtils;
 
-public class ScouterInitialsActivity extends AppCompatActivity implements View.OnKeyListener {
+public class ScouterInitialsActivity extends ScoutingActivity implements View.OnKeyListener {
 
     @BindView(R.id.scouterInitials_input_layout)
     public TextInputLayout scouterInitialsInputLayout;
@@ -30,26 +30,6 @@ public class ScouterInitialsActivity extends AppCompatActivity implements View.O
 
         setContentView(R.layout.activity_scouter_initials);
         ButterKnife.bind(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     @Override
@@ -80,10 +60,5 @@ public class ScouterInitialsActivity extends AppCompatActivity implements View.O
             startActivity(new Intent(this, AutonActivity.class));
         else
             scouterInitialsInputLayout.setError(getText(R.string.scouterInitialsError));
-    }
-
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }

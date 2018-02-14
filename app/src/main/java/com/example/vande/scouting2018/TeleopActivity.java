@@ -3,20 +3,13 @@ package com.example.vande.scouting2018;
 import android.Manifest;
 import android.os.Environment;
 
-import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -31,7 +24,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import utils.FormatStringUtils;
-import utils.PermissionUtils;
 import utils.StringUtils;
 import utils.ViewUtils;
 
@@ -39,7 +31,7 @@ import static android.R.attr.value;
 import static com.example.vande.scouting2018.AutonActivity.AUTON_STRING_EXTRA;
 
 
-public class TeleopActivity extends AppCompatActivity implements View.OnKeyListener {
+public class TeleopActivity extends ScoutingActivity implements View.OnKeyListener {
     /*This area sets and binds all of the variables that we will use in the auton activity*/
 
     @BindView(R.id.teleopCubesInExchange_input_layout)
@@ -139,32 +131,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInOurSwitchInput.setOnKeyListener(null);
         teleopCubesInTheirSwitchInput.setOnKeyListener(null);
         teleopCubesInScaleInput.setOnKeyListener(null);
-    }
-
-    /* This method will display the options menu when the icon is pressed
-     * and this will inflate the menu options for the user to choose
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    /*This method will launch the correct activity
-     *based on the menu option user presses
-      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     //Teleop Cube Exchange
@@ -324,7 +290,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         final RadioButton onPlatform_Radiobtn = findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton defense_Radiobtn = findViewById(defenseRadiobtnGrp.getCheckedRadioButtonId());
 
-        if(PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if(checkPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             if (Environment.MEDIA_MOUNTED.equals(state)) {
                 File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
                 dir.mkdirs();
@@ -385,11 +351,5 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         abilityToHelpClimbRadiobtnGrp.clearCheck();
         onPlatformRadiobtnGrp.clearCheck();
         defenseRadiobtnGrp.clearCheck();
-    }
-
-    /* This method will change the text entered into the app into a string if it is not already*/
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }

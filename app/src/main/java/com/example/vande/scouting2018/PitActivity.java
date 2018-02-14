@@ -45,7 +45,7 @@ import utils.ViewUtils;
  * Created by Matt on 9/30/2017.
  */
 
-public class PitActivity extends AppCompatActivity implements View.OnKeyListener {
+public class PitActivity extends ScoutingActivity implements View.OnKeyListener {
     @BindView(R.id.pit_teamNumber_input_layout)
     public TextInputLayout pitTeamNumberInputLayout;
 
@@ -96,27 +96,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         ButterKnife.bind(this);
 
-        checkForPermissions();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        checkPermissions(this, Manifest.permission.CAMERA);
+        checkPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        checkPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     @Override
@@ -216,7 +198,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         final RadioButton pitPickUpOffFloor_Radiobtn = findViewById(pitPickUpOffFloorRadioGrp.getCheckedRadioButtonId());
         final RadioButton pitCanHelpClimb_Radiobtn = findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
 
-        if(PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if(checkPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             if (Environment.MEDIA_MOUNTED.equals(state)) {
                 File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
                 //create csv file
@@ -260,9 +242,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     public void takePhoto(View view) {
         String name = getTextInputLayoutString(pitTeamNumberInputLayout);
 
-        if(PermissionUtils.getPermissions(this, Manifest.permission.CAMERA) &&
-                PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) &&
-                PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        if(checkPermissions(this, Manifest.permission.CAMERA) &&
+                checkPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) &&
+                checkPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             if (!StringUtils.isEmptyOrNull(name)) {
                 File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
                 dir.mkdirs();
@@ -306,17 +288,5 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                 ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
             }
         }
-    }
-
-    private void checkForPermissions() {
-        int cameraPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-        }
-    }
-
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }
