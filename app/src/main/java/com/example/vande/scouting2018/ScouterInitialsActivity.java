@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,7 +76,10 @@ public class ScouterInitialsActivity extends AppCompatActivity implements View.O
     public void submitInitials(View view) {
         initials = getTextInputLayoutString(scouterInitialsInputLayout);
 
-        startActivity(new Intent(this, AutonActivity.class));
+        if(!StringUtils.isEmptyOrNull(initials))
+            startActivity(new Intent(this, AutonActivity.class));
+        else
+            scouterInitialsInputLayout.setError(getText(R.string.scouterInitialsError));
     }
 
     private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {

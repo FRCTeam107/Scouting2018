@@ -301,8 +301,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInScaleInputLayout))) {
             teleopCubesInScaleInputLayout.setError(getText(R.string.cubesInScaleError));
             ViewUtils.requestFocus(teleopCubesInScaleInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(ScouterInitialsActivity.getInitials())) {
-            Toast.makeText(this, "KSLEPIFOHIOPESFIopsefi", Toast.LENGTH_LONG).show();
         } else if (cubePickupRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(cubePickupRadiobtnGrp, this);
         } else if (climbRadiobtnGrp.getCheckedRadioButtonId() == -1) {
