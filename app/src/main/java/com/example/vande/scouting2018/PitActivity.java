@@ -108,11 +108,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.match_scouting:
-                startActivity(new Intent(this, AutonActivity.class));
-                return true;
-            case R.id.pit_scouting:
-                startActivity(new Intent(this, PitActivity.class));
+            case R.id.main_activity:
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.send_data:
                 startActivity(new Intent(this, SendDataActivity.class));

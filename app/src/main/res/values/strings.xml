@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">Scouting 2018</string>
 
+    <string name="sendData">Send Data</string>
+
+    <string name="submitInitials">Submit</string>
+
     <!--Auton Strings-->
     <string name="teamNumberHeading">Team Number</string>
     <string name="matchNumberHeading">Match Number</string>
