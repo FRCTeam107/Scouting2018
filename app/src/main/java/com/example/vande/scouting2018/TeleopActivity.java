@@ -54,9 +54,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @BindView(R.id.teleopCubesInScale_input_layout)
     public TextInputLayout teleopCubesInScaleInputLayout;
 
-    @BindView(R.id.scouterInitials_input_layout)
-    public TextInputLayout scouterInitialsInputLayout;
-
     @BindView(R.id.teleopCubesInExchange_input)
     public TextInputEditText teleopCubesInExchangeInput;
 
@@ -68,9 +65,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
     @BindView(R.id.teleopCubesInScale_input)
     public TextInputEditText teleopCubesInScaleInput;
-
-    @BindView(R.id.scouterInitials_input)
-    public TextInputEditText scouterInitialsInput;
 
     @BindView(R.id.cubePickup_RadiobtnGrp)
     public RadioGroup cubePickupRadiobtnGrp;
@@ -134,7 +128,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInOurSwitchInput.setOnKeyListener(this);
         teleopCubesInTheirSwitchInput.setOnKeyListener(this);
         teleopCubesInScaleInput.setOnKeyListener(this);
-        scouterInitialsInput.setOnKeyListener(this);
     }
 
     /*If this activity enters a paused state the data will be set to null*/
@@ -146,7 +139,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInOurSwitchInput.setOnKeyListener(null);
         teleopCubesInTheirSwitchInput.setOnKeyListener(null);
         teleopCubesInScaleInput.setOnKeyListener(null);
-        scouterInitialsInput.setOnKeyListener(null);
     }
 
     /* This method will display the options menu when the icon is pressed
@@ -164,11 +156,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.match_scouting:
-                startActivity(new Intent(this, AutonActivity.class));
-                return true;
-            case R.id.pit_scouting:
-                startActivity(new Intent(this, PitActivity.class));
+            case R.id.main_activity:
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.send_data:
                 startActivity(new Intent(this, SendDataActivity.class));
@@ -281,10 +270,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
                     case R.id.teleopCubesInScale_input:
                         teleopCubesInScaleInputLayout.setError(null);
                         break;
-
-                    case R.id.scouterInitials_input:
-                        scouterInitialsInputLayout.setError(null);
-                        break;
                 }
             }
         }
@@ -316,6 +301,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInScaleInputLayout))) {
             teleopCubesInScaleInputLayout.setError(getText(R.string.cubesInScaleError));
             ViewUtils.requestFocus(teleopCubesInScaleInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(ScouterInitialsActivity.getInitials())) {
+            Toast.makeText(this, "KSLEPIFOHIOPESFIopsefi", Toast.LENGTH_LONG).show();
         } else if (cubePickupRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(cubePickupRadiobtnGrp, this);
         } else if (climbRadiobtnGrp.getCheckedRadioButtonId() == -1) {
@@ -326,9 +313,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             ViewUtils.requestFocus(abilityToHelpClimbRadiobtnGrp, this);
         } else if (onPlatformRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(onPlatformRadiobtnGrp, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(scouterInitialsInputLayout))) {
-            scouterInitialsInputLayout.setError(getText(R.string.scouterInitialsError));
-            ViewUtils.requestFocus(scouterInitialsInputLayout, this);
         } else {
             allInputsPassed = true;
         }
@@ -363,7 +347,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
                 teleopDataStringList.add(String.valueOf(foulsChbx.isChecked()));
 
-                teleopDataStringList.add(getTextInputLayoutString(scouterInitialsInputLayout));
+                teleopDataStringList.add(ScouterInitialsActivity.getInitials());
 
                 String message = auton + "," + FormatStringUtils.addDelimiter(teleopDataStringList, ",") + "\n";
 
