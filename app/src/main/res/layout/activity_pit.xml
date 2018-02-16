@@ -295,28 +295,50 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pitClimbHelpNo" />
             </RadioGroup>
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/pit_programmingLanguage_input_Layout"
-                android:layout_width="0dp"
+
+            <TextView
+                android:id="@+id/pit_programmingLanguage_TextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:hint="@string/pitProgrammingLanguage"
-                app:errorEnabled="true"
+                android:text="@string/pitProgrammingLanguage"
+                app:layout_constraintLeft_toRightOf="parent"
+                app:layout_constraintRight_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pit_climbHelpBoolean_RadiobtnGrp"/>
+
+            <RadioGroup
+                android:id="@+id/pit_programmingLanguage_RadiobtnGrp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_climbHelpBoolean_RadiobtnGrp">
+                app:layout_constraintTop_toBottomOf="@id/pit_programmingLanguage_TextView">
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/pit_programmingLanguage_input"
-                    android:layout_width="match_parent"
+                <RadioButton
+                    android:id="@+id/pit_programmingLanguageJava_btn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
+                    android:text="@string/pitJava" />
+
+                <RadioButton
+                    android:id="@+id/pit_programmingLanguageCpp_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pitCpp" />
+
+                <RadioButton
+                    android:id="@+id/pit_programmingLanguageLabview_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pitLabview" />
+
+                <RadioButton
+                    android:id="@+id/pit_programmingLanguageOther_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pitOther" />
+            </RadioGroup>
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_arcadeGame_input_layout"
                 android:layout_width="0dp"
@@ -330,7 +352,7 @@
                 app:errorEnabled="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_programmingLanguage_input_Layout">
+                app:layout_constraintTop_toBottomOf="@id/pit_programmingLanguage_RadiobtnGrp">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/pit_arcadeGame_input"
