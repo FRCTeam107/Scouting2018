@@ -124,6 +124,12 @@
     <string name="pitTeleopTheirSwitch">Their switch</string>
     <string name="pitTeleopYourSwitch">Your switch</string>
     <string name="pitProgrammingLanguage">Programming Language</string>
+
+    <string name="pitJava">Java</string>
+    <string name="pitCpp">C++</string>
+    <string name="pitLabview">LabVIEW</string>
+    <string name="pitOther">Other</string>
+
     <string name="pitRobotArcadeGame">What old arcade game would your robot be in?</string>
     <string name="savePitButton">Save</string>
 
