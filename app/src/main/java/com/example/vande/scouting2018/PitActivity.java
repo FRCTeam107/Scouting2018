@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -227,8 +228,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             if (Environment.MEDIA_MOUNTED.equals(state)) {
                 File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
                 //create csv file
-                File file = new File(dir, "Pit.csv");
-
+                File file = new File(dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
 
                 pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
                 pitDataStringList.add(pitStaring_Radiobtn.getText());
