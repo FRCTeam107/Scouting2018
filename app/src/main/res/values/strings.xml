@@ -22,14 +22,14 @@
     <string name="notAttemptedBaseline">N/A</string>
 
     <string name="cubeInSwitchHeading">Cube in Switch</string>
-    <string name="successSwitch">Yes</string>
-    <string name="failSwitch">No</string>
+    <string name="successSwitch">Success</string>
+    <string name="failSwitch">Fail</string>
     <string name="notAttemptedSwitch">N/A</string>
     <string name="wrongSideSwitch">Wrong Side</string>
 
     <string name="cubeInScaleHeading">Cube in Scale</string>
-    <string name="successScale">Yes</string>
-    <string name="failScale">No</string>
+    <string name="successScale">Success</string>
+    <string name="failScale">Fail</string>
     <string name="notAttemptedScale">N/A</string>
     <string name="wrongSideScale">Wrong Side</string>
 
@@ -53,8 +53,8 @@
     <string name="cubePickupPortal">Portal</string>
 
     <string name="climbingHeading">Climb</string>
-    <string name="successClimb">Yes</string>
-    <string name="failClimb">No</string>
+    <string name="successClimb">Success</string>
+    <string name="failClimb">Fail</string>
     <string name="noClimb">N/A</string>
 
     <string name="climbTimeHeading">Climb Time</string>
@@ -64,8 +64,8 @@
     <string name="unableToHelpClimb">No</string>
 
     <string name="onPlatformHeading">On platform</string>
-    <string name="isOnPlatform">Yes</string>
-    <string name="isNotOnPlatform">No</string>
+    <string name="isOnPlatform">Success</string>
+    <string name="isNotOnPlatform">Fail</string>
     <string name="notAttemptedPlatform">N/A</string>
 
     <string name="defenseHeading">Defense</string>
