@@ -211,6 +211,9 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         intent.putExtra(AUTON_STRING_EXTRA, FormatStringUtils.addDelimiter(autonDataStringList, ","));
 
         startActivityForResult(intent, REQUEST_CODE);
+
+        teamNumberInputLayout.setError(null);
+        matchNumberInputLayout.setError(null);
     }
 
 

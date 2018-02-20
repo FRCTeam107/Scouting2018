@@ -369,6 +369,11 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             clearData(view);
             finish();
         }
+
+        teleopCubesInExchangeInputLayout.setError(null);
+        teleopCubesInOurSwitchInputLayout.setError(null);
+        teleopCubesInTheirSwitchInputLayout.setError(null);
+        teleopCubesInScaleInputLayout.setError(null);
     }
 
     /*The method will clear all the data in the text fields, checkboxes, and

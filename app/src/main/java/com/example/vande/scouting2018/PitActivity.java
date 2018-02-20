@@ -296,6 +296,13 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             clearData();
             pitTeamNumberInput.requestFocus();
         }
+
+        pitTeamNumberInputLayout.setError(null);
+        pitCubeNumberInSwitchInputLayout.setError(null);
+        pitCubeNumberInScaleInputLayout.setError(null);
+        pitCubeNumberInExchangeInputLayout.setError(null);
+        pitVaultPriorityInputLayout.setError(null);
+        pitArcadeGameInputLayout.setError(null);
     }
 
     public void takePhoto(View view) {
