@@ -215,13 +215,13 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
             ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout))) {
-            pitCubeNumberInSwitchInputLayout.setError(getText(R.string.pitCubeNumberError));
+            pitCubeNumberInSwitchInputLayout.setError(getText(R.string.pitCubeNumberInSwitchError));
             ViewUtils.requestFocus(pitCubeNumberInSwitchInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInScaleInputLayout))) {
-            pitCubeNumberInScaleInputLayout.setError(getText(R.string.pitCubeNumberError));
+            pitCubeNumberInScaleInputLayout.setError(getText(R.string.pitCubeNumberInScaleError));
             ViewUtils.requestFocus(pitCubeNumberInScaleInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout))) {
-            pitCubeNumberInExchangeInputLayout.setError(getText(R.string.pitCubeNumberError));
+            pitCubeNumberInExchangeInputLayout.setError(getText(R.string.pitCubeNumberInExchangeError));
             ViewUtils.requestFocus(pitCubeNumberInExchangeInputLayout, this);
         } else if (pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(pitStartingPositionRadiobtnGrp, this);

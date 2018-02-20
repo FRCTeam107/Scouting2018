@@ -139,7 +139,9 @@
 
     <!--Pit Error Strings-->
     <string name="pitTeamNumberError">Enter team number</string>
-    <string name="pitCubeNumberError">Enter average cube number</string>
+    <string name="pitCubeNumberInSwitchError">Enter average cube number in switch</string>
+    <string name="pitCubeNumberInScaleError">Enter average cube number in scale</string>
+    <string name="pitCubeNumberInExchangeError">Enter average cube number in exchange</string>
     <string name="pitVaultPriorityError">Enter vault priority</string>
     <string name="pitProgrammingLanguageError">Enter Programming Language</string>
     <string name="pitArcadeGameError">Enter arcade game</string>
