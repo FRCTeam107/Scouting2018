@@ -105,7 +105,9 @@
     <string name="pitDefenseSwitch">Switch</string>
     <string name="pitDefenseNo">None</string>
 
-    <string name="pitCubeNumber">Average Cube Number</string>
+    <string name="pitCubeNumberInSwitch">Avg # of cubes in switch</string>
+    <string name="pitCubeNumberInScale">Avg # of cubes in scale</string>
+    <string name="pitCubeNumberInExchange">Avg # of cubes in exchange</string>
 
     <string name="pitPickupBoolean">Pick up off the floor?</string>
     <string name="pitPickupYes">Yes</string>
@@ -137,7 +139,9 @@
 
     <!--Pit Error Strings-->
     <string name="pitTeamNumberError">Enter team number</string>
-    <string name="pitCubeNumberError">Enter average cube number</string>
+    <string name="pitCubeNumberInSwitchError">Enter average cube number in switch</string>
+    <string name="pitCubeNumberInScaleError">Enter average cube number in scale</string>
+    <string name="pitCubeNumberInExchangeError">Enter average cube number in exchange</string>
     <string name="pitVaultPriorityError">Enter vault priority</string>
     <string name="pitProgrammingLanguageError">Enter Programming Language</string>
     <string name="pitArcadeGameError">Enter arcade game</string>
