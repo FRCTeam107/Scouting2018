@@ -71,11 +71,23 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_pickupBoolean_RadiobtnGrp)
     public RadioGroup pitPickUpOffFloorRadioGrp;
 
-    @BindView(R.id.pit_cubeNumber_input_layout)
-    public TextInputLayout pitCubeNumberInputLayout;
+    @BindView(R.id.pit_cubeNumberInSwitch_input_layout)
+    public TextInputLayout pitCubeNumberInSwitchInputLayout;
 
-    @BindView(R.id.pit_cubeNumber_input)
-    public TextInputEditText pitCubeNumberInput;
+    @BindView(R.id.pit_cubeNumberInScale_input_layout)
+    public TextInputLayout pitCubeNumberInScaleInputLayout;
+
+    @BindView(R.id.pit_cubeNumberInExchange_input_layout)
+    public TextInputLayout pitCubeNumberInExchangeInputLayout;
+
+    @BindView(R.id.pit_cubeNumberInSwitch_input)
+    public TextInputEditText pitCubeNumberInSwitchInput;
+
+    @BindView(R.id.pit_cubeNumberInScale_input)
+    public TextInputEditText pitCubeNumberInScaleInput;
+
+    @BindView(R.id.pit_cubeNumberInExchange_input)
+    public TextInputEditText pitCubeNumberInExchangeInput;
 
     //TODO:Change this to checkbox???
     @BindView(R.id.pit_climbBoolean_RadiobtnGrp)
@@ -138,9 +150,10 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         super.onResume();
 
         pitTeamNumberInputLayout.setOnKeyListener(this);
-        pitCubeNumberInputLayout.setOnKeyListener(this);
+        pitCubeNumberInSwitchInputLayout.setOnKeyListener(this);
+        pitCubeNumberInScaleInputLayout.setOnKeyListener(this);
+        pitCubeNumberInExchangeInputLayout.setOnKeyListener(this);
         pitArcadeGameInputLayout.setOnKeyListener(this);
-
     }
 
 
@@ -149,7 +162,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         super.onPause();
 
         pitTeamNumberInputLayout.setOnKeyListener(null);
-        pitCubeNumberInputLayout.setOnKeyListener(null);
+        pitCubeNumberInSwitchInputLayout.setOnKeyListener(null);
+        pitCubeNumberInScaleInputLayout.setOnKeyListener(null);
+        pitCubeNumberInExchangeInputLayout.setOnKeyListener(null);
         pitArcadeGameInputLayout.setOnKeyListener(null);
     }
 
@@ -167,9 +182,18 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                         pitTeamNumberInputLayout.setError(null);
                         break;
 
-                    case R.id.pit_cubeNumber_input:
-                        pitCubeNumberInputLayout.setError(null);
+                    case R.id.pit_cubeNumberInSwitch_input:
+                        pitCubeNumberInSwitchInputLayout.setError(null);
                         break;
+
+                    case R.id.pit_cubeNumberInScale_input:
+                        pitCubeNumberInScaleInputLayout.setError(null);
+                        break;
+
+                    case R.id.pit_cubeNumberInExchange_input:
+                        pitCubeNumberInExchangeInputLayout.setError(null);
+                        break;
+
                     case R.id.pit_vaultPriority_input:
                         pitVaultPriorityInputLayout.setError(null);
                         break;
@@ -190,9 +214,15 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout)) || Integer.valueOf(getTextInputLayoutString(pitTeamNumberInputLayout)) == 0) {
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
             ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInputLayout))) {
-            pitCubeNumberInputLayout.setError(getText(R.string.pitCubeNumberError));
-            ViewUtils.requestFocus(pitCubeNumberInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout))) {
+            pitCubeNumberInSwitchInputLayout.setError(getText(R.string.pitCubeNumberError));
+            ViewUtils.requestFocus(pitCubeNumberInSwitchInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInScaleInputLayout))) {
+            pitCubeNumberInScaleInputLayout.setError(getText(R.string.pitCubeNumberError));
+            ViewUtils.requestFocus(pitCubeNumberInScaleInputLayout, this);
+        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout))) {
+            pitCubeNumberInExchangeInputLayout.setError(getText(R.string.pitCubeNumberError));
+            ViewUtils.requestFocus(pitCubeNumberInExchangeInputLayout, this);
         } else if (pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(pitStartingPositionRadiobtnGrp, this);
         } else if (pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId() == -1) {
@@ -234,7 +264,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                 pitDataStringList.add(pitStaring_Radiobtn.getText());
                 pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
                 pitDataStringList.add(pitDefenseType_Radiobtn.getText());
-                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInputLayout));
+                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout));
+                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInScaleInputLayout));
+                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout));
                 pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
                 pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
                 pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
@@ -325,7 +357,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         pitTeleopPreferenceRadiobtnGrp.clearCheck();
         pitDefenseTypeRadiobtnGrp.clearCheck();
 
-        pitCubeNumberInput.setText("");
+        pitCubeNumberInSwitchInput.setText("");
+        pitCubeNumberInScaleInput.setText("");
+        pitCubeNumberInExchangeInput.setText("");
 
         pitPickUpOffFloorRadioGrp.clearCheck();
 

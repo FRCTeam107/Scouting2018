@@ -105,7 +105,9 @@
     <string name="pitDefenseSwitch">Switch</string>
     <string name="pitDefenseNo">None</string>
 
-    <string name="pitCubeNumber">Average Cube Number</string>
+    <string name="pitCubeNumberInSwitch">Avg # of cubes in switch</string>
+    <string name="pitCubeNumberInScale">Avg # of cubes in scale</string>
+    <string name="pitCubeNumberInExchange">Avg # of cubes in exchange</string>
 
     <string name="pitPickupBoolean">Pick up off the floor?</string>
     <string name="pitPickupYes">Yes</string>
