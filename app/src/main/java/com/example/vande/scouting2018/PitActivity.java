@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -46,7 +50,7 @@ import utils.ViewUtils;
  * Created by Matt on 9/30/2017.
  */
 
-public class PitActivity extends AppCompatActivity implements View.OnKeyListener {
+public class PitActivity extends AppCompatActivity implements View.OnKeyListener, SensorEventListener {
     @BindView(R.id.pit_teamNumber_input_layout)
     public TextInputLayout pitTeamNumberInputLayout;
 
@@ -105,8 +109,14 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_arcadeGame_input)
     public TextInputEditText pitArcadeGameInput;
 
+    @BindView(R.id.take_photo_btn)
+    public Button takePhotoBtn;
+
     @BindView(R.id.save_pit_btn)
     public Button savePitBtn;
+
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
 
 
     private ArrayList<CharSequence> pitDataStringList;
@@ -123,6 +133,9 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         ButterKnife.bind(this);
 
         checkForPermissions();
+
+        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
 
     @Override
@@ -154,6 +167,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         pitCubeNumberInScaleInputLayout.setOnKeyListener(this);
         pitCubeNumberInExchangeInputLayout.setOnKeyListener(this);
         pitArcadeGameInputLayout.setOnKeyListener(this);
+
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
 
@@ -166,6 +181,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         pitCubeNumberInScaleInputLayout.setOnKeyListener(null);
         pitCubeNumberInExchangeInputLayout.setOnKeyListener(null);
         pitArcadeGameInputLayout.setOnKeyListener(null);
+
+        mSensorManager.unregisterListener(this);
     }
 
     @Override
@@ -390,5 +407,39 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
         final EditText editText = textInputLayout.getEditText();
         return editText != null && editText.getText() != null ? editText.getText().toString() : "";
+    }
+
+
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    float[] gravity = new float[3];
+    public void onSensorChanged(SensorEvent event) {
+        float alpha = 0.8f;
+        gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
+        gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
+        gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+
+        pitTeamNumberInputLayout.setRotation(event.values[0] + 5);
+
+        pitStartingPositionRadiobtnGrp.setRotation(event.values[0] + 5);
+        pitTeleopPreferenceRadiobtnGrp.setRotation(event.values[0] + 5);
+        pitDefenseTypeRadiobtnGrp.setRotation(event.values[0] + 5);
+
+        pitCubeNumberInSwitchInputLayout.setRotation(event.values[0] + 5);
+        pitCubeNumberInScaleInputLayout.setRotation(event.values[0] + 5);
+        pitCubeNumberInExchangeInputLayout.setRotation(event.values[0] + 5);
+
+        pitPickUpOffFloorRadioGrp.setRotation(event.values[0] + 5);
+
+        pitVaultPriorityInputLayout.setRotation(event.values[0] + 5);
+        pitClimbBooleanRadiobtnGrp.setRotation(event.values[0] + 5);
+        pitCanHelpClimbRadioGrp.setRotation(event.values[0] + 5);
+        pitProgrammingLanguageRadiobtnGrp.setRotation(event.values[0] + 5);
+
+        pitArcadeGameInputLayout.setRotation(event.values[0] + 5);
+
+        takePhotoBtn.setRotation(event.values[0] + 5);
+        savePitBtn.setRotation(event.values[0] + 5);
     }
 }

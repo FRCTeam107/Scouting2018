@@ -18,6 +18,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_teamNumber_input_layout"
+                android:rotation="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
@@ -41,6 +42,7 @@
 
             <TextView
                 android:id="@+id/pit_startingPosition_TextView"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitStartingPositionHeading"
@@ -49,6 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@id/pit_teamNumber_input_layout" />
             <RadioGroup
                 android:id="@+id/pit_startingPosition_RadiobtnGrp"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -84,6 +87,7 @@
 
             <TextView
                 android:id="@+id/pit_teleopPreference_TextView"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitTeleopPreference"
@@ -93,6 +97,7 @@
 
             <RadioGroup
                 android:id="@+id/pit_teleopPreference_RadiobtnGrp"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -122,6 +127,7 @@
 
             <TextView
                 android:id="@+id/pit_defenseType_TextView"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitDefenseType"
@@ -131,6 +137,7 @@
 
             <RadioGroup
                 android:id="@+id/pit_defenseType_RadiobtnGrp"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -158,6 +165,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_cubeNumberInSwitch_input_layout"
+                android:rotation="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
@@ -181,6 +189,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_cubeNumberInScale_input_layout"
+                android:rotation="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
@@ -204,6 +213,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_cubeNumberInExchange_input_layout"
+                android:rotation="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
@@ -227,6 +237,7 @@
 
             <TextView
                 android:id="@+id/pit_pickupBoolean_TextView"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitPickupBoolean"
@@ -236,6 +247,7 @@
 
             <RadioGroup
                 android:id="@+id/pit_pickupBoolean_RadiobtnGrp"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -258,6 +270,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_vaultPriority_input_layout"
+                android:rotation="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
@@ -281,6 +294,7 @@
 
             <TextView
                 android:id="@+id/pit_climbBoolean_TextView"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitClimbBoolean"
@@ -290,6 +304,7 @@
 
             <RadioGroup
                 android:id="@+id/pit_climbBoolean_RadiobtnGrp"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -313,6 +328,7 @@
 
             <TextView
                 android:id="@+id/pit_climbHelpBoolean_TextView"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitClimbHelp"
@@ -322,6 +338,7 @@
 
             <RadioGroup
                 android:id="@+id/pit_climbHelpBoolean_RadiobtnGrp"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -344,6 +361,7 @@
 
             <TextView
                 android:id="@+id/pit_programmingLanguage_TextView"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pitProgrammingLanguage"
@@ -353,6 +371,7 @@
 
             <RadioGroup
                 android:id="@+id/pit_programmingLanguage_RadiobtnGrp"
+                android:rotation="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -387,6 +406,7 @@
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pit_arcadeGame_input_layout"
+                android:rotation="5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
@@ -413,6 +433,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="takePhoto"
+                android:rotation="5"
                 android:text="@string/takePhotoButton"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -423,6 +444,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="savePitData"
+                android:rotation="5"
                 android:text="@string/savePitButton"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
