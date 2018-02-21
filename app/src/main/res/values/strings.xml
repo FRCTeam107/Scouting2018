@@ -118,8 +118,11 @@
     <string name="pitClimbYes">Yes</string>
     <string name="pitClimbNo">No</string>
     <string name="pitClimbHelp">Can you help alliance robots climb?</string>
-    <string name="pitClimbHelpYes">Yes</string>
+    <string name="pitClimbHelp1">1</string>
+    <string name="pitClimbHelp2">2</string>
     <string name="pitClimbHelpNo">No</string>
+
+    <string name="pitRobotComment">Extra Comments</string>
 
     <string name="pitTeleopPreference">Teleop Preference</string>
     <string name="pitTeleopScale">Scale</string>
