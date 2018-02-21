@@ -330,10 +330,16 @@
                 app:layout_constraintTop_toBottomOf="@id/pit_climbHelpBoolean_TextView">
 
                 <RadioButton
-                    android:id="@+id/pitClimbHelpYes_btn"
+                    android:id="@+id/pitClimbHelp1_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitClimbHelpYes" />
+                    android:text="@string/pitClimbHelp1" />
+
+                <RadioButton
+                    android:id="@+id/pitClimbHelp2_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pitClimbHelp2" />
 
                 <RadioButton
                     android:id="@+id/pitClimbHelpNo_btn"
@@ -408,6 +414,29 @@
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/pit_comments_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/pitRobotComment"
+                app:errorEnabled="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pit_arcadeGame_input_layout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/pit_comments_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
+
             <Button
                 android:id="@+id/take_photo_btn"
                 android:layout_width="0dp"
@@ -416,7 +445,7 @@
                 android:text="@string/takePhotoButton"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_arcadeGame_input_layout"/>
+                app:layout_constraintTop_toBottomOf="@id/pit_comments_input_layout"/>
 
             <Button
                 android:id="@+id/save_pit_btn"

@@ -105,6 +105,12 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_arcadeGame_input)
     public TextInputEditText pitArcadeGameInput;
 
+    @BindView(R.id.pit_comments_input_layout)
+    public TextInputLayout pitCommentInputLayout;
+
+    @BindView(R.id.pit_comments_input)
+    public TextInputEditText pitCommentInput;
+
     @BindView(R.id.save_pit_btn)
     public Button savePitBtn;
 
@@ -154,6 +160,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         pitCubeNumberInScaleInputLayout.setOnKeyListener(this);
         pitCubeNumberInExchangeInputLayout.setOnKeyListener(this);
         pitArcadeGameInputLayout.setOnKeyListener(this);
+        pitCommentInputLayout.setOnKeyListener(this);
     }
 
 
@@ -166,6 +173,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         pitCubeNumberInScaleInputLayout.setOnKeyListener(null);
         pitCubeNumberInExchangeInputLayout.setOnKeyListener(null);
         pitArcadeGameInputLayout.setOnKeyListener(null);
+        pitCommentInputLayout.setOnKeyListener(null);
     }
 
     @Override
@@ -273,6 +281,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                 pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
                 pitDataStringList.add(pitProgrammingLanguage_Radiobtn.getText());
                 pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
+                pitDataStringList.add(getTextInputLayoutString(pitCommentInputLayout));
 
 
                 String message = FormatStringUtils.addDelimiter(pitDataStringList, ",") + "\n";
