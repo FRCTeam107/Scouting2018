@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -78,7 +79,7 @@ public class SendDataActivity extends AppCompatActivity {
     public void sendMatchData(View view) {
         if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent(Intent.ACTION_SEND);
-            String file = "storage/emulated/0/Scouting/Match.csv";
+            String file = "storage/emulated/0/Scouting/Match" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv";
             intent.setType("text/plain");
             intent.setPackage("com.android.bluetooth");
             intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
@@ -89,7 +90,7 @@ public class SendDataActivity extends AppCompatActivity {
     public void sendPitData(View view) {
         if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent(Intent.ACTION_SEND);
-            String file = "storage/emulated/0/Scouting/Pit.csv";
+            String file = "storage/emulated/0/Scouting/Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv";
             intent.setType("text/plain");
             intent.setPackage("com.android.bluetooth");
             intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(file)));
