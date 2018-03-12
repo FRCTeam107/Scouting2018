@@ -306,6 +306,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             pitTeamNumberInput.requestFocus();
         }
 
+        pitDataStringList.clear();
+
         pitTeamNumberInputLayout.setError(null);
         pitCubeNumberInSwitchInputLayout.setError(null);
         pitCubeNumberInScaleInputLayout.setError(null);
@@ -387,6 +389,8 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         pitProgrammingLanguageRadiobtnGrp.clearCheck();
 
         pitArcadeGameInput.setText("");
+
+        pitCommentInput.setText("");
     }
 
     private void checkForPermissions() {
