@@ -66,8 +66,11 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @BindView(R.id.teleopCubesInScale_input)
     public TextInputEditText teleopCubesInScaleInput;
 
-    @BindView(R.id.cubePickup_RadiobtnGrp)
-    public RadioGroup cubePickupRadiobtnGrp;
+    @BindView(R.id.cubePickupFloor_checkBox)
+    public CheckBox cubePickupFloorCheckBox;
+
+    @BindView(R.id.cubePickupPortal_checkBox)
+    public CheckBox cubePickupPortalCheckBox;
 
     @BindView(R.id.climb_RadiobtnGrp)
     public RadioGroup climbRadiobtnGrp;
@@ -301,8 +304,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(teleopCubesInScaleInputLayout))) {
             teleopCubesInScaleInputLayout.setError(getText(R.string.cubesInScaleError));
             ViewUtils.requestFocus(teleopCubesInScaleInputLayout, this);
-        } else if (cubePickupRadiobtnGrp.getCheckedRadioButtonId() == -1) {
-            ViewUtils.requestFocus(cubePickupRadiobtnGrp, this);
         } else if (climbRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(climbRadiobtnGrp, this);
         } else if (defenseRadiobtnGrp.getCheckedRadioButtonId() == -1) {
@@ -318,7 +319,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
             return;
         }
 
-        final RadioButton cubePickup_Radiobtn = findViewById(cubePickupRadiobtnGrp.getCheckedRadioButtonId());
+        final String cubePickup = (cubePickupFloorCheckBox.isChecked() ? "Floor" : "") +
+                                    (cubePickupPortalCheckBox.isChecked() ? "Portal" : "");
         final RadioButton climb_Radiobtn = findViewById(climbRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton abilityToHelpClimb_Radiobtn = findViewById(abilityToHelpClimbRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton onPlatform_Radiobtn = findViewById(onPlatformRadiobtnGrp.getCheckedRadioButtonId());
@@ -336,7 +338,7 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
                 teleopDataStringList.add(getTextInputLayoutString(teleopCubesInTheirSwitchInputLayout));
                 teleopDataStringList.add(getTextInputLayoutString(teleopCubesInScaleInputLayout));
 
-                teleopDataStringList.add(cubePickup_Radiobtn.getText());
+                teleopDataStringList.add(cubePickup);
                 teleopDataStringList.add(climb_Radiobtn.getText());
                 teleopDataStringList.add(abilityToHelpClimb_Radiobtn.getText());
                 teleopDataStringList.add(onPlatform_Radiobtn.getText());
@@ -384,7 +386,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         teleopCubesInTheirSwitchInput.setText("" + teleopCubesInTheirSwitch);
         teleopCubesInScaleInput.setText("" + teleopCubesInScale);
 
-        cubePickupRadiobtnGrp.clearCheck();
+        cubePickupPortalCheckBox.setChecked(false);
+        cubePickupFloorCheckBox.setChecked(false);
+
         climbRadiobtnGrp.clearCheck();
         abilityToHelpClimbRadiobtnGrp.clearCheck();
         onPlatformRadiobtnGrp.clearCheck();

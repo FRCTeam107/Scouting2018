@@ -23,7 +23,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -59,8 +61,17 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_vaultPriority_input)
     public TextInputEditText pitVaultPriorityInput;
 
-    @BindView(R.id.pit_startingPosition_RadiobtnGrp)
-    public RadioGroup pitStartingPositionRadiobtnGrp;
+    @BindView(R.id.pit_startingPosition_layout)
+    public LinearLayout pitStartingPositionLayout;
+
+    @BindView(R.id.pitStartingPositionLeft_btn)
+    public CheckBox pitStartingPositionLeft;
+
+    @BindView(R.id.pitStartingPositionRight_btn)
+    public CheckBox pitStartingPositionRight;
+
+    @BindView(R.id.pitStartingPositionMiddle_btn)
+    public CheckBox pitStartingPositionMiddle;
 
     @BindView(R.id.pit_teleopPreference_RadiobtnGrp)
     public RadioGroup pitTeleopPreferenceRadiobtnGrp;
@@ -221,7 +232,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout)) || Integer.valueOf(getTextInputLayoutString(pitTeamNumberInputLayout)) == 0) {
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
-            ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
+            ViewUtils.requestFocus( pitTeamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout))) {
             pitCubeNumberInSwitchInputLayout.setError(getText(R.string.pitCubeNumberInSwitchError));
             ViewUtils.requestFocus(pitCubeNumberInSwitchInputLayout, this);
@@ -231,8 +242,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout))) {
             pitCubeNumberInExchangeInputLayout.setError(getText(R.string.pitCubeNumberInExchangeError));
             ViewUtils.requestFocus(pitCubeNumberInExchangeInputLayout, this);
-        } else if (pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId() == -1) {
-            ViewUtils.requestFocus(pitStartingPositionRadiobtnGrp, this);
         } else if (pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(pitTeleopPreferenceRadiobtnGrp, this);
         } else if (pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId() == -1) {
@@ -254,7 +263,12 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             return;
         }
 
-        final RadioButton pitStaring_Radiobtn = findViewById(pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId());
+        //final RadioButton pitStaring_Radiobtn = findViewById(pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId());
+
+        final String startingPositions = (pitStartingPositionLeft.isChecked() ? "Left" : "") +
+                (pitStartingPositionMiddle.isChecked() ? "Middle" : "") +
+                (pitStartingPositionRight.isChecked() ? "Right" : "");
+
         final RadioButton pitTeleopPreference_Radiobtn = findViewById(pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton pitDefenseType_Radiobtn = findViewById(pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton pitClimbBoolean_Radiobtn = findViewById(pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId());
@@ -269,7 +283,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                 File file = new File(dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
 
                 pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
-                pitDataStringList.add(pitStaring_Radiobtn.getText());
+                pitDataStringList.add(startingPositions);
                 pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
                 pitDataStringList.add(pitDefenseType_Radiobtn.getText());
                 pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout));
@@ -371,7 +385,10 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     public void clearData() {
         pitTeamNumberInput.setText("");
 
-        pitStartingPositionRadiobtnGrp.clearCheck();
+        pitStartingPositionLeft.setChecked(false);
+        pitStartingPositionMiddle.setChecked(false);
+        pitStartingPositionRight.setChecked(false);
+
         pitTeleopPreferenceRadiobtnGrp.clearCheck();
         pitDefenseTypeRadiobtnGrp.clearCheck();
 

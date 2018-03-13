@@ -127,8 +127,7 @@
 
     <string name="pitTeleopPreference">Teleop Preference</string>
     <string name="pitTeleopScale">Scale</string>
-    <string name="pitTeleopTheirSwitch">Their switch</string>
-    <string name="pitTeleopYourSwitch">Your switch</string>
+    <string name="pitTeleopSwitch">Switch</string>
     <string name="pitProgrammingLanguage">Programming Language</string>
 
     <string name="pitJava">Java</string>

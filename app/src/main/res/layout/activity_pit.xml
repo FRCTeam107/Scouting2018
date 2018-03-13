@@ -47,40 +47,34 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/pit_teamNumber_input_layout" />
-            <RadioGroup
-                android:id="@+id/pit_startingPosition_RadiobtnGrp"
+
+            <LinearLayout
+                android:id="@+id/pit_startingPosition_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/pit_startingPosition_TextView">
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/pitStartingPositionLeft_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pitStartingPositionLeft" />
 
-                <RadioButton
-                    android:id="@+id/pitStartingPositionRight_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pitStartingPositionRight" />
-
-                <RadioButton
+                <CheckBox
                     android:id="@+id/pitStartingPositionMiddle_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pitStartingPositionMiddle" />
 
-                <RadioButton
-                    android:id="@+id/pitStartingPositionAll_btn"
+                <CheckBox
+                    android:id="@+id/pitStartingPositionRight_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitStartingPositionAll" />
+                    android:text="@string/pitStartingPositionRight" />
 
-            </RadioGroup>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/pit_teleopPreference_TextView"
@@ -89,7 +83,7 @@
                 android:text="@string/pitTeleopPreference"
                 app:layout_constraintLeft_toRightOf="parent"
                 app:layout_constraintRight_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pit_startingPosition_RadiobtnGrp"/>
+                app:layout_constraintTop_toBottomOf="@id/pit_startingPosition_layout"/>
 
             <RadioGroup
                 android:id="@+id/pit_teleopPreference_RadiobtnGrp"
@@ -107,16 +101,10 @@
                     android:text="@string/pitTeleopScale" />
 
                 <RadioButton
-                    android:id="@+id/pitTeleopYourSwitch_btn"
+                    android:id="@+id/pitTeleopSwitch_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitTeleopYourSwitch" />
-
-                <RadioButton
-                    android:id="@+id/pitTeleopTheirSwitch_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pitTeleopTheirSwitch" />
+                    android:text="@string/pitTeleopSwitch" />
 
             </RadioGroup>
 
