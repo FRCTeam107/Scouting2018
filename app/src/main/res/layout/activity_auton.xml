@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/teamNumber_input_layout"
+                android:id="@+id/matchNumber_input_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
@@ -26,14 +26,14 @@
                 android:layout_marginRight="18dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="8dp"
-                android:hint="@string/teamNumberHeading"
+                android:hint="@string/matchNumberHeading"
                 app:errorEnabled="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/teamNumber_input"
+                    android:id="@+id/matchNumber_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -42,21 +42,21 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/matchNumber_input_layout"
+                android:id="@+id/teamNumber_input_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
                 android:layout_marginStart="18dp"
-                android:hint="@string/matchNumberHeading"
+                android:hint="@string/teamNumberHeading"
                 app:errorEnabled="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/teamNumber_input_layout">
+                app:layout_constraintTop_toBottomOf="@+id/matchNumber_input_layout">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/matchNumber_input"
+                    android:id="@+id/teamNumber_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -72,7 +72,7 @@
                 android:text="@string/startingLocationHeading"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/matchNumber_input_layout"
+                app:layout_constraintTop_toBottomOf="@+id/teamNumber_input_layout"
                 tools:layout_editor_absoluteX="0dp" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
