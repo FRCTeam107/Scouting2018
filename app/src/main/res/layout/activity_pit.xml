@@ -101,16 +101,10 @@
                     android:text="@string/pitTeleopScale" />
 
                 <RadioButton
-                    android:id="@+id/pitTeleopYourSwitch_btn"
+                    android:id="@+id/pitTeleopSwitch_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pitTeleopYourSwitch" />
-
-                <RadioButton
-                    android:id="@+id/pitTeleopTheirSwitch_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pitTeleopTheirSwitch" />
+                    android:text="@string/pitTeleopSwitch" />
 
             </RadioGroup>
 

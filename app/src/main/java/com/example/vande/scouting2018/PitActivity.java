@@ -232,7 +232,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout)) || Integer.valueOf(getTextInputLayoutString(pitTeamNumberInputLayout)) == 0) {
             pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
-            ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
+            ViewUtils.requestFocus( pitTeamNumberInputLayout, this);
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout))) {
             pitCubeNumberInSwitchInputLayout.setError(getText(R.string.pitCubeNumberInSwitchError));
             ViewUtils.requestFocus(pitCubeNumberInSwitchInputLayout, this);
@@ -242,8 +242,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout))) {
             pitCubeNumberInExchangeInputLayout.setError(getText(R.string.pitCubeNumberInExchangeError));
             ViewUtils.requestFocus(pitCubeNumberInExchangeInputLayout, this);
-        } else if (!(pitStartingPositionLeft.isChecked() || pitStartingPositionRight.isChecked() || pitStartingPositionMiddle.isChecked())) {
-            ViewUtils.requestFocus(pitStartingPositionLayout, this);
         } else if (pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId() == -1) {
             ViewUtils.requestFocus(pitTeleopPreferenceRadiobtnGrp, this);
         } else if (pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId() == -1) {
