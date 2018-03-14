@@ -99,7 +99,8 @@ public class SendDataActivity extends AppCompatActivity {
                         builder.append(line + '\n');
                     }
                 }
-                fileOutputStream = new FileOutputStream(new File(dir,"new.csv"), true);
+                fileOutputStream = new FileOutputStream(new File(dir,"new.csv"), false);
+                fileOutputStream.write("teamNumber,matchNumber,startingLocation,baseline,autoCubesInSwitch,autoCubesInScale,numberOfCubesInExchange,numberOfCubesInTheirSwitch,numberOfCubesInOpSwitch,NumberOfCubesInScale,cubePickup,climb,canHelpOthersClimb,onPlatform,defense,fouls,scouterInitials".getBytes());
                 fileOutputStream.write(builder.toString().getBytes());
                 fileOutputStream.close();
 
