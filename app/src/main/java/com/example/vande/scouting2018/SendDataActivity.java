@@ -25,6 +25,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -74,7 +76,38 @@ public class SendDataActivity extends AppCompatActivity {
         }
     }
 
+    public void concatenateData(View view) {
+        if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE) &&
+                PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            String dir = "storage/emulated/0/Scouting/";
 
+            File folder = new File(dir);
+            File[] files = folder.listFiles();
+
+            StringBuilder builder = new StringBuilder();
+            FileReader fileReader;
+            BufferedReader bufferedReader;
+            FileOutputStream fileOutputStream;
+
+            try {
+                for (int i = 0; i < files.length; i++) {
+                    fileReader = new FileReader(files[i]);
+                    bufferedReader = new BufferedReader(fileReader);
+
+                    String line;
+                    while((line = bufferedReader.readLine()) != null) {
+                        builder.append(line + '\n');
+                    }
+                }
+                fileOutputStream = new FileOutputStream(new File(dir,"new.csv"), true);
+                fileOutputStream.write(builder.toString().getBytes());
+                fileOutputStream.close();
+
+            } catch(IOException e) {
+                Log.d("Scouting", e.getMessage());
+            }
+        }
+    }
 
     public void sendMatchData(View view) {
         if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
