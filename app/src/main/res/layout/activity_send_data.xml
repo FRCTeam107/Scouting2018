@@ -4,20 +4,26 @@
     android:layout_height="match_parent">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Match Data"
         android:onClick="sendMatchData"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Pit Data"
         android:onClick="sendPitData"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Robot Photos"
         android:onClick="sendRobotPhotos"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Concatenate Data"
+        android:onClick="concatenateData"/>
 
 </LinearLayout>
