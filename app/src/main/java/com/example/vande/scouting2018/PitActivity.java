@@ -48,7 +48,7 @@ import utils.ViewUtils;
  * Created by Matt on 9/30/2017.
  */
 
-public class PitActivity extends AppCompatActivity implements View.OnKeyListener {
+public class PitActivity extends ScoutingActivity {
     @BindView(R.id.pit_teamNumber_input_layout)
     public TextInputLayout pitTeamNumberInputLayout;
 
@@ -125,209 +125,53 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.save_pit_btn)
     public Button savePitBtn;
 
-
-    private ArrayList<CharSequence> pitDataStringList;
-//    private ArrayList<CharSequence> headingDataStringList;
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initialize() {
 
-        setContentView(R.layout.activity_pit);
-        pitDataStringList = new ArrayList<>();
+        addItem(R.id.teamNumber_input_layout, pitTeamNumberInputLayout);
+        addItem(R.id.teamNumber_input, pitTeamNumberInput);
 
-        ButterKnife.bind(this);
+        addItem(String.valueOf(R.id.startingLocation_RadiobtnGrp), pitStartingPositionLeft, pitStartingPositionMiddle, pitStartingPositionRight);
 
-        checkForPermissions();
-    }
+        addItem(R.id.pit_teleopPreference_RadiobtnGrp, pitTeleopPreferenceRadiobtnGrp);
+        addItem(R.id.defense_RadiobtnGrp, pitDefenseTypeRadiobtnGrp);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
+        addItem(R.id.pit_cubeNumberInSwitch_input_layout, pitCubeNumberInSwitchInputLayout);
+        addItem(R.id.pit_cubeNumberInSwitch_input, pitCubeNumberInSwitchInput);
+        addItem(R.id.pit_cubeNumberInScale_input_layout, pitCubeNumberInScaleInputLayout);
+        addItem(R.id.pit_cubeNumberInScale_input, pitCubeNumberInScaleInput);
+        addItem(R.id.pit_cubeNumberInExchange_input_layout, pitCubeNumberInExchangeInputLayout);
+        addItem(R.id.pit_cubeNumberInExchange_input, pitCubeNumberInExchangeInput);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+        addItem(R.id.pit_pickupBoolean_RadiobtnGrp, pitPickUpOffFloorRadioGrp);
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+        addItem(R.id.pit_vaultPriority_input_layout, pitVaultPriorityInputLayout);
+        addItem(R.id.pit_vaultPriority_input, pitVaultPriorityInput);
 
-        pitTeamNumberInputLayout.setOnKeyListener(this);
-        pitCubeNumberInSwitchInputLayout.setOnKeyListener(this);
-        pitCubeNumberInScaleInputLayout.setOnKeyListener(this);
-        pitCubeNumberInExchangeInputLayout.setOnKeyListener(this);
-        pitArcadeGameInputLayout.setOnKeyListener(this);
-        pitCommentInputLayout.setOnKeyListener(this);
-    }
+        addItem(R.id.climb_RadiobtnGrp, pitClimbBooleanRadiobtnGrp);
+        addItem(R.id.pit_climbHelpBoolean_RadiobtnGrp, pitCanHelpClimbRadioGrp);
+        addItem(R.id.pit_programmingLanguage_RadiobtnGrp, pitProgrammingLanguageRadiobtnGrp);
+
+        addItem(R.id.pit_arcadeGame_input_layout, pitArcadeGameInputLayout);
+        addItem(R.id.pit_arcadeGame_input, pitArcadeGameInput);
+        addItem(R.id.pit_comments_input_layout, pitCommentInputLayout);
+        addItem(R.id.pit_comments_input, pitCommentInput);
 
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        pitTeamNumberInputLayout.setOnKeyListener(null);
-        pitCubeNumberInSwitchInputLayout.setOnKeyListener(null);
-        pitCubeNumberInScaleInputLayout.setOnKeyListener(null);
-        pitCubeNumberInExchangeInputLayout.setOnKeyListener(null);
-        pitArcadeGameInputLayout.setOnKeyListener(null);
-        pitCommentInputLayout.setOnKeyListener(null);
-    }
-
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-        if (keyCode != KeyEvent.KEYCODE_SPACE && keyCode != KeyEvent.KEYCODE_TAB) {
-            TextInputEditText inputEditText = (TextInputEditText) v;
-
-            if (inputEditText != null) {
-
-                switch (inputEditText.getId()) {
-
-                    case R.id.pit_teamNumber_input:
-                        pitTeamNumberInputLayout.setError(null);
-                        break;
-
-                    case R.id.pit_cubeNumberInSwitch_input:
-                        pitCubeNumberInSwitchInputLayout.setError(null);
-                        break;
-
-                    case R.id.pit_cubeNumberInScale_input:
-                        pitCubeNumberInScaleInputLayout.setError(null);
-                        break;
-
-                    case R.id.pit_cubeNumberInExchange_input:
-                        pitCubeNumberInExchangeInputLayout.setError(null);
-                        break;
-
-                    case R.id.pit_vaultPriority_input:
-                        pitVaultPriorityInputLayout.setError(null);
-                        break;
-
-                    case R.id.pit_arcadeGame_input:
-                        pitArcadeGameInputLayout.setError(null);
-                        break;
-                }
-            }
-        }
-        return false;
-    }
-
-    public void savePitData(View view) throws IOException {
-        String state = Environment.getExternalStorageState();
-        boolean allInputsPassed = false;
-
-        if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitTeamNumberInputLayout)) || Integer.valueOf(getTextInputLayoutString(pitTeamNumberInputLayout)) == 0) {
-            pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
-            ViewUtils.requestFocus( pitTeamNumberInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout))) {
-            pitCubeNumberInSwitchInputLayout.setError(getText(R.string.pitCubeNumberInSwitchError));
-            ViewUtils.requestFocus(pitCubeNumberInSwitchInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInScaleInputLayout))) {
-            pitCubeNumberInScaleInputLayout.setError(getText(R.string.pitCubeNumberInScaleError));
-            ViewUtils.requestFocus(pitCubeNumberInScaleInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout))) {
-            pitCubeNumberInExchangeInputLayout.setError(getText(R.string.pitCubeNumberInExchangeError));
-            ViewUtils.requestFocus(pitCubeNumberInExchangeInputLayout, this);
-        } else if (pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId() == -1) {
-            ViewUtils.requestFocus(pitTeleopPreferenceRadiobtnGrp, this);
-        } else if (pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId() == -1) {
-            ViewUtils.requestFocus(pitDefenseTypeRadiobtnGrp, this);
-        } else if (pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId() == -1) {
-            ViewUtils.requestFocus(pitClimbBooleanRadiobtnGrp, this);
-        } else if (pitCanHelpClimbRadioGrp.getCheckedRadioButtonId() == -1) {
-            ViewUtils.requestFocus(pitCanHelpClimbRadioGrp, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitVaultPriorityInputLayout))) {
-            pitVaultPriorityInputLayout.setError(getText(R.string.pitVaultPriorityError));
-            ViewUtils.requestFocus(pitVaultPriorityInputLayout, this);
-        } else if (StringUtils.isEmptyOrNull(getTextInputLayoutString(pitArcadeGameInputLayout))) {
-            pitArcadeGameInputLayout.setError(getText(R.string.pitArcadeGameError));
-            ViewUtils.requestFocus(pitArcadeGameInputLayout, this);
-        } else {
-            allInputsPassed = true;
-        }
-        if (!allInputsPassed) {
-            return;
-        }
-
-        //final RadioButton pitStaring_Radiobtn = findViewById(pitStartingPositionRadiobtnGrp.getCheckedRadioButtonId());
-
-        final String startingPositions = (pitStartingPositionLeft.isChecked() ? "Left" : "") +
-                (pitStartingPositionMiddle.isChecked() ? "Middle" : "") +
-                (pitStartingPositionRight.isChecked() ? "Right" : "");
-
-        final RadioButton pitTeleopPreference_Radiobtn = findViewById(pitTeleopPreferenceRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton pitDefenseType_Radiobtn = findViewById(pitDefenseTypeRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton pitClimbBoolean_Radiobtn = findViewById(pitClimbBooleanRadiobtnGrp.getCheckedRadioButtonId());
-        final RadioButton pitPickUpOffFloor_Radiobtn = findViewById(pitPickUpOffFloorRadioGrp.getCheckedRadioButtonId());
-        final RadioButton pitCanHelpClimb_Radiobtn = findViewById(pitCanHelpClimbRadioGrp.getCheckedRadioButtonId());
-        final RadioButton pitProgrammingLanguage_Radiobtn = findViewById(pitProgrammingLanguageRadiobtnGrp.getCheckedRadioButtonId());
-
-        if(PermissionUtils.getPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            if (Environment.MEDIA_MOUNTED.equals(state)) {
-                File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting");
-                //create csv file
-                File file = new File(dir, "Pit" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID) + ".csv");
-
-                pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
-                pitDataStringList.add(startingPositions);
-                pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
-                pitDataStringList.add(pitDefenseType_Radiobtn.getText());
-                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout));
-                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInScaleInputLayout));
-                pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout));
-                pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
-                pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
-                pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
-                pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
-                pitDataStringList.add(pitProgrammingLanguage_Radiobtn.getText());
-                pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
-                pitDataStringList.add(getTextInputLayoutString(pitCommentInputLayout));
-
-
-                String message = FormatStringUtils.addDelimiter(pitDataStringList, ",") + "\n";
-
-
-                //Output data to file
-                try {
-                    FileOutputStream fileOutputStream = new FileOutputStream(file, true);
-                    fileOutputStream.write(message.getBytes());
-                    fileOutputStream.close();
-
-                    Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_LONG).show();
-                } catch (IOException e) {
-                    Toast.makeText(getApplicationContext(), "IOException! Go talk to the programmers!", Toast.LENGTH_LONG).show();
-                    Log.d("Scouting", e.getMessage());
-                }
-            } else {
-                Toast.makeText(getApplicationContext(), "SD card not found", Toast.LENGTH_LONG).show();
-            }
-
-            clearData();
-            pitTeamNumberInput.requestFocus();
-        }
-
-        pitDataStringList.clear();
-
-        pitTeamNumberInputLayout.setError(null);
-        pitCubeNumberInSwitchInputLayout.setError(null);
-        pitCubeNumberInScaleInputLayout.setError(null);
-        pitCubeNumberInExchangeInputLayout.setError(null);
-        pitVaultPriorityInputLayout.setError(null);
-        pitArcadeGameInputLayout.setError(null);
+        /*pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
+        pitDataStringList.add(startingPositions);
+        pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
+        pitDataStringList.add(pitDefenseType_Radiobtn.getText());
+        pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout));
+        pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInScaleInputLayout));
+        pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout));
+        pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
+        pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
+        pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
+        pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
+        pitDataStringList.add(pitProgrammingLanguage_Radiobtn.getText());
+        pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
+        pitDataStringList.add(getTextInputLayoutString(pitCommentInputLayout));*/
     }
 
     public void takePhoto(View view) {
@@ -379,35 +223,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                 ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
             }
         }
-        clearData();
-    }
-
-    public void clearData() {
-        pitTeamNumberInput.setText("");
-
-        pitStartingPositionLeft.setChecked(false);
-        pitStartingPositionMiddle.setChecked(false);
-        pitStartingPositionRight.setChecked(false);
-
-        pitTeleopPreferenceRadiobtnGrp.clearCheck();
-        pitDefenseTypeRadiobtnGrp.clearCheck();
-
-        pitCubeNumberInSwitchInput.setText("");
-        pitCubeNumberInScaleInput.setText("");
-        pitCubeNumberInExchangeInput.setText("");
-
-        pitPickUpOffFloorRadioGrp.clearCheck();
-
-        pitVaultPriorityInput.setText("");
-
-        pitCanHelpClimbRadioGrp.clearCheck();
-        pitCanHelpClimbRadioGrp.clearCheck();
-
-        pitProgrammingLanguageRadiobtnGrp.clearCheck();
-
-        pitArcadeGameInput.setText("");
-
-        pitCommentInput.setText("");
     }
 
     private void checkForPermissions() {
@@ -415,10 +230,5 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
         if (cameraPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
         }
-    }
-
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }

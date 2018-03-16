@@ -439,7 +439,7 @@
                 android:id="@+id/save_pit_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:onClick="savePitData"
+                android:onClick="saveData"
                 android:text="@string/savePitButton"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
