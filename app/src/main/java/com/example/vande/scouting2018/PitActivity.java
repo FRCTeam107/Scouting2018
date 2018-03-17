@@ -6,40 +6,28 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import utils.FormatStringUtils;
 import utils.PermissionUtils;
 import utils.StringUtils;
 import utils.ViewUtils;
@@ -133,7 +121,7 @@ public class PitActivity extends ScoutingActivity {
         addItem(R.id.pit_teamNumber_input_layout, pitTeamNumberInputLayout);
         addItem(R.id.pit_teamNumber_input, pitTeamNumberInput);
 
-        addItem(String.valueOf(R.id.startingLocation_RadiobtnGrp), pitStartingPositionLeft, pitStartingPositionMiddle, pitStartingPositionRight);
+        addCheckBoxes(String.valueOf(R.id.pit_startingPosition_TextView), pitStartingPositionLeft, pitStartingPositionMiddle, pitStartingPositionRight);
 
         addItem(R.id.pit_teleopPreference_RadiobtnGrp, pitTeleopPreferenceRadiobtnGrp);
         addItem(R.id.pit_defenseType_RadiobtnGrp, pitDefenseTypeRadiobtnGrp);
@@ -158,22 +146,6 @@ public class PitActivity extends ScoutingActivity {
         addItem(R.id.pit_arcadeGame_input, pitArcadeGameInput);
         addItem(R.id.pit_comments_input_layout, pitCommentInputLayout);
         addItem(R.id.pit_comments_input, pitCommentInput);
-
-
-        /*pitDataStringList.add(getTextInputLayoutString(pitTeamNumberInputLayout));
-        pitDataStringList.add(startingPositions);
-        pitDataStringList.add(pitTeleopPreference_Radiobtn.getText());
-        pitDataStringList.add(pitDefenseType_Radiobtn.getText());
-        pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInSwitchInputLayout));
-        pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInScaleInputLayout));
-        pitDataStringList.add(getTextInputLayoutString(pitCubeNumberInExchangeInputLayout));
-        pitDataStringList.add(pitPickUpOffFloor_Radiobtn.getText());
-        pitDataStringList.add(getTextInputLayoutString(pitVaultPriorityInputLayout));
-        pitDataStringList.add(pitClimbBoolean_Radiobtn.getText());
-        pitDataStringList.add(pitCanHelpClimb_Radiobtn.getText());
-        pitDataStringList.add(pitProgrammingLanguage_Radiobtn.getText());
-        pitDataStringList.add(getTextInputLayoutString(pitArcadeGameInputLayout));
-        pitDataStringList.add(getTextInputLayoutString(pitCommentInputLayout));*/
     }
 
     public void takePhoto(View view) {

@@ -75,7 +75,7 @@
     <string name="receivedFoulsDefense">Fouled</string>
     <string name="noDefense">N/A</string>
 
-    <string name="fouls">Fouls</string>
+    <string name="fouls">Fouled</string>
     <string name="nextButton">Move To Teleop</string>
 
     <string name="scouterInitials">Scouter Initials</string>

@@ -44,9 +44,14 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
 
     private ArrayList<Object> orderedDataList;
 
+    public boolean saveInitials;
+    public String previousActivityData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        previousActivityData = "";
 
         stringList = new ArrayList<String>();
 
@@ -74,7 +79,7 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
         }
     }
 
-    public void addItem(String s, CheckBox... checkBoxes) {
+    public void addCheckBoxes(String s, CheckBox... checkBoxes) {
         ArrayList<CheckBox> checkBoxList = new ArrayList(Arrays.asList(checkBoxes));
         checkBoxMap.put(s, checkBoxList);
         orderedDataList.add(checkBoxList);
@@ -160,10 +165,11 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
                     }
                 }
 
-                String message = FormatStringUtils.addDelimiter(stringList, ",") + "\n";
+                if(saveInitials)
+                    stringList.add(ScouterInitialsActivity.getInitials());
 
+                String message = previousActivityData + ',' + FormatStringUtils.addDelimiter(stringList, ",") + "\n";
 
-                //Output data to file
                 try {
                     FileOutputStream fileOutputStream = new FileOutputStream(file, true);
                     fileOutputStream.write(message.getBytes());
@@ -179,6 +185,8 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
             }
 
             clearData();
+        } else {
+            Toast.makeText(getApplicationContext(), "Now that you have permissions, try saving again.", Toast.LENGTH_LONG).show();
         }
 
         stringList.clear();
