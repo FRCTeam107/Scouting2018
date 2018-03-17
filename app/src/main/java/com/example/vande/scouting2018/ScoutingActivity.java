@@ -168,7 +168,10 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
                 if(saveInitials)
                     stringList.add(ScouterInitialsActivity.getInitials());
 
-                String message = previousActivityData + ',' + FormatStringUtils.addDelimiter(stringList, ",") + "\n";
+                String message = FormatStringUtils.addDelimiter(stringList, ",") + "\n";
+
+                if(previousActivityData.length() > 0)
+                    message = previousActivityData + ',' + message;
 
                 try {
                     FileOutputStream fileOutputStream = new FileOutputStream(file, true);
