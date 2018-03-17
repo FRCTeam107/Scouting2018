@@ -127,14 +127,16 @@ public class PitActivity extends ScoutingActivity {
 
     @Override
     public void initialize() {
+        setContentView(R.layout.activity_pit);
+        ButterKnife.bind(this);
 
-        addItem(R.id.teamNumber_input_layout, pitTeamNumberInputLayout);
-        addItem(R.id.teamNumber_input, pitTeamNumberInput);
+        addItem(R.id.pit_teamNumber_input_layout, pitTeamNumberInputLayout);
+        addItem(R.id.pit_teamNumber_input, pitTeamNumberInput);
 
         addItem(String.valueOf(R.id.startingLocation_RadiobtnGrp), pitStartingPositionLeft, pitStartingPositionMiddle, pitStartingPositionRight);
 
         addItem(R.id.pit_teleopPreference_RadiobtnGrp, pitTeleopPreferenceRadiobtnGrp);
-        addItem(R.id.defense_RadiobtnGrp, pitDefenseTypeRadiobtnGrp);
+        addItem(R.id.pit_defenseType_RadiobtnGrp, pitDefenseTypeRadiobtnGrp);
 
         addItem(R.id.pit_cubeNumberInSwitch_input_layout, pitCubeNumberInSwitchInputLayout);
         addItem(R.id.pit_cubeNumberInSwitch_input, pitCubeNumberInSwitchInput);
@@ -148,7 +150,7 @@ public class PitActivity extends ScoutingActivity {
         addItem(R.id.pit_vaultPriority_input_layout, pitVaultPriorityInputLayout);
         addItem(R.id.pit_vaultPriority_input, pitVaultPriorityInput);
 
-        addItem(R.id.climb_RadiobtnGrp, pitClimbBooleanRadiobtnGrp);
+        addItem(R.id.pit_climbBoolean_RadiobtnGrp, pitClimbBooleanRadiobtnGrp);
         addItem(R.id.pit_climbHelpBoolean_RadiobtnGrp, pitCanHelpClimbRadioGrp);
         addItem(R.id.pit_programmingLanguage_RadiobtnGrp, pitProgrammingLanguageRadiobtnGrp);
 

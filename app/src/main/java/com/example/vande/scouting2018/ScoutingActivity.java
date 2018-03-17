@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -46,9 +47,6 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pit);
-
-        ButterKnife.bind(this);
 
         stringList = new ArrayList<String>();
 
