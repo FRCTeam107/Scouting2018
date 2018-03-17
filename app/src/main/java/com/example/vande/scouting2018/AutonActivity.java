@@ -30,7 +30,7 @@ import utils.FormatStringUtils;
 import utils.StringUtils;
 import utils.ViewUtils;
 
-public class AutonActivity extends AppCompatActivity implements View.OnKeyListener {
+public class AutonActivity extends ScoutingActivity {
 
     /*This area sets and binds all of the variables that we will use in the auton activity*/
     public static String AUTON_STRING_EXTRA = "auton_extra";
@@ -62,101 +62,24 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     @BindView(R.id.next_button)
     public Button nextButton;
 
-    private ArrayList<CharSequence> autonDataStringList;
     public static final int REQUEST_CODE = 1;
 
-
-    /*When this activity is first called,
-     *we will call the activity_auton layout so we can display
-     *the user interface
-     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void initialize() {
         setContentView(R.layout.activity_auton);
         ButterKnife.bind(this);
-        autonDataStringList = new ArrayList<>();
+
+        addItem(R.id.teamNumber_input_layout, teamNumberInputLayout);
+        addItem(R.id.teamNumber_input, teamNumberInput);
+        addItem(R.id.matchNumber_input_layout, matchNumberInputLayout);
+        addItem(R.id.matchNumber_input, matchNumberInput);
+
+        addItem(R.id.startingLocation_RadiobtnGrp, startingLocationRadiobtnGrp);
+        addItem(R.id.baseLine_RadiobtnGrp, baseLineRadiobtnGrp);
+        addItem(R.id.cubeInSwitch_RadiobtnGrp, cubeInSwitchRadiobtnGrp);
+        addItem(R.id.cubeInScale_RadiobtnGrp, cubeInScaleRadiobtnGrp);
 
         checkForPermissions();
-    }
-
-    /*If this activity is resumed from a paused state the data
-     *will be set to what they previously were set to
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        autonDataStringList.clear();
-
-        teamNumberInput.setOnKeyListener(this);
-        matchNumberInput.setOnKeyListener(this);
-        cubeInSwitchRadiobtnGrp.setOnKeyListener(this);
-        cubeInScaleRadiobtnGrp.setOnKeyListener(this);
-    }
-
-    /*If this activity enters a paused state the data will be set to null*/
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        teamNumberInput.setOnKeyListener(null);
-        matchNumberInput.setOnKeyListener(null);
-        cubeInSwitchRadiobtnGrp.setOnKeyListener(null);
-        cubeInScaleRadiobtnGrp.setOnKeyListener(null);
-    }
-
-    /* This method will display the options menu when the icon is pressed
-     * and this will inflate the menu options for the user to choose
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    /*This method will launch the correct activity
-     *based on the menu option user presses
-      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_activity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.send_data:
-                startActivity(new Intent(this, SendDataActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-    /*This method will look at all of the text/number input fields and set error
-    *for validation of data entry
-     */
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if (keyCode != KeyEvent.KEYCODE_SPACE && keyCode != KeyEvent.KEYCODE_TAB) {
-            TextInputEditText inputEditText = (TextInputEditText) v;
-
-            if (inputEditText != null) {
-
-                switch (inputEditText.getId()) {
-
-                    case R.id.teamNumber_input:
-                        teamNumberInputLayout.setError(null);
-                        break;
-
-                    case R.id.matchNumber_input:
-                        matchNumberInputLayout.setError(null);
-                        break;
-                }
-            }
-        }
-        return false;
     }
 
 
@@ -200,22 +123,21 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         final RadioButton cubeInSwitch_Radiobtn = findViewById(cubeInSwitchRadiobtnGrp.getCheckedRadioButtonId());
         final RadioButton cubeInScale_Radiobtn = findViewById(cubeInScaleRadiobtnGrp.getCheckedRadioButtonId());
 
-        autonDataStringList.add(getTextInputLayoutString(teamNumberInputLayout));
-        autonDataStringList.add(getTextInputLayoutString(matchNumberInputLayout));
-        autonDataStringList.add(startingLocation_Radiobtn.getText());
-        autonDataStringList.add(baseline_Radiobtn.getText());
-        autonDataStringList.add(cubeInSwitch_Radiobtn.getText());
-        autonDataStringList.add(cubeInScale_Radiobtn.getText());
-
-        final Intent intent = new Intent(this, TeleopActivity.class);
-        intent.putExtra(AUTON_STRING_EXTRA, FormatStringUtils.addDelimiter(autonDataStringList, ","));
-
-        startActivityForResult(intent, REQUEST_CODE);
+        stringList.add(getTextInputLayoutString(teamNumberInputLayout));
+        stringList.add(getTextInputLayoutString(matchNumberInputLayout));
+        stringList.add(startingLocation_Radiobtn.getText());
+        stringList.add(baseline_Radiobtn.getText());
+        stringList.add(cubeInSwitch_Radiobtn.getText());
+        stringList.add(cubeInScale_Radiobtn.getText());
 
         teamNumberInputLayout.setError(null);
         matchNumberInputLayout.setError(null);
-    }
 
+        final Intent intent = new Intent(this, TeleopActivity.class);
+        intent.putExtra(AUTON_STRING_EXTRA, FormatStringUtils.addDelimiter(stringList, ","));
+
+        startActivityForResult(intent, REQUEST_CODE);
+    }
 
     /*This method will check for the result code from the teleop activity
      *so we can clear the data before the next match scouting starts
@@ -231,24 +153,6 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         } catch (Exception ex) {
             Toast.makeText(this, ex.toString(), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    /*This method will clear all of the text entry fields as well
-    * as reset the checkboxes and reset the radio buttons to their default*/
-    public void clearData() {
-        teamNumberInput.setText("");
-        matchNumberInput.setText("");
-        startingLocationRadiobtnGrp.clearCheck();
-        cubeInSwitchRadiobtnGrp.clearCheck();
-        cubeInScaleRadiobtnGrp.clearCheck();
-        teamNumberInput.requestFocus();
-    }
-
-
-    /* This method will change the text entered into the app into a string if it is not already*/
-    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
-        final EditText editText = textInputLayout.getEditText();
-        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 
     private void checkForPermissions() {

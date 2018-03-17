@@ -36,7 +36,6 @@ import utils.StringUtils;
 import utils.ViewUtils;
 
 public abstract class ScoutingActivity extends AppCompatActivity implements View.OnKeyListener {
-    private ArrayList stringList;
     private HashMap<Integer, TextInputEditText> textInputEditTextMap;
     private HashMap<Integer, TextInputLayout> textInputLayoutMap;
     private HashMap<String, ArrayList<CheckBox>> checkBoxMap;
@@ -44,6 +43,7 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
 
     private ArrayList<Object> orderedDataList;
 
+    public ArrayList stringList;
     public boolean saveInitials;
     public String previousActivityData;
 
@@ -89,7 +89,7 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
 
     }
 
-    private void clearData() {
+    public void clearData() {
         clearCheckBoxes();
         clearTextInputs();
         clearRadioGroups();
