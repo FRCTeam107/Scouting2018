@@ -185,6 +185,8 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
             }
 
             clearData();
+
+            onDataSaved();
         } else {
             Toast.makeText(getApplicationContext(), "Now that you have permissions, try saving again.", Toast.LENGTH_LONG).show();
         }
@@ -194,6 +196,10 @@ public abstract class ScoutingActivity extends AppCompatActivity implements View
         for(TextInputLayout textInputLayout : textInputLayoutMap.values()) {
             textInputLayout.setError(null);
         }
+    }
+
+    public void onDataSaved() {
+
     }
 
     /* This method will display the options menu when the icon is pressed
