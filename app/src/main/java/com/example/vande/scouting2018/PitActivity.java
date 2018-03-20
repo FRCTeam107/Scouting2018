@@ -379,7 +379,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                 ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
             }
         }
-        clearData();
     }
 
     public void clearData() {
