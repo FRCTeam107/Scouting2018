@@ -125,7 +125,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.save_pit_btn)
     public Button savePitBtn;
 
-
     private ArrayList<CharSequence> pitDataStringList;
 //    private ArrayList<CharSequence> headingDataStringList;
 
@@ -353,31 +352,49 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
-                    startActivityForResult(takePictureIntent, 1);
-                }
-
-                try {
-                    FileInputStream inputStream = new FileInputStream(file);
-                    Bitmap bitmap;
-
-                    while ((bitmap = BitmapFactory.decodeStream(inputStream)) == null) {
-                    }
-
-                    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
-
-                    FileOutputStream outputStream = new FileOutputStream(new File(dir, name + ".jpg"));
-                    outputStream.write(out.toByteArray());
-                    inputStream.close();
-                    out.close();
-                    outputStream.close();
-                } catch (IOException e) {
-                    Log.d("Scouting", e.getMessage());
+                    startActivityForResult(takePictureIntent, 0);
                 }
             } else {
                 pitTeamNumberInputLayout.setError(getText(R.string.pitTeamNumberError));
                 ViewUtils.requestFocus(pitTeamNumberInputLayout, this);
             }
+        } else {
+            checkForPermissions();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            if(resultCode == RESULT_OK) {
+                compressPhoto();
+            }
+        }
+    }
+
+    private void compressPhoto() {
+        try {
+            String name = getTextInputLayoutString(pitTeamNumberInputLayout);
+
+            File dir = new File(Environment.getExternalStorageDirectory() + "/Scouting/Photos");
+            File file = new File(dir, name + ".jpg");
+
+            FileInputStream inputStream = new FileInputStream(file);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 25, out);
+
+            FileOutputStream outputStream = new FileOutputStream(file);
+            outputStream.write(out.toByteArray());
+            inputStream.close();
+            out.close();
+            outputStream.close();
+
+            Toast.makeText(this, "Photo taken!", Toast.LENGTH_LONG);
+        } catch (IOException e) {
+            Log.d("Scouting", e.getMessage());
+            Toast.makeText(this, "Failed to save photo. Try again!", Toast.LENGTH_LONG);
         }
     }
 
