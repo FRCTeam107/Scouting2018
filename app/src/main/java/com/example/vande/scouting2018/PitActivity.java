@@ -416,7 +416,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         pitVaultPriorityInput.setText("");
 
-        pitCanHelpClimbRadioGrp.clearCheck();
+        pitClimbBooleanRadiobtnGrp.clearCheck();
         pitCanHelpClimbRadioGrp.clearCheck();
 
         pitProgrammingLanguageRadiobtnGrp.clearCheck();

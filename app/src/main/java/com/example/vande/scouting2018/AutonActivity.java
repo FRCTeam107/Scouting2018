@@ -214,6 +214,8 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
 
         teamNumberInputLayout.setError(null);
         matchNumberInputLayout.setError(null);
+
+        matchNumberInput.requestFocus();
     }
 
 
@@ -239,9 +241,9 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         teamNumberInput.setText("");
         matchNumberInput.setText("");
         startingLocationRadiobtnGrp.clearCheck();
+        baseLineRadiobtnGrp.clearCheck();
         cubeInSwitchRadiobtnGrp.clearCheck();
         cubeInScaleRadiobtnGrp.clearCheck();
-        teamNumberInput.requestFocus();
     }
 
 
