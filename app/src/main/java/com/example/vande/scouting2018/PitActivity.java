@@ -391,10 +391,10 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             out.close();
             outputStream.close();
 
-            Toast.makeText(this, "Photo taken!", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Photo taken!", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Log.d("Scouting", e.getMessage());
-            Toast.makeText(this, "Failed to save photo. Try again!", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Failed to save photo. Try again!", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -26,4 +26,23 @@
         android:text="Concatenate Data"
         android:onClick="concatenateData"/>
 
+    <RadioGroup
+        android:id="@+id/matchOrPit_RadiobtnGrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/match_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/concatenateMatch" />
+
+        <RadioButton
+            android:id="@+id/pit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/concatenatePit" />
+    </RadioGroup>
+
 </LinearLayout>

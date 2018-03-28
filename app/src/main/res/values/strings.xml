@@ -7,6 +7,9 @@
 
     <string name="mainAuthor">Developed by FRC Team 107</string>
 
+    <string name="concatenateMatch">Concatenate Match</string>
+    <string name="concatenatePit">Concatenate Pit</string>
+
     <!--Auton Strings-->
     <string name="teamNumberHeading">Team Number</string>
     <string name="matchNumberHeading">Match Number</string>
