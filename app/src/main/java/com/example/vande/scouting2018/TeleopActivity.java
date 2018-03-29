@@ -118,7 +118,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
         matchNumber = bundle.getString(MATCH_STRING_EXTRA);
         teamNumber = bundle.getString(TEAMNUMBER_STRING_EXTRA);
 
-        //getActionBar().setTitle("#" + matchNumber + "-" + teamNumber);
         getSupportActionBar().setTitle("Match: " + matchNumber + " - Team: " + teamNumber);
 
         teleopDataStringList = new ArrayList<>();
