@@ -37,6 +37,8 @@ import utils.ViewUtils;
 
 import static android.R.attr.value;
 import static com.example.vande.scouting2018.AutonActivity.AUTON_STRING_EXTRA;
+import static com.example.vande.scouting2018.AutonActivity.MATCH_STRING_EXTRA;
+import static com.example.vande.scouting2018.AutonActivity.TEAMNUMBER_STRING_EXTRA;
 
 
 public class TeleopActivity extends AppCompatActivity implements View.OnKeyListener {
@@ -95,6 +97,8 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     int teleopCubesInTheirSwitch = 0;
     int teleopCubesInScale = 0;
     public String auton;
+    public String matchNumber;
+    public String teamNumber;
 
     private ArrayList<CharSequence> teleopDataStringList;
 
@@ -111,6 +115,11 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
         Bundle bundle = getIntent().getExtras();
         auton = bundle.getString(AUTON_STRING_EXTRA);
+        matchNumber = bundle.getString(MATCH_STRING_EXTRA);
+        teamNumber = bundle.getString(TEAMNUMBER_STRING_EXTRA);
+
+        //getActionBar().setTitle("#" + matchNumber + "-" + teamNumber);
+        getSupportActionBar().setTitle("Match: " + matchNumber + " - Team: " + teamNumber);
 
         teleopDataStringList = new ArrayList<>();
 
