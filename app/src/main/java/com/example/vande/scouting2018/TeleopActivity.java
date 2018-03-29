@@ -74,6 +74,9 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
     @BindView(R.id.cubePickupPortal_checkBox)
     public CheckBox cubePickupPortalCheckBox;
 
+    @BindView(R.id.fouls_chkbx)
+    public CheckBox foulsChbx;
+
     @BindView(R.id.climb_RadiobtnGrp)
     public RadioGroup climbRadiobtnGrp;
 
@@ -88,9 +91,6 @@ public class TeleopActivity extends AppCompatActivity implements View.OnKeyListe
 
     @BindView(R.id.save_btn)
     public Button saveBtn;
-
-    @BindView(R.id.fouls_chkbx)
-    public CheckBox foulsChbx;
 
     int teleopCubesInExchange = 0;
     int teleopCubesInOurSwitch = 0;
