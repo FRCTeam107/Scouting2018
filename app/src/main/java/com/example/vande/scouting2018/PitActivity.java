@@ -52,6 +52,21 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_teamNumber_input_layout)
     public TextInputLayout pitTeamNumberInputLayout;
 
+    @BindView(R.id.pit_cubeNumberInSwitch_input_layout)
+    public TextInputLayout pitCubeNumberInSwitchInputLayout;
+
+    @BindView(R.id.pit_cubeNumberInScale_input_layout)
+    public TextInputLayout pitCubeNumberInScaleInputLayout;
+
+    @BindView(R.id.pit_cubeNumberInExchange_input_layout)
+    public TextInputLayout pitCubeNumberInExchangeInputLayout;
+
+    @BindView(R.id.pit_arcadeGame_input_layout)
+    public TextInputLayout pitArcadeGameInputLayout;
+
+    @BindView(R.id.pit_comments_input_layout)
+    public TextInputLayout pitCommentInputLayout;
+
     @BindView(R.id.pit_teamNumber_input)
     public TextInputEditText pitTeamNumberInput;
 
@@ -60,9 +75,20 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
     @BindView(R.id.pit_vaultPriority_input)
     public TextInputEditText pitVaultPriorityInput;
+    @BindView(R.id.pit_cubeNumberInSwitch_input)
+    public TextInputEditText pitCubeNumberInSwitchInput;
 
-    @BindView(R.id.pit_startingPosition_layout)
-    public LinearLayout pitStartingPositionLayout;
+    @BindView(R.id.pit_cubeNumberInScale_input)
+    public TextInputEditText pitCubeNumberInScaleInput;
+
+    @BindView(R.id.pit_cubeNumberInExchange_input)
+    public TextInputEditText pitCubeNumberInExchangeInput;
+
+    @BindView(R.id.pit_arcadeGame_input)
+    public TextInputEditText pitArcadeGameInput;
+
+    @BindView(R.id.pit_comments_input)
+    public TextInputEditText pitCommentInput;
 
     @BindView(R.id.pitStartingPositionLeft_btn)
     public CheckBox pitStartingPositionLeft;
@@ -82,25 +108,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
     @BindView(R.id.pit_pickupBoolean_RadiobtnGrp)
     public RadioGroup pitPickUpOffFloorRadioGrp;
 
-    @BindView(R.id.pit_cubeNumberInSwitch_input_layout)
-    public TextInputLayout pitCubeNumberInSwitchInputLayout;
-
-    @BindView(R.id.pit_cubeNumberInScale_input_layout)
-    public TextInputLayout pitCubeNumberInScaleInputLayout;
-
-    @BindView(R.id.pit_cubeNumberInExchange_input_layout)
-    public TextInputLayout pitCubeNumberInExchangeInputLayout;
-
-    @BindView(R.id.pit_cubeNumberInSwitch_input)
-    public TextInputEditText pitCubeNumberInSwitchInput;
-
-    @BindView(R.id.pit_cubeNumberInScale_input)
-    public TextInputEditText pitCubeNumberInScaleInput;
-
-    @BindView(R.id.pit_cubeNumberInExchange_input)
-    public TextInputEditText pitCubeNumberInExchangeInput;
-
-    //TODO:Change this to checkbox???
     @BindView(R.id.pit_climbBoolean_RadiobtnGrp)
     public RadioGroup pitClimbBooleanRadiobtnGrp;
 
@@ -109,18 +116,6 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
     @BindView(R.id.pit_programmingLanguage_RadiobtnGrp)
     public RadioGroup pitProgrammingLanguageRadiobtnGrp;
-
-    @BindView(R.id.pit_arcadeGame_input_layout)
-    public TextInputLayout pitArcadeGameInputLayout;
-
-    @BindView(R.id.pit_arcadeGame_input)
-    public TextInputEditText pitArcadeGameInput;
-
-    @BindView(R.id.pit_comments_input_layout)
-    public TextInputLayout pitCommentInputLayout;
-
-    @BindView(R.id.pit_comments_input)
-    public TextInputEditText pitCommentInput;
 
     @BindView(R.id.save_pit_btn)
     public Button savePitBtn;
@@ -391,10 +386,10 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
             out.close();
             outputStream.close();
 
-            Toast.makeText(this, "Photo taken!", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Photo taken!", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             Log.d("Scouting", e.getMessage());
-            Toast.makeText(this, "Failed to save photo. Try again!", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Failed to save photo. Try again!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -416,7 +411,7 @@ public class PitActivity extends AppCompatActivity implements View.OnKeyListener
 
         pitVaultPriorityInput.setText("");
 
-        pitCanHelpClimbRadioGrp.clearCheck();
+        pitClimbBooleanRadiobtnGrp.clearCheck();
         pitCanHelpClimbRadioGrp.clearCheck();
 
         pitProgrammingLanguageRadiobtnGrp.clearCheck();

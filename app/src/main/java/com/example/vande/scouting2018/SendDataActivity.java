@@ -19,6 +19,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -32,6 +34,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import utils.FormatStringUtils;
 import utils.PermissionUtils;
 
@@ -43,11 +47,15 @@ import static android.os.Environment.getExternalStorageDirectory;
 
 public class SendDataActivity extends AppCompatActivity {
 
+    @BindView(R.id.matchOrPit_RadiobtnGrp)
+    public RadioGroup matchOrPitRadiobtnGrp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_data);
+
+        ButterKnife.bind(this);
     }
 
     /* This method will display the options menu when the icon is pressed
@@ -79,33 +87,48 @@ public class SendDataActivity extends AppCompatActivity {
     public void concatenateData(View view) {
         if(PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE) &&
                 PermissionUtils.getPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            String dir = "storage/emulated/0/Scouting/";
+            RadioButton radioButton = findViewById(matchOrPitRadiobtnGrp.getCheckedRadioButtonId());
 
-            File folder = new File(dir);
-            File[] files = folder.listFiles();
+            if(radioButton != null) {
+                String dir = Environment.getExternalStorageDirectory() + "/Scouting";
 
-            StringBuilder builder = new StringBuilder();
-            FileReader fileReader;
-            BufferedReader bufferedReader;
-            FileOutputStream fileOutputStream;
+                File folder = new File(dir);
+                File[] files = folder.listFiles();
 
-            try {
-                for (int i = 0; i < files.length; i++) {
-                    fileReader = new FileReader(files[i]);
-                    bufferedReader = new BufferedReader(fileReader);
+                StringBuilder builder = new StringBuilder();
+                FileReader fileReader;
+                BufferedReader bufferedReader;
+                FileOutputStream fileOutputStream;
 
-                    String line;
-                    while((line = bufferedReader.readLine()) != null) {
-                        builder.append(line + '\n');
+                String type = radioButton.getText().toString().contains("Match") ? "Match" : "Pit";
+
+                if (files != null) {
+                    try {
+                        for (File file : files) {
+                            if (file.getName().contains(type)) {
+                                fileReader = new FileReader(file);
+                                bufferedReader = new BufferedReader(fileReader);
+
+                                String line;
+                                while ((line = bufferedReader.readLine()) != null) {
+                                    builder.append(line + '\n');
+                                }
+                            }
+                        }
+                        fileOutputStream = new FileOutputStream(new File(dir, "new.csv"), false);
+                        fileOutputStream.write("teamNumber,matchNumber,startingLocation,baseline,autoCubesInSwitch,autoCubesInScale,numberOfCubesInExchange,numberOfCubesInTheirSwitch,numberOfCubesInOpSwitch,NumberOfCubesInScale,cubePickup,climb,canHelpOthersClimb,onPlatform,defense,fouls,scouterInitials".getBytes());
+                        fileOutputStream.write(builder.toString().getBytes());
+                        fileOutputStream.close();
+
+                        Toast.makeText(this, "Successfully concatenated " + type + " data to new.csv!", Toast.LENGTH_LONG).show();
+
+                    } catch (IOException e) {
+                        Log.d("Scouting", e.getMessage());
+                        Toast.makeText(this, "Failed to concatenate data.", Toast.LENGTH_LONG).show();
                     }
                 }
-                fileOutputStream = new FileOutputStream(new File(dir,"new.csv"), false);
-                fileOutputStream.write("teamNumber,matchNumber,startingLocation,baseline,autoCubesInSwitch,autoCubesInScale,numberOfCubesInExchange,numberOfCubesInTheirSwitch,numberOfCubesInOpSwitch,NumberOfCubesInScale,cubePickup,climb,canHelpOthersClimb,onPlatform,defense,fouls,scouterInitials".getBytes());
-                fileOutputStream.write(builder.toString().getBytes());
-                fileOutputStream.close();
-
-            } catch(IOException e) {
-                Log.d("Scouting", e.getMessage());
+            } else {
+                Toast.makeText(this, "Select an option!", Toast.LENGTH_SHORT).show();
             }
         }
     }

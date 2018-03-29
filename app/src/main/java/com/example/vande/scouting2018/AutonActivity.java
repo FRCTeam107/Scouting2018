@@ -35,6 +35,10 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
     /*This area sets and binds all of the variables that we will use in the auton activity*/
     public static String AUTON_STRING_EXTRA = "auton_extra";
 
+    /* These are the names of the match number and team number extras that will be passed into teleop */
+    public static final String MATCH_STRING_EXTRA = "match_extra";
+    public static final String TEAMNUMBER_STRING_EXTRA = "teamnumber_extra";
+
     @BindView(R.id.teamNumber_input_layout)
     public TextInputLayout teamNumberInputLayout;
 
@@ -209,11 +213,15 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
 
         final Intent intent = new Intent(this, TeleopActivity.class);
         intent.putExtra(AUTON_STRING_EXTRA, FormatStringUtils.addDelimiter(autonDataStringList, ","));
+        intent.putExtra(MATCH_STRING_EXTRA, getTextInputLayoutString(matchNumberInputLayout));
+        intent.putExtra(TEAMNUMBER_STRING_EXTRA, getTextInputLayoutString(teamNumberInputLayout));
 
         startActivityForResult(intent, REQUEST_CODE);
 
         teamNumberInputLayout.setError(null);
         matchNumberInputLayout.setError(null);
+
+        matchNumberInput.requestFocus();
     }
 
 
@@ -239,9 +247,9 @@ public class AutonActivity extends AppCompatActivity implements View.OnKeyListen
         teamNumberInput.setText("");
         matchNumberInput.setText("");
         startingLocationRadiobtnGrp.clearCheck();
+        baseLineRadiobtnGrp.clearCheck();
         cubeInSwitchRadiobtnGrp.clearCheck();
         cubeInScaleRadiobtnGrp.clearCheck();
-        teamNumberInput.requestFocus();
     }
 
 
