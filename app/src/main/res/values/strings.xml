@@ -9,6 +9,7 @@
 
     <string name="concatenateMatch">Concatenate Match</string>
     <string name="concatenatePit">Concatenate Pit</string>
+    <string name="concatFolder">Enter concatenation folder name</string>
 
     <!--Auton Strings-->
     <string name="teamNumberHeading">Team Number</string>
