@@ -13,14 +13,19 @@ import android.os.Environment;
 import android.os.Message;
 import android.os.Parcelable;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -49,6 +54,9 @@ public class SendDataActivity extends AppCompatActivity {
 
     @BindView(R.id.matchOrPit_RadiobtnGrp)
     public RadioGroup matchOrPitRadiobtnGrp;
+
+    @BindView(R.id.concatFolder_editText)
+    public EditText concatFolderEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,42 +98,50 @@ public class SendDataActivity extends AppCompatActivity {
             RadioButton radioButton = findViewById(matchOrPitRadiobtnGrp.getCheckedRadioButtonId());
 
             if(radioButton != null) {
-                String dir = Environment.getExternalStorageDirectory() + "/Scouting";
+                String dir = Environment.getExternalStorageDirectory() + "/" + concatFolderEditText.getText().toString();
 
                 File folder = new File(dir);
-                File[] files = folder.listFiles();
 
-                StringBuilder builder = new StringBuilder();
-                FileReader fileReader;
-                BufferedReader bufferedReader;
-                FileOutputStream fileOutputStream;
+                if(folder.exists() && concatFolderEditText.getText().toString().length() > 0) {
+                    File[] files = folder.listFiles();
 
-                String type = radioButton.getText().toString().contains("Match") ? "Match" : "Pit";
+                    StringBuilder builder = new StringBuilder();
+                    FileReader fileReader;
+                    BufferedReader bufferedReader;
+                    FileOutputStream fileOutputStream;
 
-                if (files != null) {
-                    try {
-                        for (File file : files) {
-                            if (file.getName().contains(type)) {
-                                fileReader = new FileReader(file);
-                                bufferedReader = new BufferedReader(fileReader);
+                    String type = radioButton.getText().toString().contains("Match") ? "Match" : "Pit";
 
-                                String line;
-                                while ((line = bufferedReader.readLine()) != null) {
-                                    builder.append(line + '\n');
+                    if (files != null) {
+                        try {
+                            int fileCount = 0;
+                            for (File file : files) {
+                                if (file.getName().contains(type)) {
+                                    fileCount++;
+                                    fileReader = new FileReader(file);
+                                    bufferedReader = new BufferedReader(fileReader);
+
+                                    String line;
+                                    while ((line = bufferedReader.readLine()) != null) {
+                                        builder.append(line + '\n');
+                                    }
                                 }
                             }
+                            fileOutputStream = new FileOutputStream(new File(dir, "new.csv"), false);
+                            fileOutputStream.write("teamNumber,matchNumber,startingLocation,baseline,autoCubesInSwitch,autoCubesInScale,numberOfCubesInExchange,numberOfCubesInTheirSwitch,numberOfCubesInOpSwitch,NumberOfCubesInScale,cubePickup,climb,canHelpOthersClimb,onPlatform,defense,fouls,scouterInitials".getBytes());
+                            fileOutputStream.write(builder.toString().getBytes());
+                            fileOutputStream.close();
+
+                            Toast.makeText(this, "Successfully concatenated " + fileCount + " " + type + " files to new.csv!", Toast.LENGTH_LONG).show();
+
+                        } catch (IOException e) {
+                            Log.d("Scouting", e.getMessage());
+                            Toast.makeText(this, "Failed to concatenate data.", Toast.LENGTH_LONG).show();
                         }
-                        fileOutputStream = new FileOutputStream(new File(dir, "new.csv"), false);
-                        fileOutputStream.write("teamNumber,matchNumber,startingLocation,baseline,autoCubesInSwitch,autoCubesInScale,numberOfCubesInExchange,numberOfCubesInTheirSwitch,numberOfCubesInOpSwitch,NumberOfCubesInScale,cubePickup,climb,canHelpOthersClimb,onPlatform,defense,fouls,scouterInitials".getBytes());
-                        fileOutputStream.write(builder.toString().getBytes());
-                        fileOutputStream.close();
-
-                        Toast.makeText(this, "Successfully concatenated " + type + " data to new.csv!", Toast.LENGTH_LONG).show();
-
-                    } catch (IOException e) {
-                        Log.d("Scouting", e.getMessage());
-                        Toast.makeText(this, "Failed to concatenate data.", Toast.LENGTH_LONG).show();
                     }
+
+                } else {
+                    Toast.makeText(this, "Invalid folder name!", Toast.LENGTH_LONG).show();
                 }
             } else {
                 Toast.makeText(this, "Select an option!", Toast.LENGTH_SHORT).show();
@@ -174,5 +190,10 @@ public class SendDataActivity extends AppCompatActivity {
             intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
             startActivity(Intent.createChooser(intent, "Share app"));
         }
+    }
+
+    private String getTextInputLayoutString(@NonNull TextInputLayout textInputLayout) {
+        final EditText editText = textInputLayout.getEditText();
+        return editText != null && editText.getText() != null ? editText.getText().toString() : "";
     }
 }
