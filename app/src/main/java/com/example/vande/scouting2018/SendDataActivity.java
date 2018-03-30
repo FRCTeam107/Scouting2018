@@ -181,14 +181,18 @@ public class SendDataActivity extends AppCompatActivity {
             File folder = new File(dir);
             File[] photos = folder.listFiles();
 
-            ArrayList<Uri> toSend = new ArrayList<>();
+            if(photos != null) {
+                ArrayList<Uri> toSend = new ArrayList<>();
 
-            for (int i = 0; i < photos.length; i++) {
-                toSend.add(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photos[i]));
+                for (int i = 0; i < photos.length; i++) {
+                    toSend.add(FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photos[i]));
+                }
+
+                intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
+                startActivity(Intent.createChooser(intent, "Share app"));
+            } else {
+                Toast.makeText(this, "No photos!", Toast.LENGTH_SHORT).show();
             }
-
-            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, toSend);
-            startActivity(Intent.createChooser(intent, "Share app"));
         }
     }
 
